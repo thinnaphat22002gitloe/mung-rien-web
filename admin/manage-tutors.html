@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จัดการติวเตอร์ - Admin | มุ่งเรียน</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">Admin Panel</div>
+        </div>
+      </a>
+      <div style="display:flex; align-items:center; gap:15px;">
+        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+        </div>
+        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
+        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h3 data-i18n="admin_menu_title">ระบบจัดการ</h3>
+      <ul class="admin-menu">
+        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">Dashboard</a></li>
+        <li><a href="manage-tutors.html" class="active" data-i18n="admin_menu_tutors">จัดการติวเตอร์</a></li>
+        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">จัดการงานสอน</a></li>
+        <li><a href="manage-users.html" data-i18n="admin_menu_users">จัดการผู้ใช้งาน/นักเรียน</a></li>
+        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">จัดการหมวดหมู่</a></li>
+        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">จัดการ Webboard</a></li>
+        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">แจ้งเตือน LINE</a></li>
+        <li><a href="settings.html" data-i18n="admin_menu_settings">ตั้งค่าระบบ</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h2>จัดการติวเตอร์</h2>
+          <p style="color:var(--secondary); font-size:14px;">จัดการข้อมูลติวเตอร์ การอนุมัติ และสถานะต่างๆ</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <span style="background:#FEF3C7; color:#92400E; padding:6px 12px; border-radius:6px; font-size:13px; font-weight:600;">รออนุมัติ: 3 คน</span>
+          <span style="background:#D1FAE5; color:#065F46; padding:6px 12px; border-radius:6px; font-size:13px; font-weight:600;">อนุมัติ: 480 คน</span>
+          <span style="background:#FEE2E2; color:#991B1B; padding:6px 12px; border-radius:6px; font-size:13px; font-weight:600;">ไม่ผ่าน: 29 คน</span>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-search">
+          <input type="text" class="form-control" placeholder="🔍 ค้นหา เลขทะเบียน / ชื่อ-นามสกุล...">
+          <select class="form-control" style="width:160px;">
+            <option value="">ทุกสถานะ</option>
+            <option>รออนุมัติ</option>
+            <option>อนุมัติ</option>
+            <option>ไม่ผ่าน</option>
+          </select>
+          <button class="btn btn-yellow btn-sm">ค้นหา</button>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-primary btn-sm">➕ เพิ่มติวเตอร์</button>
+          <button class="btn btn-outline btn-sm">📤 Export Excel</button>
+        </div>
+      </div>
+
+      <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>รูปประจำตัว</th>
+                <th>ชื่อ-นามสกุล</th>
+                <th>เบอร์โทร</th>
+                <th>วิชาที่สอน</th>
+                <th>สถานะ</th>
+                <th>วันที่สมัคร</th>
+                <th style="width:180px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>T-00521</strong></td>
+                <td><span style="font-size:28px;">👩‍🏫</span></td>
+                <td>นางสาว ศิริพร สุขสวัสดิ์</td>
+                <td>081-234-5678</td>
+                <td>คณิต, ฟิสิกส์</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">⏳ รออนุมัติ</span></td>
+                <td>18 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00520</strong></td>
+                <td><span style="font-size:28px;">👨‍🏫</span></td>
+                <td>นาย ธนา วงศ์น้อย</td>
+                <td>089-876-5432</td>
+                <td>อังกฤษ</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">⏳ รออนุมัติ</span></td>
+                <td>18 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00519</strong></td>
+                <td><span style="font-size:28px;">👩‍🏫</span></td>
+                <td>นางสาว มยุรี พิพัฒน์</td>
+                <td>084-555-1234</td>
+                <td>ภาษาไทย, สังคม</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">✅ อนุมัติ</span></td>
+                <td>17 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00518</strong></td>
+                <td><span style="font-size:28px;">👨‍🏫</span></td>
+                <td>นาย วิศรุต เจริญกิจ</td>
+                <td>086-333-9988</td>
+                <td>โปรแกรมมิ่ง</td>
+                <td><span style="background:#FEE2E2; color:#991B1B; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">❌ ไม่ผ่าน</span></td>
+                <td>17 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00517</strong></td>
+                <td><span style="font-size:28px;">👩‍🏫</span></td>
+                <td>นางสาว อาภาพร รักษ์ชล</td>
+                <td>081-777-2233</td>
+                <td>เปียโน, ดนตรี</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">✅ อนุมัติ</span></td>
+                <td>16 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00516</strong></td>
+                <td><span style="font-size:28px;">👨‍🏫</span></td>
+                <td>นาย กิตติพงษ์ แสงสุวรรณ</td>
+                <td>090-111-4455</td>
+                <td>เคมี, ชีววิทยา</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">⏳ รออนุมัติ</span></td>
+                <td>16 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00515</strong></td>
+                <td><span style="font-size:28px;">👩‍🏫</span></td>
+                <td>นางสาว รัตนา บุญมี</td>
+                <td>085-666-7788</td>
+                <td>ภาษาจีน</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">✅ อนุมัติ</span></td>
+                <td>15 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>T-00514</strong></td>
+                <td><span style="font-size:28px;">👨‍🏫</span></td>
+                <td>นาย พงษ์พัฒน์ ดีเดชา</td>
+                <td>083-999-1122</td>
+                <td>ฟุตบอล, กีฬา</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">✅ อนุมัติ</span></td>
+                <td>15 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบติวเตอร์?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:10px;">
+          <div style="font-size:14px; color:var(--secondary);">
+            แสดงผลทั้งหมด <strong>512</strong> รายการ | หน้าที่ <strong>1</strong> จาก <strong>64</strong>
+          </div>
+          <div style="display:flex; gap:4px;">
+            <button class="btn btn-sm btn-outline" disabled style="opacity:0.5;">« ก่อนหน้า</button>
+            <button class="btn btn-sm btn-yellow">1</button>
+            <button class="btn btn-sm btn-outline">2</button>
+            <button class="btn btn-sm btn-outline">3</button>
+            <button class="btn btn-sm btn-outline">4</button>
+            <button class="btn btn-sm btn-outline">5</button>
+            <span style="padding:8px 4px; color:var(--secondary);">...</span>
+            <button class="btn btn-sm btn-outline">64</button>
+            <button class="btn btn-sm btn-outline">ถัดไป »</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/lang.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ | มุ่งเรียน</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="#" data-i18n="topbar_contact">✆ ติดต่อทีมงาน</a>
+      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
+        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
+        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="auth-wrap">
+    <div class="auth-box">
+      <div style="text-align:center; margin-bottom:20px;">
+        <div style="display:inline-flex; align-items:center; gap:10px; font-size:22px; font-weight:bold;">
+          <div style="width:50px; height:50px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px;">🎓</div>
+          MU <span style="color:var(--accent);">PRIVATE TUTOR</span>
+        </div>
+      </div>
+
+      <h2 class="auth-title" data-i18n="auth_login_title">เข้าสู่ระบบ</h2>
+      <p class="auth-sub" data-i18n="auth_login_sub">สำหรับติวเตอร์และผู้ดูแลระบบ</p>
+
+      <form data-no-alert onsubmit="event.preventDefault(); alert('✅ เข้าสู่ระบบสำเร็จ (Mock)'); location.href='admin/dashboard.html';">
+        <div class="form-group">
+          <label data-i18n="label_role">ประเภทผู้ใช้งาน</label>
+          <select class="form-control" id="roleSelect">
+            <option value="tutor" data-i18n="role_tutor">ติวเตอร์ (Tutor)</option>
+            <option value="admin" data-i18n="role_admin">ผู้ดูแลระบบ (Admin)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="req" data-i18n="label_email">อีเมล (E-Mail)</label>
+          <input type="email" class="form-control" placeholder="your@email.com" required data-i18n="ph_email">
+        </div>
+
+        <div class="form-group">
+          <label class="req" data-i18n="label_pass">รหัสผ่าน (Password)</label>
+          <input type="password" class="form-control" placeholder="********" required data-i18n="ph_pass">
+        </div>
+
+        <div class="form-group" style="grid-template-columns:auto 1fr; gap:8px;">
+          <input type="checkbox" id="remember" style="margin:0;">
+          <label for="remember" style="text-align:left; font-weight:normal; font-size:14px;" data-i18n="label_remember">จดจำการเข้าสู่ระบบ</label>
+        </div>
+
+        <div class="auth-links">
+          <a href="forgot-password.html" data-i18n="link_forgot">ลืมรหัสผ่าน?</a>
+          <a href="register.html" data-i18n="link_register_new">สมัครติวเตอร์ใหม่</a>
+        </div>
+
+        <button type="submit" class="btn btn-yellow" data-i18n="btn_login_submit">เข้าสู่ระบบ</button>
+      </form>
+
+      <div style="margin-top:25px; padding-top:20px; border-top:1px solid var(--gray-border); text-align:center;">
+        <p style="font-size:13px; color:var(--secondary); margin-bottom:12px;" data-i18n="social_login_text">หรือเข้าสู่ระบบด้วย</p>
+        <div style="display:flex; justify-content:center; gap:10px;">
+          <button type="button" class="btn btn-outline btn-sm" style="border-color:#1877F2; color:#1877F2;">📘 Facebook</button>
+          <button type="button" class="btn btn-outline btn-sm" style="border-color:#06C755; color:#06C755;">🟢 Line</button>
+          <button type="button" class="btn btn-outline btn-sm" style="border-color:#4285F4; color:#4285F4;">🔍 Google</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" style="margin-top:0;">
+    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

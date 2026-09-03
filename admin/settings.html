@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตั้งค่าระบบ - Admin | มุ่งเรียน</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">Admin Panel</div>
+        </div>
+      </a>
+      <div style="display:flex; align-items:center; gap:15px;">
+        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+        </div>
+        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
+        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
+      <ul class="admin-menu">
+        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
+        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
+        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
+        <li><a href="manage-users.html" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
+        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
+        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
+        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
+        <li><a href="settings.html" class="active" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h2>🔧 ตั้งค่าระบบ</h2>
+          <p style="color:var(--secondary); font-size:14px;">จัดการค่าการตั้งค่าต่างๆ ของระบบ มุ่งเรียน</p>
+        </div>
+        <div style="color:var(--secondary); font-size:13px;">
+          อัปเดตล่าสุด: <strong style="color:var(--dark);">18 ส.ค. 2569 15:30 น.</strong>
+        </div>
+      </div>
+
+      <div class="tabs-container" style="background:var(--light); padding:20px 25px 30px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab-general">🏢 ข้อมูลทั่วไป</button>
+          <button class="tab-btn" data-tab="tab-payment">💰 การชำระเงิน</button>
+          <button class="tab-btn" data-tab="tab-smtp">📧 อีเมล / SMTP</button>
+          <button class="tab-btn" data-tab="tab-line">💚 LINE API</button>
+          <button class="tab-btn" data-tab="tab-permission">🔐 สิทธิ์ผู้ใช้</button>
+        </div>
+
+        <div class="tab-content active" data-tab="tab-general">
+          <h3 style="color:var(--dark); font-size:18px; margin:15px 0 20px;">🏢 ข้อมูลทั่วไปของระบบ</h3>
+          <form class="form-container" style="max-width:none; box-shadow:none; padding:0;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+              <div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">ชื่อเว็บไซต์</label>
+                  <input type="text" class="form-control" value="มุ่งเรียน - หาติวเตอร์สอนพิเศษชั้นนำ">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>โลโก้เว็บไซต์</label>
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <div style="width:60px; height:60px; background:var(--primary); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:30px;">🎓</div>
+                    <div style="display:grid; gap:6px; flex:1;">
+                      <input type="text" class="form-control" placeholder="Path หรือ URL รูปภาพ" value="../img/logo.png">
+                      <div style="display:flex; gap:6px;">
+                        <button type="button" class="btn btn-sm btn-outline">📁 อัปโหลด</button>
+                        <button type="button" class="btn btn-sm btn-outline" data-confirm="ต้องการลบโลโก้หรือไม่?">❌ ลบ</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">URL เว็บไซต์</label>
+                  <input type="text" class="form-control" value="https://www.มุ่งเรียน.com">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">เบอร์ติดต่อ</label>
+                  <input type="text" class="form-control" value="02-123-4567">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">อีเมลติดต่อ</label>
+                  <input type="email" class="form-control" value="contact@มุ่งเรียน.com">
+                </div>
+              </div>
+              <div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>Line ID</label>
+                  <div style="display:flex; gap:6px;">
+                    <input type="text" class="form-control" value="@มุ่งเรียน">
+                    <button type="button" class="btn btn-sm btn-outline">🔗 ทดสอบ</button>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>Facebook Page</label>
+                  <div style="display:flex; gap:6px;">
+                    <input type="text" class="form-control" value="https://facebook.com/มุ่งเรียน">
+                    <a href="#" target="_blank" class="btn btn-sm btn-outline">🔗 เปิด</a>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>Instagram</label>
+                  <input type="text" class="form-control" value="@mu.privatetutor">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr; align-items:start;">
+                  <label class="req">ที่อยู่สำนักงาน</label>
+                  <textarea class="form-control" rows="4">123/45 อาคาร MU Tower ชั้น 15<br>ถนนสุขุมวิท 31 แขวงคลองตันเหนือ<br>เขตวัฒนา กรุงเทพฯ 10110</textarea>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>ช่วงเวลาทำการ</label>
+                  <input type="text" class="form-control" value="จันทร์-เสาร์ 09:00 - 18:00 น.">
+                </div>
+              </div>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--gray-border); margin:25px 0;">
+            <h4 style="color:var(--dark); font-size:16px; margin-bottom:15px;">⚙️ ค่าตั้งค่าอื่นๆ</h4>
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:15px;">
+              <div style="padding:14px; background:var(--gray-bg); border-radius:8px;">
+                <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-weight:600; font-size:14px; color:var(--dark);">
+                  <span>📝 เปิดรับสมัครติวเตอร์</span>
+                  <input type="checkbox" checked style="width:18px; height:18px;">
+                </label>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">อนุญาตให้ติวเตอร์ใหม่สมัครเข้ามา</div>
+              </div>
+              <div style="padding:14px; background:var(--gray-bg); border-radius:8px;">
+                <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-weight:600; font-size:14px; color:var(--dark);">
+                  <span>💼 เปิดรับโพสต์งาน</span>
+                  <input type="checkbox" checked style="width:18px; height:18px;">
+                </label>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">อนุญาตให้นักเรียนโพสต์งานสอนใหม่</div>
+              </div>
+              <div style="padding:14px; background:var(--gray-bg); border-radius:8px;">
+                <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-weight:600; font-size:14px; color:var(--dark);">
+                  <span>💬 เปิด Webboard</span>
+                  <input type="checkbox" checked style="width:18px; height:18px;">
+                </label>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">อนุญาตให้โพสต์และตอบกระทู้</div>
+              </div>
+              <div style="padding:14px; background:var(--gray-bg); border-radius:8px;">
+                <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-weight:600; font-size:14px; color:var(--dark);">
+                  <span>🛡 ตรวจสอบก่อนเผยแพร่</span>
+                  <input type="checkbox" checked style="width:18px; height:18px;">
+                </label>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">กระทู้/งานต้องผ่านการตรวจสอบก่อนเสมอ</div>
+              </div>
+              <div style="padding:14px; background:var(--gray-bg); border-radius:8px;">
+                <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-weight:600; font-size:14px; color:var(--dark);">
+                  <span>🔔 ส่งแจ้งเตือน LINE</span>
+                  <input type="checkbox" checked style="width:18px; height:18px;">
+                </label>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">ระบบส่งแจ้งเตือนอัตโนมัติผ่าน LINE</div>
+              </div>
+              <div style="padding:14px; background:var(--gray-bg); border-radius:8px;">
+                <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-weight:600; font-size:14px; color:var(--dark);">
+                  <span>🌙 โหมด Dark</span>
+                  <input type="checkbox" style="width:18px; height:18px;">
+                </label>
+                <div style="font-size:12px; color:var(--secondary); margin-top:4px;">ธีมสีเข้มสำหรับหน้า Admin (เร็วๆ นี้)</div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline btn-sm" data-confirm="ต้องการรีเซ็ตค่าในแท็บนี้?">↩️ รีเซ็ตค่า</button>
+              <button type="submit" class="btn btn-yellow btn-sm">💾 บันทึกข้อมูลทั่วไป</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="tab-content" data-tab="tab-payment">
+          <h3 style="color:var(--dark); font-size:18px; margin:15px 0 20px;">💰 การชำระเงินและค่านายหน้า</h3>
+          <form class="form-container" style="max-width:none; box-shadow:none; padding:0;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+              <div>
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">🏦 บัญชีธนาคาร (สำหรับโอนเงิน)</div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">ธนาคาร</label>
+                  <select class="form-control">
+                    <option>ธนาคารกสิกรไทย (KBANK)</option>
+                    <option>ธนาคารไทยพาณิชย์ (SCB)</option>
+                    <option>ธนาคารกรุงเทพ (BBL)</option>
+                    <option>ธนาคารกรุงศรีอยุธยา (BAY)</option>
+                    <option>ธนาคารออมสิน (GSB)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">ชื่อบัญชี</label>
+                  <input type="text" class="form-control" value="บริษัท เอมยู พราเวท ติวเตอร์ จำกัด">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">เลขที่บัญชี</label>
+                  <input type="text" class="form-control" value="123-4-56789-0">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>สาขา</label>
+                  <input type="text" class="form-control" value="สาขาสุขุมวิท 31">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>ประเภทบัญชี</label>
+                  <select class="form-control">
+                    <option>ออมทรัพย์</option>
+                    <option>กระแสรายวัน</option>
+                    <option>ฝากประจำ</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">💸 ค่าธรรมเนียมและนายหน้า</div>
+                <div class="form-group" style="grid-template-columns: 180px 1fr;">
+                  <label class="req">ค่าธรรมเนียมระบบ (%)</label>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <input type="number" class="form-control" min="0" max="30" value="5">
+                    <span style="font-weight:600;">%</span>
+                    <small style="color:var(--secondary);">(นับจากยอดงานสอน)</small>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 180px 1fr;">
+                  <label class="req">ค่านายหน้าติวเตอร์ (%)</label>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <input type="number" class="form-control" min="0" max="50" value="15">
+                    <span style="font-weight:600;">%</span>
+                    <small style="color:var(--secondary);">(หักจากรายได้ติวเตอร์)</small>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 180px 1fr;">
+                  <label>ค่านายหน้าพิเศษ VIP (%)</label>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <input type="number" class="form-control" min="0" max="50" value="10">
+                    <span style="font-weight:600;">%</span>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 180px 1fr;">
+                  <label class="req">ยอดขั้นต่ำการถอนเงิน (฿)</label>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-weight:600;">฿</span>
+                    <input type="number" class="form-control" min="0" value="500">
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 180px 1fr;">
+                  <label class="req">รอบวันจ่ายเงิน</label>
+                  <select class="form-control">
+                    <option>ทุกวันที่ 1 และ 16 ของเดือน</option>
+                    <option>ทุกวันศุกร์</option>
+                    <option>ทุกสิ้นเดือน</option>
+                    <option>ถอนเงินเมื่อไหร่ก็ได้</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--gray-border); margin:25px 0;">
+            <h4 style="color:var(--dark); font-size:16px; margin-bottom:15px;">📊 ตัวอย่างการคำนวณ (ตัวอย่างอ้างอิง)</h4>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px;">
+              <div style="padding:18px; background:linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border-radius:10px; border:1px solid var(--primary);">
+                <div style="font-size:13px; color:var(--secondary); margin-bottom:4px;">งานสอนค่าติว</div>
+                <div style="font-size:24px; font-weight:700; color:var(--dark);">฿ 2,000</div>
+                <div style="font-size:12px; color:var(--secondary); margin-top:8px;">ตัวอย่าง: คณิต 8 ชั่วโมง x 250 บาท</div>
+              </div>
+              <div style="padding:18px; background:#EFF6FF; border-radius:10px; border:1px solid #BFDBFE;">
+                <div style="font-size:13px; color:var(--secondary); margin-bottom:4px;">หักค่านายหน้า (15%)</div>
+                <div style="font-size:24px; font-weight:700; color:var(--danger);">- ฿ 300</div>
+                <div style="font-size:12px; color:var(--secondary); margin-top:8px;">รายได้บริษัท</div>
+              </div>
+              <div style="padding:18px; background:#FEF2F2; border-radius:10px; border:1px solid #FECACA;">
+                <div style="font-size:13px; color:var(--secondary); margin-bottom:4px;">หักค่าธรรมเนียม (5%)</div>
+                <div style="font-size:24px; font-weight:700; color:var(--danger);">- ฿ 100</div>
+                <div style="font-size:12px; color:var(--secondary); margin-top:8px;">ค่าใช้จ่ายระบบ</div>
+              </div>
+              <div style="padding:18px; background:#F0FDF4; border-radius:10px; border:1px solid #BBF7D0;">
+                <div style="font-size:13px; color:var(--secondary); margin-bottom:4px;">ติวเตอร์ได้รับ</div>
+                <div style="font-size:24px; font-weight:700; color:var(--success);">฿ 1,600</div>
+                <div style="font-size:12px; color:var(--secondary); margin-top:8px;">โอนเข้าบัญชีตามรอบวันจ่าย</div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline btn-sm" data-confirm="ต้องการรีเซ็ตค่าในแท็บนี้?">↩️ รีเซ็ตค่า</button>
+              <button type="submit" class="btn btn-yellow btn-sm">💾 บันทึกการตั้งค่าการชำระเงิน</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="tab-content" data-tab="tab-smtp">
+          <h3 style="color:var(--dark); font-size:18px; margin:15px 0 20px;">📧 อีเมลและเซิร์ฟเวอร์ SMTP</h3>
+          <form class="form-container" style="max-width:none; box-shadow:none; padding:0;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+              <div>
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">⚙️ การตั้งค่า SMTP Server</div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">SMTP Host</label>
+                  <input type="text" class="form-control" value="smtp.gmail.com">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">SMTP Port</label>
+                  <select class="form-control">
+                    <option>465 (SSL)</option>
+                    <option>587 (TLS)</option>
+                    <option>25 (ไม่เข้ารหัส)</option>
+                    <option>2525</option>
+                  </select>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">SMTP Username</label>
+                  <input type="text" class="form-control" value="noreply@มุ่งเรียน.com">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">SMTP Password</label>
+                  <input type="password" class="form-control" value="••••••••••••••••" placeholder="รหัสผ่านหรือ App Password">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>การเข้ารหัส</label>
+                  <select class="form-control">
+                    <option>SSL / TLS</option>
+                    <option>STARTTLS</option>
+                    <option>ไม่มี (ไม่แนะนำ)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>Timeout (วินาที)</label>
+                  <input type="number" class="form-control" value="30" min="5" max="120">
+                </div>
+              </div>
+              <div>
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">✉️ ข้อมูลการส่งอีเมล</div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">ชื่อผู้ส่ง (From Name)</label>
+                  <input type="text" class="form-control" value="มุ่งเรียน">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">อีเมลผู้ส่ง (From Email)</label>
+                  <input type="email" class="form-control" value="noreply@มุ่งเรียน.com">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>อีเมลตอบกลับ (Reply-To)</label>
+                  <input type="email" class="form-control" value="contact@มุ่งเรียน.com">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>อีเมลสำรอง (BCC)</label>
+                  <input type="text" class="form-control" value="admin@มุ่งเรียน.com">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>อีเมลทดสอบ</label>
+                  <div style="display:flex; gap:6px;">
+                    <input type="email" class="form-control" placeholder="test@example.com">
+                    <button type="button" class="btn btn-sm btn-outline">📤 ทดสอบส่ง</button>
+                  </div>
+                  <div class="form-hint">คลิกปุ่มเพื่อส่งอีเมลทดสอบว่า SMTP ทำงานถูกต้อง</div>
+                </div>
+                <div style="margin-top:18px; padding:15px; background:#F0FDF4; border-radius:8px; border-left:4px solid var(--success);">
+                  <div style="font-weight:600; color:var(--success); font-size:14px;">✅ สถานะการเชื่อมต่อ: ปกติ</div>
+                  <div style="font-size:13px; color:var(--secondary); margin-top:4px;">
+                    ตรวจสอบล่าสุด: 18 ส.ค. 2569 14:30 น. | รอบส่งอีเมลล่าสุด: สำเร็จ 248 / ล้มเหลว 0
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--gray-border); margin:25px 0;">
+            <h4 style="color:var(--dark); font-size:16px; margin-bottom:15px;">📬 เทมเพลตอีเมล (เปิด/ปิดการส่ง)</h4>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
+              <div style="padding:12px 15px; background:var(--gray-bg); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:14px; color:var(--dark);">สมัครสมาชิกสำเร็จ</div>
+                  <div style="font-size:12px; color:var(--secondary);">ส่งไปที่ผู้ใช้ที่สมัครใหม่</div>
+                </div>
+                <input type="checkbox" checked style="width:18px; height:18px;">
+              </div>
+              <div style="padding:12px 15px; background:var(--gray-bg); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:14px; color:var(--dark);">งานสอนใหม่เข้ามา</div>
+                  <div style="font-size:12px; color:var(--secondary);">ส่งแจ้งให้ติวเตอร์ที่เกี่ยวข้อง</div>
+                </div>
+                <input type="checkbox" checked style="width:18px; height:18px;">
+              </div>
+              <div style="padding:12px 15px; background:var(--gray-bg); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:14px; color:var(--dark);">ยืนยันชำระเงิน</div>
+                  <div style="font-size:12px; color:var(--secondary);">หลังจากนักเรียนชำระเงินเสร็จ</div>
+                </div>
+                <input type="checkbox" checked style="width:18px; height:18px;">
+              </div>
+              <div style="padding:12px 15px; background:var(--gray-bg); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:14px; color:var(--dark);">รีเซ็ตรหัสผ่าน</div>
+                  <div style="font-size:12px; color:var(--secondary);">ลิงก์เปลี่ยนรหัสผ่านใหม่</div>
+                </div>
+                <input type="checkbox" checked style="width:18px; height:18px;">
+              </div>
+              <div style="padding:12px 15px; background:var(--gray-bg); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:14px; color:var(--dark);">จบรอบการจ่ายเงิน</div>
+                  <div style="font-size:12px; color:var(--secondary);">แจ้งยอดให้ติวเตอร์เมื่อจ่ายเงิน</div>
+                </div>
+                <input type="checkbox" checked style="width:18px; height:18px;">
+              </div>
+              <div style="padding:12px 15px; background:var(--gray-bg); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <div style="font-weight:600; font-size:14px; color:var(--dark);">อีเมลข่าวประจำเดือน</div>
+                  <div style="font-size:12px; color:var(--secondary);">Newsletter ประจำเดือน</div>
+                </div>
+                <input type="checkbox" style="width:18px; height:18px;">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline btn-sm" data-confirm="ต้องการรีเซ็ตค่าในแท็บนี้?">↩️ รีเซ็ตค่า</button>
+              <button type="submit" class="btn btn-yellow btn-sm">💾 บันทึกการตั้งค่า SMTP</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="tab-content" data-tab="tab-line">
+          <h3 style="color:var(--dark); font-size:18px; margin:15px 0 20px;">💚 LINE API และ LINE Notify</h3>
+          <form class="form-container" style="max-width:none; box-shadow:none; padding:0;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+              <div>
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">📱 LINE Messaging API (Official Account)</div>
+                <div style="margin:15px 0 20px; padding:15px; background:#F0FDF4; border-radius:8px; border-left:4px solid var(--success);">
+                  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                    <div>
+                      <div style="font-weight:600; color:var(--success); font-size:14px;">✅ เชื่อมต่อสำเร็จ</div>
+                      <div style="font-size:12px; color:var(--secondary); margin-top:3px;">ผู้ติดตามทั้งหมด 1,248 คน | ตอบกลับอัตโนมัติ: เปิดใช้งาน</div>
+                    </div>
+                    <div style="display:flex; gap:6px;">
+                      <button type="button" class="btn btn-sm btn-outline">🔗 เปิด LINE Console</button>
+                      <button type="button" class="btn btn-sm btn-outline" data-confirm="ต้องการยกเลิกการเชื่อมต่อ LINE?">🔌 ยกเลิกเชื่อมต่อ</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">Channel ID</label>
+                  <input type="text" class="form-control" value="1658234721">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">Channel Secret</label>
+                  <input type="password" class="form-control" value="••••••••••••••••••••••••••••••••" placeholder="Channel Secret">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">Channel Access Token</label>
+                  <div style="display:grid; gap:6px;">
+                    <input type="password" class="form-control" value="••••••••••••••••••••••••••••••••••••••••" placeholder="Long-Lived Channel Access Token">
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                      <button type="button" class="btn btn-sm btn-outline">🔄 รีเฟรช Token</button>
+                      <button type="button" class="btn btn-sm btn-outline">👁 แสดง</button>
+                      <button type="button" class="btn btn-sm btn-outline">📋 คัดลอก</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 110px 1fr;">
+                  <label>Webhook URL</label>
+                  <input type="text" class="form-control" readonly value="https://www.มุ่งเรียน.com/api/line/webhook" style="background:var(--gray-bg); font-size:12px;">
+                  <button type="button" class="btn btn-sm btn-outline" style="justify-self:start;">📋 คัดลอก</button>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>Verify Webhook</label>
+                  <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+                    <span style="background:#D1FAE5; color:#065F46; padding:4px 10px; border-radius:4px; font-size:12px; font-weight:600;">✅ สำเร็จ</span>
+                    <span style="font-size:12px; color:var(--secondary);">ตรวจสอบล่าสุด 18 ส.ค. 2569 15:00 น.</span>
+                    <button type="button" class="btn btn-sm btn-outline" style="margin-left:auto;">🔁 ทดสอบอีกครั้ง</button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">🔔 LINE Notify Token</div>
+                <div style="margin:15px 0 20px; padding:15px; background:#F0FDF4; border-radius:8px; border-left:4px solid var(--success);">
+                  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                    <div>
+                      <div style="font-weight:600; color:var(--success); font-size:14px;">✅ เชื่อมต่อสำเร็จ</div>
+                      <div style="font-size:12px; color:var(--secondary); margin-top:3px;">Token หมดอายุ: ไม่หมดอายุ | สำหรับแจ้งเตือน Admin</div>
+                    </div>
+                    <div style="display:flex; gap:6px;">
+                      <button type="button" class="btn btn-sm btn-outline">🔗 ตั้งค่า LINE Notify</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label class="req">LINE Notify Token</label>
+                  <div style="display:grid; gap:6px;">
+                    <input type="password" class="form-control" value="••••••••••••••••••••••••••••••••8xLp" placeholder="LINE Notify Token">
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                      <button type="button" class="btn btn-sm btn-outline">👁 แสดง Token</button>
+                      <button type="button" class="btn btn-sm btn-outline">📋 คัดลอก</button>
+                      <button type="button" class="btn btn-sm btn-outline">🔌 ยกเลิกเชื่อมต่อ</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 110px 1fr;">
+                  <label>กลุ่มแจ้งเตือน (หากมี)</label>
+                  <input type="text" class="form-control" placeholder="Group ID (ถ้ามี)" value="Grp_8xLp92k">
+                  <span style="font-size:12px; color:var(--secondary); align-self:center;">เว้นว่างเพื่อส่งแบบส่วนตัว</span>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>ทดสอบ LINE Notify</label>
+                  <div style="display:flex; gap:6px;">
+                    <input type="text" class="form-control" placeholder="ข้อความทดสอบ" value="ทดสอบการเชื่อมต่อ LINE Notify จากระบบ มุ่งเรียน 👋">
+                    <button type="button" class="btn btn-sm btn-yellow">📤 ทดสอบส่ง</button>
+                  </div>
+                </div>
+                <hr style="border:none; border-top:1px solid var(--gray-border); margin:18px 0;">
+                <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0; background:#EFF6FF; color:#1E3A8A;">🔐 LINE Login (สำหรับล็อกอินผ่าน LINE)</div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>LINE Login Channel ID</label>
+                  <input type="text" class="form-control" value="1657209384">
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 110px 1fr;">
+                  <label>Callback URL</label>
+                  <input type="text" class="form-control" readonly value="https://www.มุ่งเรียน.com/login/line/callback" style="background:var(--gray-bg); font-size:12px;">
+                  <button type="button" class="btn btn-sm btn-outline" style="justify-self:start;">📋 คัดลอก</button>
+                </div>
+                <div class="form-group" style="grid-template-columns: 160px 1fr;">
+                  <label>สถานะ LINE Login</label>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:14px; color:var(--dark);">
+                      <input type="checkbox" checked style="width:16px; height:16px;">
+                      <span>เปิดใช้งาน LINE Login</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline btn-sm" data-confirm="ต้องการรีเซ็ตค่าในแท็บนี้?">↩️ รีเซ็ตค่า</button>
+              <button type="submit" class="btn btn-yellow btn-sm">💾 บันทึกการตั้งค่า LINE API</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="tab-content" data-tab="tab-permission">
+          <h3 style="color:var(--dark); font-size:18px; margin:15px 0 20px;">🔐 สิทธิ์ผู้ใช้งานและบทบาท (Role & Permission)</h3>
+          <form class="form-container" style="max-width:none; box-shadow:none; padding:0;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom:25px;">
+              <div style="padding:20px; background:var(--gray-bg); border-radius:10px;">
+                <h4 style="color:var(--dark); font-size:16px; margin-bottom:15px;">➕ เพิ่มบทบาทใหม่</h4>
+                <div style="display:grid; gap:12px;">
+                  <div>
+                    <label style="display:block; font-weight:600; font-size:14px; margin-bottom:5px;">ชื่อบทบาท</label>
+                    <input type="text" class="form-control" placeholder="เช่น ผู้ดูแลการเงิน, ผู้ดูแลเนื้อหา">
+                  </div>
+                  <div>
+                    <label style="display:block; font-weight:600; font-size:14px; margin-bottom:5px;">คำอธิบาย</label>
+                    <input type="text" class="form-control" placeholder="สั้นๆ อธิบายหน้าที่หลัก">
+                  </div>
+                  <button type="button" class="btn btn-sm btn-yellow">➕ เพิ่มบทบาท</button>
+                </div>
+              </div>
+              <div style="padding:20px; background:var(--gray-bg); border-radius:10px;">
+                <h4 style="color:var(--dark); font-size:16px; margin-bottom:15px;">📋 บทบาทที่มีอยู่</h4>
+                <div style="display:grid; gap:10px; max-height:240px; overflow-y:auto;">
+                  <div style="padding:10px 14px; background:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:space-between; border:2px solid var(--primary);">
+                    <div>
+                      <div style="font-weight:700; color:var(--dark); font-size:14px;">👑 Super Admin</div>
+                      <div style="font-size:12px; color:var(--secondary);">สิทธิ์สูงสุด เข้าถึงทุกส่วน (1 คน)</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" disabled>แก้ไข</button>
+                  </div>
+                  <div style="padding:10px 14px; background:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-weight:700; color:var(--dark); font-size:14px;">⚙️ Admin</div>
+                      <div style="font-size:12px; color:var(--secondary);">จัดการระบบทั่วไป ยกเว้นการเงิน (3 คน)</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">แก้ไข</button>
+                  </div>
+                  <div style="padding:10px 14px; background:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-weight:700; color:var(--dark); font-size:14px;">💰 ฝ่ายการเงิน</div>
+                      <div style="font-size:12px; color:var(--secondary);">จัดการการชำระเงิน การเงิน เท่านั้น (2 คน)</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">แก้ไข</button>
+                  </div>
+                  <div style="padding:10px 14px; background:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-weight:700; color:var(--dark); font-size:14px;">📝 ผู้ดูแลเนื้อหา</div>
+                      <div style="font-size:12px; color:var(--secondary);">ตรวจสอบโพสต์ เว็บบอร์ด งานสอน (4 คน)</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">แก้ไข</button>
+                  </div>
+                  <div style="padding:10px 14px; background:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-weight:700; color:var(--dark); font-size:14px;">📞 ฝ่ายบริการลูกค้า</div>
+                      <div style="font-size:12px; color:var(--secondary);">ตอบคำถาม, จัดการคอมเพลนท์ (3 คน)</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">แก้ไข</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section-title" style="text-align:left; font-size:16px; margin-top:0;">✅ ตารางสิทธิ์ (กำลังแก้ไขบทบาท: ⚙️ Admin)</div>
+            <div class="table-wrap" style="margin-top:15px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:30%;">เมนู / ฟีเจอร์</th>
+                    <th style="text-align:center; width:14%;">👑 Super Admin</th>
+                    <th style="text-align:center; width:14%;">⚙️ Admin</th>
+                    <th style="text-align:center; width:14%;">💰 การเงิน</th>
+                    <th style="text-align:center; width:14%;">📝 ดูแลเนื้อหา</th>
+                    <th style="text-align:center; width:14%;">📞 CS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>📊 Dashboard</strong> ดูสถิติภาพรวม</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>👩‍🏫 จัดการติวเตอร์</strong> ดู/แก้ไข/อนุมัติ</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>📚 จัดการงานสอน</strong> ดู/แก้ไข/ลบ</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>👤 จัดการผู้ใช้งาน/นักเรียน</strong></td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>🏷️ จัดการหมวดหมู่</strong></td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                  </tr>
+                  <tr>
+                    <td><strong>💬 จัดการ Webboard</strong> อนุมัติ/ลบกระทู้</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>📢 แจ้งเตือน LINE</strong> ส่งข้อความ</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>💰 การเงิน</strong> ดูรายการ, จ่ายเงินติวเตอร์</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                  </tr>
+                  <tr>
+                    <td><strong>💸 Withdrawals</strong> อนุมัติ/ปฏิเสธ การถอนเงิน</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                  </tr>
+                  <tr>
+                    <td><strong>🔧 ตั้งค่าระบบ</strong> ทุกแท็บ</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                  </tr>
+                  <tr>
+                    <td><strong>🔐 สิทธิ์ผู้ใช้</strong> จัดการบทบาท</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                  </tr>
+                  <tr>
+                    <td><strong>📥 Export Report</strong> สร้างรายงาน Excel/PDF</td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" checked style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>🗑 ลบถาวร (Hard Delete)</strong></td>
+                    <td style="text-align:center;">✅</td>
+                    <td style="text-align:center;"><input type="checkbox" style="width:18px; height:18px;"></td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                    <td style="text-align:center;">-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline btn-sm" data-confirm="ต้องการรีเซ็ตสิทธิ์เป็นค่าเริ่มต้น?">↩️ รีเซ็ตเป็นค่าเดิม</button>
+              <button type="submit" class="btn btn-yellow btn-sm">💾 บันทึกสิทธิ์บทบาท Admin</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/lang.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
+

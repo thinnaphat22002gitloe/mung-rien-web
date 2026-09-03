@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จัดการผู้ใช้งาน - Admin | มุ่งเรียน</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">Admin Panel</div>
+        </div>
+      </a>
+      <div style="display:flex; align-items:center; gap:15px;">
+        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+        </div>
+        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
+        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
+      <ul class="admin-menu">
+        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
+        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
+        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
+        <li><a href="manage-users.html" class="active" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
+        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
+        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
+        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
+        <li><a href="settings.html" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h2>👤 จัดการผู้ใช้งาน/นักเรียน</h2>
+          <p style="color:var(--secondary); font-size:14px;">จัดการข้อมูลผู้ใช้งานทั้งหมดในระบบ</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-search">
+          <input type="text" class="form-control" placeholder="🔍 ค้นหา ชื่อ-นามสกุล / อีเมล / เบอร์โทร...">
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <select class="form-control" style="width:auto;">
+            <option>ทุกประเภทผู้ใช้</option>
+            <option>นักเรียน</option>
+            <option>ผู้ปกครอง</option>
+          </select>
+          <select class="form-control" style="width:auto;">
+            <option>ทุกสถานะ</option>
+            <option>ใช้งานอยู่</option>
+            <option>ระงับ</option>
+            <option>ยังไม่ยืนยัน</option>
+          </select>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-yellow btn-sm">➕ เพิ่มผู้ใช้งาน</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>ชื่อ-นามสกุล</th>
+              <th>ประเภท</th>
+              <th>อีเมล</th>
+              <th>เบอร์โทร</th>
+              <th>เพศ</th>
+              <th>คอร์สที่ใช้</th>
+              <th>สถานะ</th>
+              <th>วันที่สมัคร</th>
+              <th style="width:140px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>USR-0001</strong></td>
+              <td>นายสมชาย ใจดี</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>somchai.j@example.com</td>
+              <td>081-234-5678</td>
+              <td>ชาย</td>
+              <td style="text-align:center;">5</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>15 ม.ค. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0002</strong></td>
+              <td>นางสาวสมหญิง สวยงาม</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>somying.s@example.com</td>
+              <td>082-345-6789</td>
+              <td>หญิง</td>
+              <td style="text-align:center;">3</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>22 ม.ค. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0003</strong></td>
+              <td>นายพ่อแม่ ดีเด็ก</td>
+              <td><span style="background:#FCE7F3; color:#9D174D; padding:3px 10px; border-radius:12px; font-size:12px;">ผู้ปกครอง</span></td>
+              <td>por.d@example.com</td>
+              <td>083-456-7890</td>
+              <td>ชาย</td>
+              <td style="text-align:center;">2</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>28 ม.ค. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0004</strong></td>
+              <td>นางสาวเด็กดี มีความสุข</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>deekee.m@example.com</td>
+              <td>084-567-8901</td>
+              <td>หญิง</td>
+              <td style="text-align:center;">8</td>
+              <td><span style="background:#FEE2E2; color:#991B1B; padding:3px 10px; border-radius:12px; font-size:12px;">ระงับ</span></td>
+              <td>05 ก.พ. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0005</strong></td>
+              <td>นายเด็กเก่ง ฉลาด</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>dekkeng.c@example.com</td>
+              <td>085-678-9012</td>
+              <td>ชาย</td>
+              <td style="text-align:center;">6</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>12 ก.พ. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0006</strong></td>
+              <td>นางแม่เลี้ยง ลูกโต</td>
+              <td><span style="background:#FCE7F3; color:#9D174D; padding:3px 10px; border-radius:12px; font-size:12px;">ผู้ปกครอง</span></td>
+              <td>maeliang.l@example.com</td>
+              <td>086-789-0123</td>
+              <td>หญิง</td>
+              <td style="text-align:center;">4</td>
+              <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">ยังไม่ยืนยัน</span></td>
+              <td>18 ก.พ. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0007</strong></td>
+              <td>นายนักเรียน สอบได้</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>nakrian.s@example.com</td>
+              <td>087-890-1234</td>
+              <td>ชาย</td>
+              <td style="text-align:center;">1</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>25 ก.พ. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0008</strong></td>
+              <td>นางสาวสาวเก่ง เก่งมาก</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>saokeng.k@example.com</td>
+              <td>088-901-2345</td>
+              <td>หญิง</td>
+              <td style="text-align:center;">10</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>03 มี.ค. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0009</strong></td>
+              <td>นายคุณพ่อ เลี้ยงลูก</td>
+              <td><span style="background:#FCE7F3; color:#9D174D; padding:3px 10px; border-radius:12px; font-size:12px;">ผู้ปกครอง</span></td>
+              <td>khunpor.l@example.com</td>
+              <td>089-012-3456</td>
+              <td>ชาย</td>
+              <td style="text-align:center;">3</td>
+              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">ใช้งานอยู่</span></td>
+              <td>10 มี.ค. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>USR-0010</strong></td>
+              <td>นางสาวน้องใหม่ เพิ่งเข้ามา</td>
+              <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">นักเรียน</span></td>
+              <td>nongmai.p@example.com</td>
+              <td>090-123-4567</td>
+              <td>หญิง</td>
+              <td style="text-align:center;">0</td>
+              <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">ยังไม่ยืนยัน</span></td>
+              <td>18 มี.ค. 2569</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
+                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
+                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:15px;">
+        <div style="font-size:14px; color:var(--secondary);">
+          แสดง <strong>1-10</strong> จากทั้งหมด <strong>1,893</strong> รายการ
+        </div>
+        <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">⏮️ แรก</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">◀️ ก่อนหน้า</button>
+          <button class="btn btn-yellow btn-sm" style="padding:8px 14px;"><strong>1</strong></button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">2</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">3</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">4</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">5</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">... 190</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">ถัดไป ▶️</button>
+          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">สุดท้าย ⏭️</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/lang.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
+

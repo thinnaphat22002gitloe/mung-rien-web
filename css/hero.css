@@ -1,0 +1,199 @@
+/* ===== Hero Banner ===== */
+.hero {
+  background: radial-gradient(circle at 100% 0%, rgba(29, 78, 216, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 0% 100%, rgba(2, 132, 199, 0.1) 0%, transparent 50%),
+              linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--light);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: linear-gradient(var(--gray-border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--gray-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.hero-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-img {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-img::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0.2;
+  z-index: -1;
+  filter: blur(40px);
+}
+
+.hero-img-box {
+  width: 290px;
+  height: 330px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 160px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content h1 {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--light);
+  margin-bottom: 20px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.hero-content h1 span {
+  color: var(--primary-dark);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #E2E8F0;
+  margin-bottom: 35px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== Hero Slider (Announcements Carousel) ===== */
+.slider-container {
+  position: relative;
+  width: 100%;
+}
+
+.slide-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--primary-dark);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  animation: slideFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide.active {
+  display: block;
+}
+
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Slider Controls */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--light);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+  font-size: 18px;
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--light);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev-arrow { left: 24px; }
+.next-arrow { right: 24px; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot:hover, .dot.active {
+  background: var(--light);
+  transform: scale(1.2);
+}

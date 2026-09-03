@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>หน้าแรก | มุ่งเรียน</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
+      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
+        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
+        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
+        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero hero-slider-section" style="padding: 0;">
+    <div class="slider-container" style="position: relative; width: 100%; overflow: hidden;">
+      <div class="slider-wrapper">
+        
+        <!-- Slide 1 (Tutors Announcement) -->
+        <div class="slide active" style="padding: 80px 0;">
+          <div class="hero-container">
+            <div class="hero-content">
+              <div class="slide-badge" data-i18n="hero1_badge">📢 ประชาสัมพันธ์การรับสมัครผู้สอน</div>
+              <h1><span data-i18n="hero1_title_part1">เปิดรับสมัคร </span><span data-i18n="hero1_title_span">"ติวเตอร์และผู้สอนอิสระ"</span><span data-i18n="hero1_title_part2"> ร่วมทีมจำนวนมาก</span></h1>
+              <p data-i18n="hero1_desc">สำหรับผู้มีความรู้ความสามารถ มุ่งมั่นในการถ่ายทอดวิชาการ พร้อมโอกาสสร้างรายได้ที่มั่นคงและเลือกเวลาปฏิบัติการสอนได้อย่างอิสระ</p>
+              <div class="hero-actions">
+                <a href="register.html" class="btn btn-primary" data-i18n="btn_register_tutor">ลงทะเบียนสมัครเป็นผู้สอน</a>
+                <a href="jobs.html" class="btn btn-outline" data-i18n="btn_check_jobs">ตรวจสอบรายการงานสอนทั้งหมด</a>
+              </div>
+            </div>
+            <div class="hero-img">
+              <div class="hero-img-box">
+                <img src="picture/teacher.png" alt="Tutor" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 (Students Promotion) -->
+        <div class="slide" style="padding: 80px 0;">
+          <div class="hero-container">
+            <div class="hero-content">
+              <div class="slide-badge" data-i18n="hero2_badge">⭐ บริการจัดหาติวเตอร์ส่วนตัว สำหรับนักเรียนและผู้ปกครอง</div>
+              <h1><span data-i18n="hero2_title_part1">จัดหา </span><span data-i18n="hero2_title_span">"ผู้สอนระดับมืออาชีพ"</span><span data-i18n="hero2_title_part2"> แบบตัวต่อตัว</span></h1>
+              <p data-i18n="hero2_desc">ยกระดับผลการเรียนและเตรียมความพร้อมสู่การสอบแข่งขันระดับประเทศ โดยผู้ทรงคุณวุฒิที่ผ่านการคัดสรรจากสถาบันชั้นนำ</p>
+              <div class="hero-actions">
+                <a href="student.html" class="btn btn-primary" data-i18n="btn_req_tutor">ยื่นความประสงค์ขอรับผู้สอน</a>
+                <a href="student.html" class="btn btn-outline" data-i18n="btn_req_steps">ขั้นตอนและหลักเกณฑ์การจัดหา</a>
+              </div>
+            </div>
+            <div class="hero-img">
+              <div class="hero-img-box">
+                <img src="picture/Student.png" alt="Student" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 (Updates & Announcements) -->
+        <div class="slide" style="padding: 80px 0;">
+          <div class="hero-container">
+            <div class="hero-content">
+              <div class="slide-badge" data-i18n="hero3_badge">🆕 ข้อมูลประชาสัมพันธ์และงานสอนรายสัปดาห์</div>
+              <h1><span data-i18n="hero3_title_part1">อัปเดตประกาศงานสอน </span><span data-i18n="hero3_title_span">"คณิตศาสตร์-วิทยาศาสตร์-ภาษา"</span><span data-i18n="hero3_title_part2"> ล่าสุด</span></h1>
+              <p data-i18n="hero3_desc">มีตำแหน่งงานสอนเปิดใหม่มากกว่า 100 อัตรา ครอบคลุมพื้นที่กรุงเทพมหานคร ปริมณฑล และการเรียนการสอนรูปแบบออนไลน์</p>
+              <div class="hero-actions">
+                <a href="jobs.html" class="btn btn-primary" data-i18n="btn_check_latest_jobs">ตรวจสอบรายการงานสอนล่าสุด</a>
+                <a href="webboard.html" class="btn btn-outline" data-i18n="btn_webboard">เข้าสู่เว็บบอร์ดเพื่อแลกเปลี่ยนข้อมูล</a>
+              </div>
+            </div>
+            <div class="hero-img">
+              <div class="hero-img-box">
+                <img src="picture/abc.png" alt="Job Updates" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slider Arrows -->
+      <button class="slider-arrow prev-arrow" aria-label="Previous Slide">❮</button>
+      <button class="slider-arrow next-arrow" aria-label="Next Slide">❯</button>
+
+      <!-- Slider Dots -->
+      <div class="slider-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-gray" style="padding:25px 0;">
+    <div class="container tag-cloud">
+      <span>หางานสอน</span> สมัครงานสอนพิเศษ งานสอนพิเศษ รับสมัครครูสอนพิเศษ สอน Port time สมัครสอน
+      งานสอนออนไลน์ งานสอนสถาบัน งานสอนคณิต-วิทย์ งานสอนภาษาอังกฤษ งานสอนสังคม งานสอนติวเตอร์
+      หางาน
+    </div>
+  </section>
+
+  <!-- Step-by-Step Guide for Tutors -->
+  <section class="section" style="border-top: 1px solid var(--gray-border); border-bottom: 1px solid var(--gray-border); background: var(--light);">
+    <div class="container">
+      <h2 class="section-title"><span data-i18n="steps_title_part1">ขั้นตอน</span><span data-i18n="steps_title_span">การรับงานสอน</span><span data-i18n="steps_title_part2"> (สำหรับติวเตอร์)</span></h2>
+      <p class="section-sub" data-i18n="steps_sub">ทำตามขั้นตอนง่ายๆ ทั้ง 7 ข้อนี้ เพื่อเริ่มต้นรับงานสอนพิเศษกับสถาบันของเรา</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px;">
+        
+        <!-- Step 1 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">1</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step1_title">กรอกข้อมูลสมัคร</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step1_desc">กรอกข้อมูลสมัครติวเตอร์ผ่านทาง <a href="register.html" style="color:var(--accent); font-weight:600; text-decoration:underline;">หน้าสมัครติวเตอร์</a> บนเว็บไซต์</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">2</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step2_title">หางานสอนที่ต้องการ</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step2_desc">หางานสอน ที่ต้องการ โดยตรวจสอบวัน เวลา สถานที่ ให้เรียบร้อยก่อนจองงานผ่านหน้า <a href="jobs.html" style="color:var(--accent); font-weight:600; text-decoration:underline;">งานสอน</a></p>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">3</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step3_title">แจ้ง Job ID ที่สนใจ</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step3_desc">แจ้ง Job ID ที่ต้องการผ่านทาง Line@ หรือ Facebook ของสถาบัน</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">4</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step4_title">รอการพิจารณา</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step4_desc">รอการพิจารณา ตรวจสอบ จากทางสถาบันหลังส่งรหัสงาน</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">5</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step5_title">ชำระค่าประกันงาน</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step5_desc">ชำระค่าประกันงานสอนและแจ้งโอนเงินเพื่อคอนเฟิร์มรับงานสอน</p>
+        </div>
+
+        <!-- Step 6 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">6</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step6_title">เตรียมเนื้อหาการสอน</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step6_desc">เตรียมเนื้อหาและหลักสูตรสำหรับการสอนล่วงหน้าให้เรียบร้อย</p>
+        </div>
+
+        <!-- Step 7 -->
+        <div style="background: var(--gray-bg); padding: 30px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-border); text-align: center; position: relative; transition: var(--transition);" class="tutor-step-card">
+          <div style="background: var(--accent); color: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 20px; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);">7</div>
+          <h4 style="color: var(--dark); font-size: 16.5px; font-weight: 700; margin-bottom: 10px;" data-i18n="step7_title">รับเงินค่าสอน</h4>
+          <p style="color: var(--secondary); font-size: 13.5px; line-height: 1.65;" data-i18n="step7_desc">รับเงินจากผู้ปกครองหรือนักเรียนโดยตรงหลังการสอนเสร็จสิ้น</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title"><span data-i18n="jobs_title_part1">หา</span><span data-i18n="jobs_title_span">งานสอน</span><span data-i18n="jobs_title_part2"> สำหรับติวเตอร์</span></h2>
+      <p class="section-sub" data-i18n="jobs_sub">เลือกหมวดงานสอนที่คุณสนใจ แล้วคลิกรายละเอียดเพื่อสมัครเลย</p>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab1" data-i18n="tab_math_sci">งานสอนวิทย์-คณิต</button>
+          <button class="tab-btn" data-tab="tab2" data-i18n="tab_lang_soc">งานสอนภาษา-สังคม</button>
+          <button class="tab-btn" data-tab="tab3" data-i18n="tab_music">งานสอนดนตรี</button>
+          <button class="tab-btn" data-tab="tab4" data-i18n="tab_sport">งานสอนกีฬา</button>
+        </div>
+
+        <div class="tab-content active" data-tab="tab1">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="th_subject">วิชา</th>
+                  <th data-i18n="th_location">สถานที่เรียน</th>
+                  <th data-i18n="th_time">วันเวลาเรียน</th>
+                  <th data-i18n="th_jobid">Job ID</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>วิทย์ (ป.4 เป็นติวสอบเข้า ม.1)●เรียนพร้อมกัน 2 คน</td>
+                  <td>THE CITY ราบอินทรา 3 (ใกล้ รร.นวนิกร ราชินูทิศ เมษุณยาราชาลัย)</td>
+                  <td>เสาร์ อาทิตย์ 13.00 น.เป็นต้นไป (เลือก 1 วัน/สัปดาห์ | 2 ชม.)</td>
+                  <td>SC 69081813</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิต (ป.4 เป็นติวสอบเข้า ม.1)●เรียนพร้อมกัน 2 คน</td>
+                  <td>THE CITY ราบอินทรา 3 (ใกล้ รร.นวนิกร ราชินูทิศ เมษุณยาราชาลัย)</td>
+                  <td>เสาร์ อาทิตย์ 13.00 น.เป็นต้นไป (เลือก 1 วัน/สัปดาห์ | 2 ชม.)</td>
+                  <td>SC 69081812</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.3) เป็นติวสอบเข้า ม.4 รร.ไพธิสาร</td>
+                  <td>เดอะมอลล์ ท่าพระ</td>
+                  <td>วันธรรมดา (ยกเว้นศุกร์) 19.00-21.00 น. (เลือก 1 วัน/สัปดาห์)</td>
+                  <td>SC 69081811</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.4)</td>
+                  <td>Online</td>
+                  <td>จันทร์-พฤหัส 18.00-19.00 น. (เรียน 4 วัน/สัปดาห์)</td>
+                  <td>SC 69081810</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ฟิสิกส์ (ม.4)</td>
+                  <td>La Villa BTS อารีย์</td>
+                  <td>พุธ 16.00-18.00 น.</td>
+                  <td>SC 69081808</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.2) ●ติวสอบ TU / สอวน.</td>
+                  <td>คอนโดเดอะทรี อินเตอร์เชนจ์ (ใกล้ Gateway บางซื่อ)</td>
+                  <td>พฤหัสบดี 17.30-19.30 น.</td>
+                  <td>SC 69081807</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิต (ม.3) เนื้อหาอังกฤษ อธิบายไทย</td>
+                  <td>McDonald's วิคตอรีย การ์เด้น - เพชรเกษม 69</td>
+                  <td>อังคาร 17.00-19.00 น.</td>
+                  <td>SC 69081806</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>วิทยาศาสตร์ (ป.6) ติวสอบเข้า ม.1</td>
+                  <td>บ้านห้วยคอนโด Aspire งามวงศ์วาน (ใกล้ BTS สะพานใหม่)</td>
+                  <td>วันจันทร์ 15.00-17.00 น. / 17.00-19.00 น. (เลือก 2 ชม.)</td>
+                  <td>SC 69081805</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align:center; margin-top:20px;">
+            <a href="jobs.html" class="btn btn-primary" data-i18n="btn_see_all_jobs">ดูงานสอนทั้งหมด</a>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="tab2">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ภาษาอังกฤษ (ม.5) IELTS</td>
+                  <td>สุขุมวิท 23 (ใกล้ BTS อโศก)</td>
+                  <td>เสาร์ 10.00-12.00 น.</td>
+                  <td>EN 69081711</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>ภาษาไทย (ป.6) ติวเข้า ม.1</td>
+                  <td>รัชดา - ห้วยขวาง</td>
+                  <td>จันทร์-พุธ 17.00-19.00 น.</td>
+                  <td>TH 69081710</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>สังคมศึกษา (ม.3) เตรียมเข้า ม.4</td>
+                  <td>Online Zoom</td>
+                  <td>อาทิตย์ 09.00-11.00 น.</td>
+                  <td>SC 69081709</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="tab3">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>เปียโน (เด็ก 7 ขวบ) เริ่มต้น</td>
+                  <td>บ้านสวนหมู่ บางนา</td>
+                  <td>เสาร์ 14.00-15.00 น.</td>
+                  <td>PN 69081601</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>กีตาร์โปร่ง (ม.2)</td>
+                  <td>สยามสแควร์</td>
+                  <td>ศุกร์ 18.00-19.00 น.</td>
+                  <td>GT 69081602</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="tab4">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ว่ายน้ำ (เด็ก ป.2) ติวพื้นฐาน</td>
+                  <td>สระว่ายน้ำ Tawanna Bangkapi</td>
+                  <td>เสาร์-อาทิตย์ 08.00-09.00 น.</td>
+                  <td>SW 69081501</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>แบดมินตัน (ผู้ใหญ่ เริ่มต้น)</td>
+                  <td>สนาม Central Eastville</td>
+                  <td>พุธ 19.00-20.00 น.</td>
+                  <td>BM 69081502</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title"><span data-i18n="stats_title_part1">ทำไมถึงเลือก </span><span data-i18n="stats_title_span">มุ่งเรียน</span><span data-i18n="stats_title_part2"></span></h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👩‍🏫</div>
+          <div class="stat-label" data-i18n="stat1_label">ติวเตอร์ที่ผ่านการคัดเลือก</div>
+          <div class="stat-value">500+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-label" data-i18n="stat2_label">งานสอนที่เปิดรับสมัคร</div>
+          <div class="stat-value">3,200</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-label" data-i18n="stat3_label">คอร์สที่จบสำเร็จ</div>
+          <div class="stat-value">98%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-label" data-i18n="stat4_label">คะแนนความพึงพอใจ</div>
+          <div class="stat-value">4.9</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="float-chat">
+    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
+    <div class="chat-label" data-i18n="chat_label">สอบถามโปรโมชั่น คลิก</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4 data-i18n="footer_col1_title">มุ่งเรียน</h4>
+        <ul>
+          <li data-i18n="footer_col1_li1">🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
+          <li><span data-i18n="footer_col1_li2">📍 ทำเลศักยภาพ: </span><a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
+          <li>📧 info@มุ่งเรียน.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col2_title">สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html" data-i18n="footer_col2_li1">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="#" data-i18n="footer_col2_li2">คอร์สสอนยอดนิยม</a></li>
+          <li><a href="webboard.html" data-i18n="footer_col2_li3">Webboard / ความรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col3_title">สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html" data-i18n="footer_col3_li1">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html" data-i18n="footer_col3_li2">ดูรายการงานสอน</a></li>
+          <li><a href="#" data-i18n="footer_col3_li3">สิ่งที่ติวเตอร์ควรรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col4_title">ติดต่อเรา</h4>
+        <ul>
+          <li>Facebook: facebook.com/มุ่งเรียน</li>
+          <li>Line ID: @มุ่งเรียน</li>
+          <li>📞 02-XXX-XXXX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

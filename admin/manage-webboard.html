@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จัดการ Webboard - Admin | มุ่งเรียน</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">Admin Panel</div>
+        </div>
+      </a>
+      <div style="display:flex; align-items:center; gap:15px;">
+        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+        </div>
+        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
+        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
+      <ul class="admin-menu">
+        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
+        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
+        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
+        <li><a href="manage-users.html" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
+        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
+        <li><a href="manage-webboard.html" class="active" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
+        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
+        <li><a href="settings.html" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h2>💬 จัดการ Webboard</h2>
+          <p style="color:var(--secondary); font-size:14px;">จัดการกระทู้, คอมเมนต์ และเนื้อหาบนเว็บบอร์ด</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-search">
+          <input type="text" class="form-control" placeholder="🔍 ค้นหากระทู้...">
+          <select class="form-control" style="width:auto;">
+            <option>ทุกหมวด</option>
+            <option>คำแนะนำการเรียน</option>
+            <option>ค้นหาติวเตอร์</option>
+            <option>รีวิวติวเตอร์</option>
+            <option>แลกเปลี่ยนประสบการณ์</option>
+            <option>ถามตอบทั่วไป</option>
+          </select>
+          <select class="form-control" style="width:auto;">
+            <option>ทุกสถานะ</option>
+            <option>เผยแพร่</option>
+            <option>รอตรวจสอบ</option>
+            <option>ถูกระงับ</option>
+          </select>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-primary btn-sm">🔄 รีเฟรช</button>
+          <button class="btn btn-yellow btn-sm">➕ สร้างกระทู้ใหม่</button>
+        </div>
+      </div>
+
+      <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+          <div style="font-size:14px; color:var(--secondary);">
+            พบกระทู้ทั้งหมด <strong style="color:var(--dark);">248</strong> กระทู้ | 
+            <span style="color:var(--success);">เผยแพร่ 220</span> | 
+            <span style="color:var(--accent);">รอตรวจสอบ 18</span> | 
+            <span style="color:var(--danger);">ถูกระงับ 10</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <select class="form-control" style="width:auto;">
+              <option>แสดง 10 แถว</option>
+              <option>แสดง 25 แถว</option>
+              <option>แสดง 50 แถว</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>หัวข้อกระทู้</th>
+                <th>ผู้เขียน</th>
+                <th>หมวด</th>
+                <th style="text-align:center;">เข้าชม</th>
+                <th style="text-align:center;">คอมเมนต์</th>
+                <th>สถานะ</th>
+                <th>วันที่สร้าง</th>
+                <th style="text-align:center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>WB-001</td>
+                <td><strong>เคล็ดลับติวสอบเข้าม.1 คณิต ภาษาไทย มากกว่า 90 คะแนน</strong></td>
+                <td>ครูสมชาย</td>
+                <td><span style="background:#EFF6FF; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">คำแนะนำการเรียน</span></td>
+                <td style="text-align:center;">2,458</td>
+                <td style="text-align:center;">32</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เผยแพร่</span></td>
+                <td>18 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-002</td>
+                <td><strong>หาติวเตอร์คณิตย่านบางนา ติวยามเย็น สายพิเศษ</strong></td>
+                <td>แม่จันทร์</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">ค้นหาติวเตอร์</span></td>
+                <td style="text-align:center;">874</td>
+                <td style="text-align:center;">15</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เผยแพร่</span></td>
+                <td>17 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-003</td>
+                <td><strong>รีวิวติวเตอร์ฟิสิกส์ ครูโอ ศูนย์บางกะปิ จริงจัง เข้าใจง่าย</strong></td>
+                <td>นักเรียนต้น</td>
+                <td><span style="background:#F0FDF4; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">รีวิวติวเตอร์</span></td>
+                <td style="text-align:center;">1,203</td>
+                <td style="text-align:center;">8</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">⏳ รอตรวจสอบ</span></td>
+                <td>17 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-success">✅ อนุมัติ</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-004</td>
+                <td><strong>เรียนออนไลน์หรือตัวต่อตัวดีกว่าครับ? สอบเคมี ม.5</strong></td>
+                <td>พี่ปอนด์</td>
+                <td><span style="background:#F5F3FF; color:#5B21B6; padding:3px 10px; border-radius:12px; font-size:12px;">แลกเปลี่ยนประสบการณ์</span></td>
+                <td style="text-align:center;">612</td>
+                <td style="text-align:center;">24</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เผยแพร่</span></td>
+                <td>16 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-005</td>
+                <td><strong>วิธีเตรียมตัวสอบเข้าแพทย์ เริ่มตั้งแต่ชั้น ม.4 อย่างไรดี</strong></td>
+                <td>พี่หมอโต้ง</td>
+                <td><span style="background:#EFF6FF; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px;">คำแนะนำการเรียน</span></td>
+                <td style="text-align:center;">3,891</td>
+                <td style="text-align:center;">67</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เผยแพร่</span></td>
+                <td>15 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-006</td>
+                <td><strong>หาติวเตอร์เปียโนย่านสุขุมวิท 31 สอนเด็กอายุ 6 ปี</strong></td>
+                <td>คุณพ่อโด</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">ค้นหาติวเตอร์</span></td>
+                <td style="text-align:center;">298</td>
+                <td style="text-align:center;">5</td>
+                <td><span style="background:#FEE2E2; color:#991B1B; padding:3px 10px; border-radius:12px; font-size:12px;">🚫 ถูกระงับ</span></td>
+                <td>14 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-success">✅ อนุมัติ</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-007</td>
+                <td><strong>สอบถามราคาติวพิเศษวิชาโปรแกรมมิ่ง Python ครับ</strong></td>
+                <td>น้องเมย์</td>
+                <td><span style="background:#F0FDFA; color:#115E59; padding:3px 10px; border-radius:12px; font-size:12px;">ถามตอบทั่วไป</span></td>
+                <td style="text-align:center;">421</td>
+                <td style="text-align:center;">12</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">⏳ รอตรวจสอบ</span></td>
+                <td>13 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-success">✅ อนุมัติ</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-008</td>
+                <td><strong>ประสบการณ์ติวต่อเนื่อง 1 ปี คะแนนเพิ่มจาก 45 เป็น 85</strong></td>
+                <td>น้องบีม</td>
+                <td><span style="background:#F5F3FF; color:#5B21B6; padding:3px 10px; border-radius:12px; font-size:12px;">แลกเปลี่ยนประสบการณ์</span></td>
+                <td style="text-align:center;">1,876</td>
+                <td style="text-align:center;">41</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เผยแพร่</span></td>
+                <td>12 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-009</td>
+                <td><strong>หาติวเตอร์ภาษาจีน HSK 3 ย่านทองหลาง สอบปลายปี</strong></td>
+                <td>คุณแม่แนน</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">ค้นหาติวเตอร์</span></td>
+                <td style="text-align:center;">512</td>
+                <td style="text-align:center;">9</td>
+                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เผยแพร่</span></td>
+                <td>11 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                    <button class="btn btn-sm btn-yellow">💬 ตอบกลับ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>WB-010</td>
+                <td><strong>รีวิวชุดหนังสือติวฟิสิกส์ สอวน. รุ่นล่าสุด คุ้มไหมครับ?</strong></td>
+                <td>พี่เก้ง</td>
+                <td><span style="background:#F0FDF4; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">รีวิวติวเตอร์</span></td>
+                <td style="text-align:center;">733</td>
+                <td style="text-align:center;">19</td>
+                <td><span style="background:#FEE2E2; color:#991B1B; padding:3px 10px; border-radius:12px; font-size:12px;">🚫 ถูกระงับ</span></td>
+                <td>10 ส.ค. 2569</td>
+                <td>
+                  <div class="row-actions" style="justify-content:center;">
+                    <button class="btn btn-sm btn-outline">👁 ดู</button>
+                    <button class="btn btn-sm btn-success">✅ อนุมัติ</button>
+                    <button class="btn btn-sm btn-danger" data-confirm="ยืนยันลบกระทู้นี้?">🗑 ลบ</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:10px;">
+          <div style="font-size:13px; color:var(--secondary);">แสดง 1-10 จากทั้งหมด 248 รายการ</div>
+          <div style="display:flex; gap:5px;">
+            <button class="btn btn-sm btn-outline">⏮ ก่อนหน้า</button>
+            <button class="btn btn-sm btn-yellow">1</button>
+            <button class="btn btn-sm btn-outline">2</button>
+            <button class="btn btn-sm btn-outline">3</button>
+            <button class="btn btn-sm btn-outline">...</button>
+            <button class="btn btn-sm btn-outline">25</button>
+            <button class="btn btn-sm btn-outline">ถัดไป ⏭</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/lang.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
+

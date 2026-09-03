@@ -1,0 +1,22 @@
+/* ====================================================
+   style.css — Main Entry Point
+   นำเข้าไฟล์ CSS ทั้งหมดตามลำดับ
+   ==================================================== */
+
+/* 1. ตัวแปร, Reset, Typography, Layout */
+@import url('base.css');
+
+/* 2. Top Bar + Navbar */
+@import url('navbar.css');
+
+/* 3. Hero Banner + Slider */
+@import url('hero.css');
+
+/* 4. Buttons, Sections, Tabs, Table, Forms, Badges, Alerts */
+@import url('components.css');
+
+/* 5. Steps, Auth, Admin, Webboard, Footer, Float Chat */
+@import url('pages.css');
+
+/* 6. Media Queries (Responsive) */
+@import url('responsive.css');

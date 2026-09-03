@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จัดการงานสอน - Admin | มุ่งเรียน</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">Admin Panel</div>
+        </div>
+      </a>
+      <div style="display:flex; align-items:center; gap:15px;">
+        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+        </div>
+        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
+        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
+      <ul class="admin-menu">
+        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
+        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
+        <li><a href="manage-jobs.html" class="active" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
+        <li><a href="manage-users.html" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
+        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
+        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
+        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
+        <li><a href="settings.html" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <div class="admin-header">
+        <div>
+        <h2>📚 จัดการงานสอน</h2>
+        <p style="color:var(--secondary); font-size:14px;">จัดการรายการงานสอนทั้งหมด การมอบหมาย และสถานะงาน</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <span style="background:#DBEAFE; color:#1E40AF; padding:6px 12px; border-radius:6px; font-size:13px; font-weight:600;">🟢 เปิดรับ: 128 งาน</span>
+          <span style="background:#FEF3C7; color:#92400E; padding:6px 12px; border-radius:6px; font-size:13px; font-weight:600;">🟡 กำลังสอน: 256 งาน</span>
+          <span style="background:#F3F4F6; color:#374151; padding:6px 12px; border-radius:6px; font-size:13px; font-weight:600;">⚫ ปิด: 2,864 งาน</span>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-search" style="max-width:600px; flex-wrap:wrap;">
+          <input type="text" class="form-control" placeholder="🔍 ค้นหา Job ID / วิชา / สถานที่..." style="flex:1; min-width:220px;">
+          <select class="form-control" style="width:150px;">
+            <option value="">ทุกหมวด</option>
+            <option>วิทย์-คณิต</option>
+            <option>ภาษา-สังคม</option>
+            <option>ดนตรี-ศิลปะ</option>
+            <option>กีฬา</option>
+            <option>อื่นๆ</option>
+          </select>
+          <select class="form-control" style="width:140px;">
+            <option value="">ทุกสถานะ</option>
+            <option>เปิดรับ</option>
+            <option>กำลังสอน</option>
+            <option>ปิด</option>
+          </select>
+          <button class="btn btn-yellow btn-sm">ค้นหา</button>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-primary btn-sm">➕ เพิ่มงานสอน</button>
+        </div>
+      </div>
+
+      <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Job ID</th>
+                <th>วิชา</th>
+                <th>ระดับชั้น</th>
+                <th>สถานที่</th>
+                <th>วันเวลา</th>
+                <th>ค่าจ้าง/ชม.</th>
+                <th>สถานะ</th>
+                <th>ติวเตอร์ที่ได้รับมอบหมาย</th>
+                <th style="width:160px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081813</strong></td>
+                <td>คณิตศาสตร์</td>
+                <td>มัธยมศึกษาปีที่ 4</td>
+                <td>บางนา, กรุงเทพฯ</td>
+                <td>จ-ศ 16:00-18:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 350</td>
+                <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟢 เปิดรับสมัคร</span></td>
+                <td style="color:var(--secondary); font-size:13px;">- ยังไม่มี -</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081812</strong></td>
+                <td>ภาษาอังกฤษ IELTS</td>
+                <td>มหาวิทยาลัย</td>
+                <td>สวนหลวง, กรุงเทพฯ</td>
+                <td>ส-อา 09:00-11:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 500</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟡 กำลังสอน</span></td>
+                <td>นาย ธนา วงศ์น้อย</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081811</strong></td>
+                <td>ฟิสิกส์</td>
+                <td>มัธยมศึกษาปีที่ 5-6</td>
+                <td>หลักสี่, กรุงเทพฯ</td>
+                <td>พ-ศ 17:00-19:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 400</td>
+                <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟢 เปิดรับสมัคร</span></td>
+                <td style="color:var(--secondary); font-size:13px;">- ยังไม่มี -</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081810</strong></td>
+                <td>ภาษาไทย</td>
+                <td>ประถมศึกษาปีที่ 6</td>
+                <td>ทุ่งครุ, กรุงเทพฯ</td>
+                <td>จ-ศ 14:00-16:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 280</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟡 กำลังสอน</span></td>
+                <td>นางสาว มยุรี พิพัฒน์</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081809</strong></td>
+                <td>เปียโน</td>
+                <td>ทุกระดับ</td>
+                <td>อโศก, กรุงเทพฯ</td>
+                <td>ส-อา 10:00-11:30</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 600</td>
+                <td><span style="background:#F3F4F6; color:#374151; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">⚫ ปิดแล้ว</span></td>
+                <td>นางสาว อาภาพร รักษ์ชล</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081808</strong></td>
+                <td>เคมี</td>
+                <td>มัธยมศึกษาปีที่ 5</td>
+                <td>ปทุมวัน, กรุงเทพฯ</td>
+                <td>อ-พ 18:00-20:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 420</td>
+                <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟢 เปิดรับสมัคร</span></td>
+                <td style="color:var(--secondary); font-size:13px;">- ยังไม่มี -</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081807</strong></td>
+                <td>ภาษาจีน HSK 3</td>
+                <td>ผู้ใหญ่</td>
+                <td>พระโขนง, กรุงเทพฯ</td>
+                <td>จ-ศ 19:00-21:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 450</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟡 กำลังสอน</span></td>
+                <td>นางสาว รัตนา บุญมี</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081806</strong></td>
+                <td>ฟุตบอลเด็ก</td>
+                <td>ประถมศึกษาปีที่ 1-3</td>
+                <td>สนามกีฬา หาดใหญ่</td>
+                <td>ส-อา 07:00-09:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 200</td>
+                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟡 กำลังสอน</span></td>
+                <td>นาย พงษ์พัฒน์ ดีเดชา</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081805</strong></td>
+                <td>โปรแกรมมิ่ง Python</td>
+                <td>มัธยมศึกษาปีที่ 1-3</td>
+                <td>ออนไลน์ (Zoom)</td>
+                <td>อา 13:00-15:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 550</td>
+                <td><span style="background:#F3F4F6; color:#374151; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">⚫ ปิดแล้ว</span></td>
+                <td>นาย วิศรุต เจริญกิจ</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--accent);">SC-69081804</strong></td>
+                <td>สังคมศึกษา</td>
+                <td>มัธยมศึกษาปีที่ 3</td>
+                <td>ดอนเมือง, กรุงเทพฯ</td>
+                <td>พ-ศ 15:00-17:00</td>
+                <td style="font-weight:600; color:var(--dark);">฿ 300</td>
+                <td><span style="background:#DBEAFE; color:#1E40AF; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600;">🟢 เปิดรับสมัคร</span></td>
+                <td style="color:var(--secondary); font-size:13px;">- ยังไม่มี -</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-sm" style="background:#EFF6FF; color:#1D4ED8;">👁️ ดู</button>
+                    <button class="btn btn-sm" style="background:#FEF9C3; color:#854D0E;">✏️ แก้ไข</button>
+                    <button class="btn btn-sm btn-delete" style="background:#FEE2E2; color:#991B1B;" data-confirm="ยืนยันการลบงานสอน?">🗑️ ลบ</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:10px;">
+          <div style="font-size:14px; color:var(--secondary);">
+            แสดงผลทั้งหมด <strong>3,248</strong> รายการ | หน้าที่ <strong>1</strong> จาก <strong>325</strong>
+          </div>
+          <div style="display:flex; gap:4px;">
+            <button class="btn btn-sm btn-outline" disabled style="opacity:0.5;">« ก่อนหน้า</button>
+            <button class="btn btn-sm btn-yellow">1</button>
+            <button class="btn btn-sm btn-outline">2</button>
+            <button class="btn btn-sm btn-outline">3</button>
+            <button class="btn btn-sm btn-outline">4</button>
+            <button class="btn btn-sm btn-outline">5</button>
+            <span style="padding:8px 4px; color:var(--secondary);">...</span>
+            <button class="btn btn-sm btn-outline">325</button>
+            <button class="btn btn-sm btn-outline">ถัดไป »</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/lang.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
+

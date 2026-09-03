@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webboard | มุ่งเรียน</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
+      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
+        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
+        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html" class="active" data-i18n="nav_webboard">Webboard</a></li>
+        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section section-gray" style="padding:35px 0;">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:10px;" data-i18n="wb_title">💬 Webboard <span>กระดานสนทนา</span></h2>
+      <p class="section-sub" style="margin-bottom:0;" data-i18n="wb_sub">สำหรับติวเตอร์และนักเรียน แชร์ประสบการณ์ แลกเปลี่ยนความรู้ และพบปะสังสรรค์กันครับ</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:30px;">
+    <div class="container">
+
+      <div class="board-toolbar">
+        <div class="board-toolbar-left">
+          <select class="board-filter">
+            <option data-i18n="wb_filter_all">📋 ทุกหมวด</option>
+            <option data-i18n="wb_filter_tips">💡 แนะนำการสอน</option>
+            <option data-i18n="wb_filter_find_tutor">🔍 หาติวเตอร์</option>
+            <option data-i18n="wb_filter_find_job">📌 หางานสอน</option>
+            <option data-i18n="wb_filter_qna">❓ ปัญหา/สอบถาม</option>
+          </select>
+          <div class="board-search">
+            <input type="text" placeholder="ค้นหากระทู้..." data-i18n="ph_search_wb">
+            <button data-i18n="btn_search_wb">🔍 ค้นหา</button>
+          </div>
+        </div>
+        <div class="toolbar-actions">
+          <a href="#" class="btn btn-primary" data-i18n="btn_new_post">✏️ สร้างกระทู้ใหม่</a>
+        </div>
+      </div>
+
+      <div class="board-list">
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ค</div>
+          <div>
+            <div class="board-title">เคล็ดลับสอนคณิตให้เด็กเข้าใจง่าย ไม่น่าเบื่อ (แชร์ประสบการณ์ 5 ปี)</div>
+            <div class="board-meta">
+              <span>👤 ครูณิชชา</span>
+              <span>🏷️ แนะนำการสอน</span>
+              <span>📅 17 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>1,289</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">42</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ห</div>
+          <div>
+            <div class="board-title">หาติวเตอร์อังกฤษย่านสุขุมวิท สอนพูด-ฟัง สำหรับนักเรียนม.2 (เรียนที่บ้าน)</div>
+            <div class="board-meta">
+              <span>👤 คุณอาม่า</span>
+              <span>🏷️ หาติวเตอร์</span>
+              <span>📅 16 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>856</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">18</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ม</div>
+          <div>
+            <div class="board-title">มีงานสอนฟิสิกส์ม.4 ไหมครับ (ย่านบางนา-ศรีนครินทร์) สอน 2 คน</div>
+            <div class="board-meta">
+              <span>👤 ครูมงคล</span>
+              <span>🏷️ หางานสอน</span>
+              <span>📅 15 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>623</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">9</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ส</div>
+          <div>
+            <div class="board-title">วิธีเตรียมตัวสัมภาษณ์เป็นติวเตอร์กับผู้ปกครอง (เคล็ดลับไม่ลับที่ใช้ได้จริง)</div>
+            <div class="board-meta">
+              <span>👤 ครูสุพิชชา</span>
+              <span>🏷️ แนะนำการสอน</span>
+              <span>📅 14 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>2,104</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">67</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">น</div>
+          <div>
+            <div class="board-title">สอบถามเรื่องค่านายหน้า ส่วนหักคิดยังไงครับ มาตรฐานคิดเป็นกี่เปอร์เซ็นต์</div>
+            <div class="board-meta">
+              <span>👤 ครูณัฐพล</span>
+              <span>🏷️ ปัญหา/สอบถาม</span>
+              <span>📅 13 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>945</strong>
+            <span data-i18n="wb_stat_view">เข้าชม</span>
+            <strong style="margin-top:8px;">31</strong>
+            <span data-i18n="wb_stat_comment">คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">อ</div>
+          <div>
+            <div class="board-title">แชร์ประสบการณ์สอนออนไลน์ 2 ปี ข้อดี-ข้อเสีย และเครื่องมือที่ใช้บ่อย</div>
+            <div class="board-meta">
+              <span>👤 ครูอารียา</span>
+              <span>🏷️ แนะนำการสอน</span>
+              <span>📅 12 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>3,521</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">112</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ป</div>
+          <div>
+            <div class="board-title">หาติวเตอร์พิเศษวิชาดนตรีเปียโน สอนเด็กป.3 เริ่มต้น ย่านรัชดา</div>
+            <div class="board-meta">
+              <span>👤 คุณพิมพ์เพ็ญ</span>
+              <span>🏷️ หาติวเตอร์</span>
+              <span>📅 11 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>478</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">6</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ภ</div>
+          <div>
+            <div class="board-title">มีงานสอนติวเข้ามหาวิทยาลัยไหมครับ (TCAS รอบแรก) จำนวนมาก ติวเคมี-ชีวะ</div>
+            <div class="board-meta">
+              <span>👤 ครูภาสกร</span>
+              <span>🏷️ หางานสอน</span>
+              <span>📅 10 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>789</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">14</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ว</div>
+          <div>
+            <div class="board-title">เทคนิคการจัดการเวลาสอนหลายวิชา หลายบ้าน ไม่ให้หมดแรง (ติวเตอร์ตัวจริงต้องรู้)</div>
+            <div class="board-meta">
+              <span>👤 ครูวีรภาพ</span>
+              <span>🏷️ แนะนำการสอน</span>
+              <span>📅 9 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>1,876</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">53</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+        <a href="#" class="board-item">
+          <div class="board-avatar">ร</div>
+          <div>
+            <div class="board-title">สอบถามวิธีสมัครเป็นติวเตอร์กับ มุ่งเรียน ต้องมีหลักฐานอะไรบ้างครับ</div>
+            <div class="board-meta">
+              <span>👤 ครูรัตนา</span>
+              <span>🏷️ ปัญหา/สอบถาม</span>
+              <span>📅 8 สิงหาคม 2569</span>
+            </div>
+          </div>
+          <div class="board-stats">
+            <strong>1,102</strong>
+            <span>เข้าชม</span>
+            <strong style="margin-top:8px;">27</strong>
+            <span>คอมเมนต์</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="pagination">
+        <button class="page-btn" disabled data-i18n="btn_prev">« ก่อนหน้า</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn">5</button>
+        <button class="page-btn" data-i18n="btn_next">ถัดไป »</button>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="float-chat">
+    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
+    <div class="chat-label">สอบถามโปรโมชั่น คลิก</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4 data-i18n="footer_col1_title">มุ่งเรียน</h4>
+        <ul>
+          <li data-i18n="footer_col1_li1">🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
+          <li><span data-i18n="footer_col1_li2">📍 ทำเลศักยภาพ: </span><a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
+          <li>📧 info@มุ่งเรียน.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col2_title">สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html" data-i18n="footer_col2_li1">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="#" data-i18n="footer_col2_li2">คอร์สสอนยอดนิยม</a></li>
+          <li><a href="webboard.html" data-i18n="footer_col2_li3">Webboard / ความรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col3_title">สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html" data-i18n="footer_col3_li1">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html" data-i18n="footer_col3_li2">ดูรายการงานสอน</a></li>
+          <li><a href="#" data-i18n="footer_col3_li3">สิ่งที่ติวเตอร์ควรรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col4_title">ติดต่อเรา</h4>
+        <ul>
+          <li>Facebook: facebook.com/มุ่งเรียน</li>
+          <li>Line ID: @มุ่งเรียน</li>
+          <li>📞 02-XXX-XXXX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

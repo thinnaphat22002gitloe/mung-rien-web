@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>งานสอน (สำหรับติวเตอร์) | มุ่งเรียน</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
+      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="jobs.html" class="active" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
+        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
+        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
+        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section section-gray" style="padding:30px 0 50px;">
+    <div class="container">
+      <h2 class="section-title"><span data-i18n="jobs_title_part1">งานสอน</span> <span data-i18n="jobs_title_part2">(สำหรับติวเตอร์)</span></h2>
+      <p class="section-sub" data-i18n="jobs_page_sub">เลือกดูรายการงานสอนตามหมวด แล้วสมัครเลยผ่านปุ่ม รายละเอียด</p>
+
+      <div class="toolbar" style="margin-bottom:30px;">
+        <div class="toolbar-search">
+          <select class="form-control" style="max-width:180px;">
+            <option data-i18n="filter_all">ทุกหมวด</option>
+            <option data-i18n="filter_math_sci">งานสอนวิทย์-คณิต</option>
+            <option data-i18n="filter_lang_soc">งานสอนภาษา-สังคม</option>
+            <option data-i18n="filter_music">งานสอนดนตรี</option>
+            <option data-i18n="filter_sport">งานสอนกีฬา</option>
+          </select>
+          <input class="form-control" placeholder="ค้นหาวิชา, สถานที่, Job ID..." data-i18n="ph_search_jobs">
+          <button class="btn btn-yellow btn-sm" data-i18n="btn_search">🔍 ค้นหา</button>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-outline btn-sm" data-i18n="btn_refresh">🔄 รีเฟรช</button>
+        </div>
+      </div>
+
+      <div class="tabs-container">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab1" data-i18n="tab_math_sci">งานสอนวิทย์-คณิต</button>
+          <button class="tab-btn" data-tab="tab2" data-i18n="tab_lang_soc">งานสอนภาษา-สังคม</button>
+          <button class="tab-btn" data-tab="tab3" data-i18n="tab_music">งานสอนดนตรี</button>
+          <button class="tab-btn" data-tab="tab4" data-i18n="tab_sport">งานสอนกีฬา</button>
+        </div>
+
+        <div class="tab-content active" data-tab="tab1">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="th_subject">วิชา</th>
+                  <th data-i18n="th_location">สถานที่เรียน</th>
+                  <th data-i18n="th_time">วันเวลาเรียน</th>
+                  <th data-i18n="th_jobid">Job ID</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>วิทย์ (ป.4 เป็นติวสอบเข้า ม.1)●เรียนพร้อมกัน 2 คน</td>
+                  <td>THE CITY ราบอินทรา 3 (ใกล้ รร.นวนิกร ราชินูทิศ เมษุณยาราชาลัย)</td>
+                  <td>เสาร์ อาทิตย์ 13.00 น.เป็นต้นไป (เลือก 1 วัน/สัปดาห์ | 2 ชม.)</td>
+                  <td>SC 69081813</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิต (ป.4 เป็นติวสอบเข้า ม.1)●เรียนพร้อมกัน 2 คน</td>
+                  <td>THE CITY ราบอินทรา 3 (ใกล้ รร.นวนิกร ราชินูทิศ เมษุณยาราชาลัย)</td>
+                  <td>เสาร์ อาทิตย์ 13.00 น.เป็นต้นไป (เลือก 1 วัน/สัปดาห์ | 2 ชม.)</td>
+                  <td>SC 69081812</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.3) เป็นติวสอบเข้า ม.4 รร.ไพธิสาร</td>
+                  <td>เดอะมอลล์ ท่าพระ</td>
+                  <td>วันธรรมดา (ยกเว้นศุกร์) 19.00-21.00 น. (เลือก 1 วัน/สัปดาห์)</td>
+                  <td>SC 69081811</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.4)</td>
+                  <td>Online</td>
+                  <td>จันทร์-พฤหัส 18.00-19.00 น. (เรียน 4 วัน/สัปดาห์)</td>
+                  <td>SC 69081810</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ฟิสิกส์ (ม.4)</td>
+                  <td>La Villa BTS อารีย์</td>
+                  <td>พุธ 16.00-18.00 น.</td>
+                  <td>SC 69081808</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.2) ●ติวสอบ TU / สอวน.</td>
+                  <td>คอนโดเดอะทรี อินเตอร์เชนจ์ (ใกล้ Gateway บางซื่อ)</td>
+                  <td>พฤหัสบดี 17.30-19.30 น.</td>
+                  <td>SC 69081807</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>คณิต (ม.3) เนื้อหาอังกฤษ อธิบายไทย</td>
+                  <td>McDonald's วิคตอรีย การ์เด้น - เพชรเกษม 69</td>
+                  <td>อังคาร 17.00-19.00 น.</td>
+                  <td>SC 69081806</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>วิทยาศาสตร์ (ป.6) ติวสอบเข้า ม.1</td>
+                  <td>บ้านห้วยคอนโด Aspire งามวงศ์วาน (ใกล้ BTS สะพานใหม่)</td>
+                  <td>วันจันทร์ 15.00-17.00 น. / 17.00-19.00 น. (เลือก 2 ชม.)</td>
+                  <td>SC 69081805</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>เคมี (ม.5) - สอบเข้า มหาวิทยาลัย</td>
+                  <td>Cafe Amazon - ตลาดพลู</td>
+                  <td>เสาร์-อาทิตย์ 09.00-11.00 น.</td>
+                  <td>SC 69081804</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>คณิตศาสตร์ (ป.3) พื้นฐาน</td>
+                  <td>บ้าน - จรัญสนิทวงศ์ 24</td>
+                  <td>จันทร์-อังคาร-พุธ 16.00-17.30 น.</td>
+                  <td>SC 69081803</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="tab2">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ภาษาอังกฤษ (ม.5) IELTS 6.5+</td>
+                  <td>สุขุมวิท 23 (ใกล้ BTS อโศก)</td>
+                  <td>เสาร์ 10.00-12.00 น.</td>
+                  <td>EN 69081711</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ภาษาอังกฤษ พูด-ฟัง สำหรับผู้ใหญ่</td>
+                  <td>Online Zoom</td>
+                  <td>จันทร์-พุธ 19.30-21.00 น.</td>
+                  <td>EN 69081712</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>ภาษาไทย (ป.6) ติวเข้า ม.1</td>
+                  <td>รัชดา - ห้วยขวาง</td>
+                  <td>จันทร์-พุธ 17.00-19.00 น.</td>
+                  <td>TH 69081710</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>สังคมศึกษา (ม.3) เตรียมเข้า ม.4</td>
+                  <td>Online Zoom</td>
+                  <td>อาทิตย์ 09.00-11.00 น.</td>
+                  <td>SC 69081709</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>ภาษาจีน (ม.1) พื้นฐาน HSK1</td>
+                  <td>True Coffee - บางนา</td>
+                  <td>เสาร์ 14.00-16.00 น.</td>
+                  <td>CN 69081708</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>TOEIC สำหรับอาสาสมัครสาธารณสุข</td>
+                  <td>BTS หมอชิต</td>
+                  <td>พุธ-ศุกร์ 18.00-20.00 น.</td>
+                  <td>TO 69081707</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="tab3">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>เปียโน (เด็ก 7 ขวบ) เริ่มต้น</td>
+                  <td>บ้านสวนหมู่ บางนา</td>
+                  <td>เสาร์ 14.00-15.00 น.</td>
+                  <td>PN 69081601</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>กีตาร์โปร่ง (ม.2)</td>
+                  <td>สยามสแควร์</td>
+                  <td>ศุกร์ 18.00-19.00 น.</td>
+                  <td>GT 69081602</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>ออร์แกน (ผู้ใหญ่) เล่นเพลงไทย</td>
+                  <td>บ้าน - ดอนเมือง</td>
+                  <td>วันเสาร์ 10.00-11.30 น.</td>
+                  <td>OR 69081603</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="tab4">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-new">NEW</span>ว่ายน้ำ (เด็ก ป.2) ติวพื้นฐาน</td>
+                  <td>สระว่ายน้ำ Tawanna Bangkapi</td>
+                  <td>เสาร์-อาทิตย์ 08.00-09.00 น.</td>
+                  <td>SW 69081501</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>แบดมินตัน (ผู้ใหญ่ เริ่มต้น)</td>
+                  <td>สนาม Central Eastville</td>
+                  <td>พุธ 19.00-20.00 น.</td>
+                  <td>BM 69081502</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+                <tr>
+                  <td>ฟุตบอล (เด็ก 10 ขวบ) เทคนิคพื้นฐาน</td>
+                  <td>สนาม 7 ศาสนา - บางแค</td>
+                  <td>อาทิตย์ 07.00-09.00 น.</td>
+                  <td>FB 69081503</td>
+                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:25px; text-align:center;">
+        <nav style="display:inline-flex; gap:6px;">
+          <button class="btn btn-sm btn-outline" data-i18n="btn_prev">« ก่อนหน้า</button>
+          <button class="btn btn-sm btn-yellow">1</button>
+          <button class="btn btn-sm btn-outline">2</button>
+          <button class="btn btn-sm btn-outline">3</button>
+          <button class="btn btn-sm btn-outline">4</button>
+          <button class="btn btn-sm btn-outline">5</button>
+          <button class="btn btn-sm btn-outline" data-i18n="btn_next">ถัดไป »</button>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <div class="float-chat">
+    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
+    <div class="chat-label">สอบถามโปรโมชั่น คลิก</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4 data-i18n="footer_col1_title">มุ่งเรียน</h4>
+        <ul>
+          <li data-i18n="footer_col1_li1">🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
+          <li><span data-i18n="footer_col1_li2">📍 ทำเลศักยภาพ: </span><a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
+          <li>📧 info@มุ่งเรียน.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col2_title">สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html" data-i18n="footer_col2_li1">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="#" data-i18n="footer_col2_li2">คอร์สสอนยอดนิยม</a></li>
+          <li><a href="webboard.html" data-i18n="footer_col2_li3">Webboard / ความรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col3_title">สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html" data-i18n="footer_col3_li1">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html" data-i18n="footer_col3_li2">ดูรายการงานสอน</a></li>
+          <li><a href="#" data-i18n="footer_col3_li3">สิ่งที่ติวเตอร์ควรรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col4_title">ติดต่อเรา</h4>
+        <ul>
+          <li>Facebook: facebook.com/มุ่งเรียน</li>
+          <li>Line ID: @มุ่งเรียน</li>
+          <li>📞 02-XXX-XXXX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

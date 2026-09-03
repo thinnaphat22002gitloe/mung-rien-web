@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สมัครติวเตอร์ | มุ่งเรียน</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
+      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
+        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
+        <li><a href="register.html" class="active" data-i18n="nav_register">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
+        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title"><span data-i18n="reg_title_part1">สมัคร</span><span data-i18n="reg_title_span">ติวเตอร์</span></h2>
+      <p class="section-sub" data-i18n="reg_sub">กรอกแบบฟอร์มสมัครติวเตอร์ให้ครบถ้วน ทีมงานจะติดต่อกลับภายใน 1-2 วันทำการ</p>
+
+      <form class="form-container">
+        <div class="form-section-title" data-i18n="reg_sec_login">ข้อมูลเข้าสู่ระบบ (Login)</div>
+
+        <div class="form-group">
+          <label class="req">อีเมล<small>(E-Mail Address)</small></label>
+          <input type="email" class="form-control" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="req">รหัสผ่าน<small>(Password)</small></label>
+          <input type="password" class="form-control" placeholder="********">
+        </div>
+        <div class="form-group">
+          <label class="req">ยืนยันรหัสผ่าน<small>(Confirm Password)</small></label>
+          <input type="password" class="form-control" placeholder="********">
+        </div>
+
+        <div class="form-section-title" data-i18n="reg_sec_personal">ข้อมูลส่วนตัว (Personal Information)</div>
+
+        <div class="form-group">
+          <label class="req">คำนำหน้า<small>(Name Title)</small></label>
+          <select class="form-control">
+            <option>กรุณาเลือก</option>
+            <option>นาย</option>
+            <option>นาง</option>
+            <option>นางสาว</option>
+            <option>อื่นๆ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="req">ชื่อ<small>(Name)</small></label>
+          <input type="text" class="form-control" placeholder="ชื่อจริง">
+        </div>
+        <div class="form-group">
+          <label class="req">นามสกุล<small>(Surname)</small></label>
+          <input type="text" class="form-control" placeholder="นามสกุลจริง">
+        </div>
+        <div class="form-group">
+          <label>ชื่อเล่น<small>(Nickname)</small></label>
+          <input type="text" class="form-control" placeholder="ชื่อเล่น">
+        </div>
+        <div class="form-group">
+          <label class="req">วันเกิด<small>(Birth Date)</small></label>
+          <input type="date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="req">เพศ<small>(Gender)</small></label>
+          <div style="display:flex; gap:20px;">
+            <label style="text-align:left;"><input type="radio" name="gender" value="M" style="margin-right:5px;"> ชาย</label>
+            <label style="text-align:left;"><input type="radio" name="gender" value="F" style="margin-right:5px;"> หญิง</label>
+            <label style="text-align:left;"><input type="radio" name="gender" value="O" style="margin-right:5px;"> ไม่ระบุ</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="req">เลขบัตรประชาชน<small>(ID Number)</small></label>
+          <input type="text" class="form-control" maxlength="17" placeholder="X-XXXX-XXXXX-XX-X">
+        </div>
+        <div class="form-group">
+          <label class="req">เบอร์โทรศัพท์<small>(Phone)</small></label>
+          <input type="tel" class="form-control" placeholder="08XXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>ไลน์ไอดี<small>(Line ID)</small></label>
+          <input type="text" class="form-control" placeholder="Line ID (สำหรับติดต่อ)">
+        </div>
+        <div class="form-group">
+          <label class="req">Facebook</label>
+          <input type="text" class="form-control" placeholder="ลิงก์ Facebook">
+        </div>
+        <div class="form-group" style="align-items:flex-start;">
+          <label class="req">ที่อยู่ปัจจุบัน<small>(Address)</small></label>
+          <textarea class="form-control" placeholder="บ้านเลขที่ หมู่ ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="req">ภาพประจำตัว<small>(Profile Picture)</small></label>
+          <input type="file" class="form-control" accept="image/*">
+        </div>
+
+        <div class="form-section-title" data-i18n="reg_sec_edu">ข้อมูลการศึกษา (Education)</div>
+
+        <div class="form-group">
+          <label class="req">ระดับการศึกษาสูงสุด</label>
+          <select class="form-control">
+            <option value="">-- เลือก --</option>
+            <option>มัธยมศึกษา</option>
+            <option>กำลังศึกษาปริญญาตรี</option>
+            <option>จบปริญญาตรี</option>
+            <option>กำลังศึกษาปริญญาโท</option>
+            <option>จบปริญญาโท</option>
+            <option>ปริญญาเอก</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="req">ชื่อมหาวิทยาลัย / เทคโนโลยี</label>
+          <input type="text" class="form-control" placeholder="เช่น จุฬาลงกรณ์มหาวิทยาลัย">
+        </div>
+        <div class="form-group">
+          <label class="req">คณะ / สาขาวิชา</label>
+          <input type="text" class="form-control" placeholder="เช่น วิศวกรรมศาสตร์ / สาขาวิศวกรรมคอมพิวเตอร์">
+        </div>
+        <div class="form-group">
+          <label>เกรดเฉลี่ยสะสม (GPAX)</label>
+          <input type="text" class="form-control" placeholder="เช่น 3.50">
+        </div>
+        <div class="form-group">
+          <label>ปีที่จบ / คาดว่าจะจบ</label>
+          <input type="text" class="form-control" placeholder="2568">
+        </div>
+        <div class="form-group">
+          <label>หลักฐานการศึกษา (สลิป/ใบรับรอง)</label>
+          <input type="file" class="form-control" accept="image/*,application/pdf">
+        </div>
+
+        <div class="form-section-title" data-i18n="reg_sec_teaching">ประสบการณ์และวิชาที่สอน (Teaching Info)</div>
+
+        <div class="form-group">
+          <label class="req">วิชาที่สามารถสอนได้<small>(เลือกได้หลายวิชา)</small></label>
+          <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:8px;">
+            <label style="text-align:left;"><input type="checkbox"> คณิตศาสตร์</label>
+            <label style="text-align:left;"><input type="checkbox"> วิทยาศาสตร์</label>
+            <label style="text-align:left;"><input type="checkbox"> ฟิสิกส์</label>
+            <label style="text-align:left;"><input type="checkbox"> เคมี</label>
+            <label style="text-align:left;"><input type="checkbox"> ชีววิทยา</label>
+            <label style="text-align:left;"><input type="checkbox"> ภาษาอังกฤษ</label>
+            <label style="text-align:left;"><input type="checkbox"> ภาษาไทย</label>
+            <label style="text-align:left;"><input type="checkbox"> สังคมศึกษา</label>
+            <label style="text-align:left;"><input type="checkbox"> ภาษาจีน</label>
+            <label style="text-align:left;"><input type="checkbox"> เปียโน / ดนตรี</label>
+            <label style="text-align:left;"><input type="checkbox"> ว่ายน้ำ / กีฬา</label>
+            <label style="text-align:left;"><input type="checkbox"> อื่นๆ</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="req">ระดับชั้นที่สอนได้</label>
+          <select class="form-control" multiple size="5">
+            <option>อนุบาล</option>
+            <option>ประถมศึกษา (ป.1-ป.6)</option>
+            <option>มัธยมต้น (ม.1-ม.3)</option>
+            <option>มัธยมปลาย (ม.4-ม.6)</option>
+            <option>มหาวิทยาลัย / ผู้ใหญ่</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="req">พื้นที่ที่สะดวกสอน</label>
+          <input type="text" class="form-control" placeholder="เช่น กรุงเทพฯ, นนทบุรี, ปทุมธานี, สอน Online">
+        </div>
+        <div class="form-group">
+          <label>ประสบการณ์สอน (ปี)</label>
+          <input type="number" class="form-control" min="0" placeholder="จำนวนปี">
+        </div>
+        <div class="form-group" style="align-items:flex-start;">
+          <label>อธิบายประสบการณ์สอน</label>
+          <textarea class="form-control" placeholder="เช่น เคยสอนคณิตศาสตร์ม.3-ม.6, สอบติด TU, ติวสอบเข้ามหาลัย เป็นต้น"></textarea>
+        </div>
+        <div class="form-group">
+          <label>วันและเวลาที่ว่างสอน</label>
+          <input type="text" class="form-control" placeholder="เช่น เสาร์-อาทิตย์ / หลังเลิกเรียน 18.00+">
+        </div>
+        <div class="form-group">
+          <label class="req">ค่าสอนที่คาดหวัง (บาท/ชม.)</label>
+          <input type="text" class="form-control" placeholder="เช่น 200-400 บาท/ชั่วโมง">
+        </div>
+
+        <div class="form-section-title" data-i18n="reg_sec_docs">เอกสารประกอบ (Additional Documents)</div>
+
+        <div class="form-group">
+          <label>สำเนาบัตรประชาชน</label>
+          <input type="file" class="form-control" accept="image/*,application/pdf">
+        </div>
+        <div class="form-group">
+          <label>สำเนาทะเบียนบ้าน</label>
+          <input type="file" class="form-control" accept="image/*,application/pdf">
+        </div>
+        <div class="form-group">
+          <label>หลักฐานอื่นๆ (เกียรติบัตร/รางวัล)</label>
+          <input type="file" class="form-control" accept="image/*,application/pdf">
+        </div>
+
+        <div class="form-group" style="margin-top:30px;">
+          <label style="text-align:left; grid-column:2;">
+            <input type="checkbox" required style="margin-right:8px;">
+            <span data-i18n="reg_confirm">ข้าพเจ้ายืนยันว่าข้อมูลที่กรอกข้างต้นเป็นความจริงทุกประการ และยอมรับเงื่อนไขการสมัคร</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="reset" class="btn btn-outline" style="margin-right:10px;" data-i18n="btn_clear">ล้างข้อมูล</button>
+          <button type="submit" class="btn btn-yellow" data-i18n="btn_submit_reg">สมัครติวเตอร์</button>
+        </div>
+
+        <p style="text-align:center; margin-top:20px; color:var(--secondary); font-size:13px;">
+          <span data-i18n="have_account">มีบัญชีอยู่แล้ว?</span> <a href="login.html" style="color:var(--accent); font-weight:600;" data-i18n="auth_login_title">เข้าสู่ระบบ</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <div class="float-chat">
+    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
+    <div class="chat-label">สอบถามโปรโมชั่น คลิก</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>มุ่งเรียน</h4>
+        <ul>
+          <li>🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
+          <li>📍 <a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
+          <li>📧 info@มุ่งเรียน.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4>สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="#">คอร์สสอนยอดนิยม</a></li>
+          <li><a href="webboard.html">Webboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html">ดูรายการงานสอน</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อเรา</h4>
+        <ul>
+          <li>Facebook: facebook.com/มุ่งเรียน</li>
+          <li>Line ID: @มุ่งเรียน</li>
+          <li>📞 02-XXX-XXXX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 มุ่งเรียน. All rights reserved.</div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+

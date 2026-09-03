@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สำหรับนักเรียน - ขั้นตอนหาติวเตอร์ | มุ่งเรียน</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
+      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
+        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
+        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🎓</div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
+        <li><a href="student.html" class="active" data-i18n="nav_student">สำหรับนักเรียน</a></li>
+        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
+        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section section-gray" style="padding-top:40px;">
+    <div class="container">
+      <h2 class="section-title"><span data-i18n="std_title_part1">ขั้นตอน</span><span data-i18n="std_title_span">การหาติวเตอร์</span></h2>
+      <p class="section-sub" data-i18n="std_sub">ทำตามขั้นตอนง่ายๆ ด้านล่าง เพื่อขอหาติวเตอร์สอนพิเศษที่ตรงกับความต้องการของคุณ</p>
+
+      <!-- Step 1: Contact Methods -->
+      <div style="max-width: 800px; margin: 0 auto 40px; background: var(--light); padding: 30px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--gray-border); display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 30px;">
+        <div style="text-align: left; max-width: 450px;">
+          <h3 style="color: var(--dark); font-size: 20px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <span style="background: var(--accent); color: var(--light); width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px;">1</span>
+            <span data-i18n="std_step1">ติดต่อทีมงาน มุ่งเรียน โดยตรง</span>
+          </h3>
+          <p style="color: var(--secondary); margin-bottom: 15px; font-size: 14.5px; line-height: 1.6;" data-i18n="std_step1_desc">คุณสามารถติดต่อทีมงานเพื่อปรึกษาหรือขอติวเตอร์ผ่านทาง Line ID หรือ Facebook ได้ทันทีเพื่อความรวดเร็วสูงสุด</p>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-weight: 600; font-size: 14.5px;">
+            <div style="display: flex; align-items: center; gap: 8px; color: var(--text);">
+              <span>💬 Line ID:</span> <a href="#" style="color: var(--accent); text-decoration: underline;">@มุ่งเรียน</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; color: var(--text);">
+              <span>👥 Facebook:</span> <a href="#" style="color: var(--accent); text-decoration: underline;">facebook.com/มุ่งเรียน</a>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="qr-box" style="margin: 0 auto 10px;" aria-label="QR Code Line"></div>
+          <p style="color: var(--secondary); font-size: 12.5px; font-weight: 500;" data-i18n="std_scan_qr">สแกน Line QR Code เพื่อเพิ่มเพื่อน</p>
+        </div>
+      </div>
+
+      <!-- Step 2: Form Container -->
+      <div style="max-width: 800px; margin: 0 auto;">
+        <form class="form-container">
+          <div class="form-section-title" style="margin-top: 0;" data-i18n="std_step2">2. กรอกแบบฟอร์มขอติวเตอร์ (สถาบันจะติดต่อกลับภายใน 12 ชั่วโมง)</div>
+
+          <div class="form-group">
+            <label class="req" data-i18n="label_fullname">ชื่อ-นามสกุล</label>
+            <input type="text" class="form-control" placeholder="เช่น นางสาวสมศรี สวยดี" data-i18n="ph_fullname">
+          </div>
+          <div class="form-group">
+            <label class="req" data-i18n="label_status">สถานะผู้ติดต่อ</label>
+            <select class="form-control">
+              <option value="">-- เลือก --</option>
+              <option>ผู้ปกครอง</option>
+              <option>นักเรียน</option>
+              <option>อื่นๆ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="req" data-i18n="label_phone">โทรศัพท์</label>
+            <input type="tel" class="form-control" placeholder="08XXXXXXXX">
+          </div>
+          <div class="form-group">
+            <label class="req" data-i18n="label_subject_req">วิชาที่ต้องการหาติวเตอร์</label>
+            <select class="form-control">
+              <option value="">-- เลือกวิชา --</option>
+              <option>คณิตศาสตร์</option>
+              <option>วิทยาศาสตร์</option>
+              <option>ฟิสิกส์</option>
+              <option>เคมี</option>
+              <option>ชีววิทยา</option>
+              <option>ภาษาอังกฤษ</option>
+              <option>ภาษาไทย</option>
+              <option>สังคมศึกษา</option>
+              <option>ภาษาจีน</option>
+              <option>วิชาอื่นๆ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="req" data-i18n="label_tutor_gender">เพศติวเตอร์</label>
+            <select class="form-control">
+              <option value="">-- ไม่ระบุเพศ --</option>
+              <option>ติวเตอร์ชาย</option>
+              <option>ติวเตอร์หญิง</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_std_level">ระดับชั้นของนักเรียน</label>
+            <select class="form-control">
+              <option value="">-- เลือกระดับชั้น --</option>
+              <option>อนุบาล</option>
+              <option>ประถมศึกษา (ป.1-ป.6)</option>
+              <option>มัธยมศึกษาตอนต้น (ม.1-ม.3)</option>
+              <option>มัธยมศึกษาตอนปลาย (ม.4-ม.6)</option>
+              <option>มหาวิทยาลัย</option>
+              <option>ผู้ใหญ่</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="req" data-i18n="label_location_req">สถานที่สอน</label>
+            <input type="text" class="form-control" placeholder="เช่น บ้าน, คาเฟ่, สาธารณะ, Online" data-i18n="ph_location">
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_loc_detail">ตำแหน่งสถานที่สอน (ใกล้ BTS/MRT/ถนน)</label>
+            <input type="text" class="form-control" placeholder="เช่น ใกล้ BTS อารีย์, ถนนสุขุมวิท" data-i18n="ph_loc_detail">
+          </div>
+          <div class="form-group">
+            <label class="req" data-i18n="label_time_req">วัน-เวลา ที่สะดวกเรียน</label>
+            <input type="text" class="form-control" placeholder="เช่น เสาร์ 13.00-15.00 น., จันทร์-พุธ 17.00-19.00 น." data-i18n="ph_time_req">
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_budget">งบประมาณค่าสอน/ชั่วโมง</label>
+            <input type="text" class="form-control" placeholder="เช่น 200-300 บาท/ชั่วโมง" data-i18n="ph_budget">
+          </div>
+          <div class="form-group" style="align-items:flex-start;">
+            <label data-i18n="label_more_detail">รายละเอียดเพิ่มเติม</label>
+            <textarea class="form-control" placeholder="เช่น ติวสอบเข้า, ติวเนื้อหาโรงเรียน, สนใจผลงานติวเตอร์เป็นต้น" data-i18n="ph_more_detail"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" data-i18n="btn_submit_find">ส่งข้อมูลหาติวเตอร์</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="float-chat">
+    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
+    <div class="chat-label">สอบถามโปรโมชั่น คลิก</div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4 data-i18n="footer_col1_title">มุ่งเรียน</h4>
+        <ul>
+          <li data-i18n="footer_col1_li1">🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
+          <li><span data-i18n="footer_col1_li2">📍 ทำเลศักยภาพ: </span><a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
+          <li>📧 info@มุ่งเรียน.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col2_title">สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html" data-i18n="footer_col2_li1">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="#" data-i18n="footer_col2_li2">คอร์สสอนยอดนิยม</a></li>
+          <li><a href="webboard.html" data-i18n="footer_col2_li3">Webboard / ความรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col3_title">สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html" data-i18n="footer_col3_li1">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html" data-i18n="footer_col3_li2">ดูรายการงานสอน</a></li>
+          <li><a href="#" data-i18n="footer_col3_li3">สิ่งที่ติวเตอร์ควรรู้</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer_col4_title">ติดต่อเรา</h4>
+        <ul>
+          <li>Facebook: facebook.com/มุ่งเรียน</li>
+          <li>Line ID: @มุ่งเรียน</li>
+          <li>📞 02-XXX-XXXX</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+
