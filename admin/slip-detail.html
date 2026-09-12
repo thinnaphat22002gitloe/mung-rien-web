@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตรวจสลิป SLIP-2603-03 | มุ่งเรียน Admin Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/translator.css">
+<link rel="stylesheet" href="../css/panel.css">
+<style>
+.slip-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) 1fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .slip-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+</head>
+<body class="admin-body">
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-cap"></use></svg></div>
+      <div>
+        <div class="logo-text">มุ่ง<span>เรียน</span></div>
+        <div class="logo-tag">ศูนย์บริหารจัดการสารสนเทศ (Admin Console)</div>
+      </div>
+    </a>
+    <div class="panel-user-nav">
+      <!-- Language Switcher TH | EN -->
+      <div class="lang-switch-wrap panel-lang-switch" title="เลือกภาษา / Change Language">
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+            <span>🇹🇭</span> TH
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+            <span>🇬🇧</span> EN
+          </button>
+        </div>
+      </div>
+
+      <span style="font-size:13px; color:#64748B;">ผู้ดูแล: <strong>Administrator</strong></span>
+      <a href="manage-notifications.html" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px;" title="ระบบแจ้งเตือน">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน <span style="color:#EF4444; font-weight:700;">(5)</span>
+      </a>
+      <a href="../index.html" class="btn btn-outline btn-sm" target="_blank">🌐 ดูหน้าเว็บไซต์</a>
+      <a href="../login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <h3><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ระบบสารสนเทศ</h3>
+    <ul class="admin-menu">
+      <li class="menu-sec">ภาพรวมและรายงาน</li>
+      <li><a href="dashboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> แดชบอร์ดสรุปผล</a></li>
+      <li><a href="revenue.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
+
+      <li class="menu-sec">การจัดสรรและธุรกรรม</li>
+      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
+      <li><a href="manage-slips.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+
+      <li class="menu-sec">บุคลากรทางการศึกษา</li>
+      <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
+      <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
+
+      <li class="menu-sec">การสื่อสารและสมาชิก</li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
+
+      <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
+      <li><a href="home-content.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-categories.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
+
+      <li class="menu-sec">การจัดการระบบ</li>
+      <li><a href="settings.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ตั้งค่าระบบสารสนเทศ</a></li>
+      <li><a href="javascript:void(0)" onclick="alert('📥 ส่งออกข้อมูล Excel ทั้งหมดเรียบร้อย')" style="color:#059669; font-weight:600;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> 📥 ส่งออก Excel ทั้งหมด</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <div>
+        <h2>
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> SLIP-2603-03
+          <span id="slipBadge" class="badge badge-pending">รอเจ้าหน้าที่ตรวจ</span>
+        </h2>
+      </div>
+      <a href="manage-slips.html" class="btn btn-primary btn-sm">← กลับ</a>
+    </div>
+
+    <div class="slip-grid">
+      <div class="panel-card" style="margin-bottom:0; text-align:center;">
+        <div style="background:#F1F5F9; border:1px solid var(--gray-border); border-radius:8px; padding:24px 16px; min-height:360px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:16px; width:100%; max-width:260px; box-shadow:0 4px 10px rgba(0,0,0,0.05); text-align:center;">
+            <div style="color:#059669; font-weight:700; font-size:16px; margin-bottom:8px;">โอนเงินสำเร็จ</div>
+            <div style="font-size:24px; font-weight:700; color:#0F172A; margin-bottom:12px;">฿5,400.00</div>
+            <div style="font-size:11.5px; color:#64748B; line-height:1.6; text-align:left; border-top:1px dashed #CBD5E1; padding-top:10px;">
+              <div><strong>จาก:</strong> นายสมชาย เก่งเรียน</div>
+              <div><strong>เข้า:</strong> สถาบันมุ่งเรียน (KBANK)</div>
+              <div><strong>วันเวลา:</strong> 12/03/2026 14:15 น.</div>
+              <div><strong>เลขอ้างอิง:</strong> 014072142512391280</div>
+            </div>
+            <div style="margin-top:14px; background:#F8FAFC; border:1px solid #E2E8F0; padding:10px; border-radius:6px; font-size:11px; color:#475569;">
+              [QR PromptPay Verified ✓]
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--secondary); margin-top:8px;">รูปภาพสลิปที่แนบมาจากระบบ LINE OA</p>
+      </div>
+
+      <div>
+        <div class="panel-card">
+          <h3 style="font-size:16px; margin-bottom:10px;">ข้อมูลที่อ่านได้</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th style="width:38%;">คะแนนความน่าเชื่อถือ</th><td><strong style="color:#D97706;">85/100</strong></td></tr>
+              <tr><th>ยอดเงิน</th><td><strong>5,400.00 บาท</strong></td></tr>
+              <tr><th>วันเวลา</th><td>12/03/2026 14:15 น.</td></tr>
+              <tr><th>ผู้โอน</th><td>นายสมชาย เก่งเรียน (KBANK)<br><small>xxx-x-x8912-x</small></td></tr>
+              <tr><th>ผู้รับ</th><td>บจก. มุ่งเรียน เอ็ดดูเคชั่น (KBANK)<br><small>142-8-99210-4</small></td></tr>
+              <tr><th>ธนาคาร (ผู้ออกสลิป)</th><td>กสิกรไทย (KBANK)</td></tr>
+              <tr><th>เลขที่อ้างอิง</th><td style="font-size:13px;">014072142512391280</td></tr>
+              <tr><th>พบ QR บนสลิป</th><td><span class="badge badge-success">พบ — อ่านจาก QR</span></td></tr>
+              <tr><th>ที่มา</th><td>LINE OA — Somchai K.</td></tr>
+              <tr><th>รับเมื่อ</th><td>12/03/2026 14:15</td></tr>
+            </table>
+          </div>
+          <div style="background:#FEF3C7; border-left:4px solid #D97706; border-radius:6px; padding:10px 14px; margin-top:10px; font-size:13px; color:#92400E;">
+            ⚠️ แจ้งเตือน: สลิปนี้มียอดตรงกับงาน JOB-0911 (นางสาวธิดารัตน์ แซ่ลี้ - 5,400 บาท) โปรดตรวจสอบก่อนกดอนุมัติ
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <h3 style="font-size:16px; margin-bottom:10px;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> บันทึกเป็นธุรกรรมรับเงิน</h3>
+          <form onsubmit="event.preventDefault(); alert('✅ บันทึกสลิปเป็นธุรกรรมรับเงินของงาน JOB-0911 เรียบร้อย!'); location.href='manage-jobs.html';" style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+            <select name="job" class="form-control" style="max-width:420px;" required>
+              <option value="">— เลือกงาน (Inquiry) —</option>
+              <option value="JOB-0911" selected>JOB-0911 · นางสาวธิดารัตน์ แซ่ลี้ · รอชำระเงิน · ฿5,400.00</option>
+              <option value="JOB-0910">JOB-0910 · น้องกานต์ วงศ์สว่าง · กำลังคัดเลือก · ฿4,000.00</option>
+              <option value="JOB-0912">JOB-0912 · ด.ช.ภูริภัทร ใจดี · เริ่มสอนแล้ว · ฿5,000.00</option>
+            </select>
+            <button type="submit" class="btn btn-success btn-sm">บันทึกรับเงิน 5,400.00 บาท</button>
+          </form>
+          <p style="font-size:12.5px; color:var(--secondary); margin-top:8px;">
+            ใช้ยอดจากสลิป (ถ้าอ่านไม่ได้จะใช้ยอดรวมของงาน) · ค่าธรรมเนียมแพลตฟอร์ม 20% แก้ไขทีหลังได้ในหน้าธุรกรรม · สถานะงานจะเปลี่ยนเป็น "จับคู่สำเร็จ" อัตโนมัติ
+          </p>
+        </div>
+
+        <div class="panel-card" style="margin-bottom:0;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-success btn-sm" onclick="document.getElementById('slipBadge').className='badge badge-success'; document.getElementById('slipBadge').textContent='อนุมัติแล้ว'; alert('✓ อนุมัติสลิปเรียบร้อย');">✓ อนุมัติ</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="document.getElementById('slipBadge').className='badge badge-danger'; document.getElementById('slipBadge').textContent='ปฏิเสธ'; alert('✕ ปฏิเสธสลิปเรียบร้อย');">ปฏิเสธ</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="if(confirm('ลบสลิปนี้?')) location.href='manage-slips.html';">ลบสลิป</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

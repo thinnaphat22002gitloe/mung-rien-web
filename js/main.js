@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('.nav-menu');
   if (toggle && menu) {
     toggle.addEventListener('click', () => menu.classList.toggle('open'));
   }
 
-  // Tabs system
   const tabBtns = document.querySelectorAll('.tab-btn');
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -20,17 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Form submit mock alert
-  const forms = document.querySelectorAll('form');
-  forms.forEach(f => {
-    if (f.dataset.noAlert) return;
-    f.addEventListener('submit', e => {
-      e.preventDefault();
-      alert('✅ บันทึกข้อมูลสำเร็จ (Mock: Frontend only)');
-    });
-  });
-
-  // Delete confirm
   document.querySelectorAll('.btn-delete, [data-confirm]').forEach(el => {
     el.addEventListener('click', e => {
       const msg = el.dataset.confirm || 'ยืนยันการดำเนินการนี้?';
@@ -38,15 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Contact team buttons mock
-  document.querySelectorAll('.chat-btn, a[data-i18n="topbar_contact"]').forEach(el => {
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      alert('💬 เปิดหน้าต่างแชทกับทีมงาน Line ID: @มุ่งเรียน (Mockup)');
-    });
-  });
-
-  // Hero Slider (Announcements Carousel)
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.querySelector('.prev-arrow');
@@ -54,44 +32,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (slides.length > 0) {
     let currentSlide = 0;
-    let slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    let slideInterval = setInterval(nextSlide, 5000);
 
     function showSlide(index) {
       slides.forEach(s => s.classList.remove('active'));
       dots.forEach(d => d.classList.remove('active'));
-
       currentSlide = (index + slides.length) % slides.length;
       slides[currentSlide].classList.add('active');
       if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     }
 
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      showSlide(currentSlide - 1);
-    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
 
     if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetTimer();
-      });
+      nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
     }
-
     if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetTimer();
-      });
+      prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
     }
-
     dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        showSlide(idx);
-        resetTimer();
-      });
+      dot.addEventListener('click', () => { showSlide(idx); resetTimer(); });
     });
 
     function resetTimer() {
@@ -99,5 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
       slideInterval = setInterval(nextSlide, 5000);
     }
   }
-});
 
+  // Close details.acc-menu on click outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('details.acc-menu')) {
+      document.querySelectorAll('details.acc-menu[open]').forEach(d => d.removeAttribute('open'));
+    }
+  });
+});

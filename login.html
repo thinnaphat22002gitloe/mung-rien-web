@@ -4,103 +4,428 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>เข้าสู่ระบบ | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/translator.css">
+  <style>
+    :root {
+      --font-family: 'Prompt', 'Plus Jakarta Sans', 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: var(--font-family) !important;
+    }
+    .auth-main-wrap {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+      background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 45%),
+                  linear-gradient(180deg, #F8FAFC 0%, #EEF2F6 100%);
+    }
+    .auth-split-container {
+      width: 100%;
+      max-width: 860px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08), 0 6px 14px -4px rgba(15, 23, 42, 0.03);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.95fr 1.15fr;
+      transition: all 0.3s ease;
+    }
+    .auth-showcase-panel {
+      background: linear-gradient(145deg, #0B132B 0%, #1E3A8A 55%, #2563EB 100%);
+      padding: 32px 28px;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .showcase-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .showcase-logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .showcase-brand-text {
+      font-size: 19px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .showcase-brand-text span {
+      color: #FCD34D;
+    }
+    .showcase-heading {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 10px;
+      color: #FFFFFF;
+    }
+    .showcase-desc {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0 0 20px;
+    }
+    .showcase-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .showcase-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 9px 13px;
+      border-radius: 11px;
+      font-size: 13px;
+      color: #F8FAFC;
+    }
+    .feature-icon-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .showcase-student-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 13px;
+      padding: 13px 15px;
+    }
+    .showcase-student-box-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #FEF08A;
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-student-box-text {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+    .showcase-student-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      color: #1E3A8A;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .auth-form-panel {
+      padding: 34px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #FFFFFF;
+    }
+    .form-panel-header {
+      margin-bottom: 20px;
+    }
+    .form-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
+    .form-panel-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 0 0 4px;
+    }
+    .form-panel-sub {
+      font-size: 13px;
+      color: #64748B;
+      margin: 0;
+    }
+    .auth-form-panel .form-group {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      margin-bottom: 16px !important;
+      width: 100% !important;
+    }
+    .auth-form-panel .form-group label {
+      display: block !important;
+      width: 100% !important;
+      text-align: left !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: #334155 !important;
+      margin-bottom: 6px !important;
+    }
+    .auth-form-panel .form-group label.req::after {
+      content: " *" !important;
+      color: #EF4444 !important;
+      font-weight: bold !important;
+    }
+    .auth-form-panel .form-control {
+      width: 100% !important;
+      height: 46px !important;
+      padding: 10px 14px !important;
+      border: 1.5px solid #CBD5E1 !important;
+      border-radius: 10px !important;
+      font-size: 14.5px !important;
+      color: #0F172A !important;
+      background-color: #F8FAFC !important;
+      box-sizing: border-box !important;
+      font-family: inherit !important;
+    }
+    .auth-form-panel .form-control:focus {
+      outline: none !important;
+      border-color: #2563EB !important;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14) !important;
+      background-color: #FFFFFF !important;
+    }
+    .btn-submit-auth {
+      width: 100% !important;
+      height: 46px !important;
+      padding: 10px 18px !important;
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%) !important;
+      color: #FFFFFF !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      border: none !important;
+      border-radius: 10px !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-submit-auth:hover {
+      background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%) !important;
+      transform: translateY(-1px) !important;
+    }
+    @media (max-width: 860px) {
+      .auth-split-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+      .auth-showcase-panel {
+        padding: 24px 20px;
+      }
+      .auth-form-panel {
+        padding: 26px 20px 30px;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="#" data-i18n="topbar_contact">✆ ติดต่อทีมงาน</a>
-      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
-        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
-        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <!-- Language Switcher TH | EN -->
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>บัญชี ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> เข้าสู่ระบบ</a>
+            <a href="register.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> สมัครเป็นติวเตอร์</a>
+          </div>
+        </details>
       </div>
     </div>
   </div>
 
+  <!-- Main Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">🎓</div>
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
         <div>
           <div class="logo-text">มุ่ง<span>เรียน</span></div>
-          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+          <div class="logo-tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
         </div>
       </a>
       <button class="nav-toggle" aria-label="menu">☰</button>
       <ul class="nav-menu">
-        <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
-        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
-        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
-        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
-        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="jobs.html">ประกาศงานสอน</a></li>
+        <li><a href="student.html">สำหรับนักเรียน</a></li>
+        <li><a href="register.html">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html">Webboard</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
       </ul>
     </div>
   </nav>
 
-  <div class="auth-wrap">
-    <div class="auth-box">
-      <div style="text-align:center; margin-bottom:20px;">
-        <div style="display:inline-flex; align-items:center; gap:10px; font-size:22px; font-weight:bold;">
-          <div style="width:50px; height:50px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px;">🎓</div>
-          MU <span style="color:var(--accent);">PRIVATE TUTOR</span>
+  <div class="auth-main-wrap">
+    <div class="auth-split-container">
+      
+      <!-- LEFT PANEL: Brand Showcase -->
+      <div class="auth-showcase-panel">
+        <div>
+          <div class="showcase-brand">
+            <div class="showcase-logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
+            <div class="showcase-brand-text">มุ่ง<span>เรียน</span></div>
+          </div>
+          <h2 class="showcase-heading">ศูนย์รวมการเรียนรู้ และติวเตอร์คุณภาพ</h2>
+          <p class="showcase-desc">ระบบสารสนเทศเพื่อการศึกษา เชื่อมต่อติวเตอร์ผู้เชี่ยวชาญกับผู้เรียนที่มุ่งมั่นสู่ความสำเร็จ</p>
+          <div class="showcase-features">
+            <div class="showcase-feature-item">
+              <div class="feature-icon-badge">⚡</div>
+              <span>รับงานสอนทั้ง Online และ On-site ทั่วประเทศ</span>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="feature-icon-badge">🛡️</div>
+              <span>ระบบคัดกรองและบริหารจัดการ ปลอดภัย ได้มาตรฐาน</span>
+            </div>
+            <div class="showcase-feature-item">
+              <div class="feature-icon-badge">📊</div>
+              <span>แดชบอร์ดสรุปผลงาน ประวัติ และสถิติ Real-time</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-student-box">
+          <div class="showcase-student-box-title">💡 สำหรับนักเรียนและผู้ปกครอง</div>
+          <p class="showcase-student-box-text">
+            ต้องการหาติวเตอร์สอนพิเศษ ไม่ต้องเข้าสู่ระบบ สามารถแจ้งข้อมูลเพื่อให้เจ้าหน้าที่จัดสรรได้ทันที
+          </p>
+          <a href="student.html" class="showcase-student-link">แจ้งหาติวเตอร์ได้ที่นี่ →</a>
         </div>
       </div>
 
-      <h2 class="auth-title" data-i18n="auth_login_title">เข้าสู่ระบบ</h2>
-      <p class="auth-sub" data-i18n="auth_login_sub">สำหรับติวเตอร์และผู้ดูแลระบบ</p>
-
-      <form data-no-alert onsubmit="event.preventDefault(); alert('✅ เข้าสู่ระบบสำเร็จ (Mock)'); location.href='admin/dashboard.html';">
-        <div class="form-group">
-          <label data-i18n="label_role">ประเภทผู้ใช้งาน</label>
-          <select class="form-control" id="roleSelect">
-            <option value="tutor" data-i18n="role_tutor">ติวเตอร์ (Tutor)</option>
-            <option value="admin" data-i18n="role_admin">ผู้ดูแลระบบ (Admin)</option>
-          </select>
+      <!-- RIGHT PANEL: Login Form -->
+      <div class="auth-form-panel">
+        <div class="form-panel-header">
+          <div class="form-badge-pill">🔐 พอร์ทัลเข้าสู่ระบบ</div>
+          <h1 class="form-panel-title">เข้าสู่ระบบ</h1>
+          <p class="form-panel-sub">สำหรับติวเตอร์และสมาชิกผู้ใช้งาน</p>
         </div>
 
-        <div class="form-group">
-          <label class="req" data-i18n="label_email">อีเมล (E-Mail)</label>
-          <input type="email" class="form-control" placeholder="your@email.com" required data-i18n="ph_email">
-        </div>
+        <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label class="req">อีเมล / ชื่อผู้ใช้</label>
+            <input id="usernameInput" type="text" class="form-control" placeholder="ชื่อผู้ใช้ หรือ email@domain.com" required value="">
+          </div>
 
-        <div class="form-group">
-          <label class="req" data-i18n="label_pass">รหัสผ่าน (Password)</label>
-          <input type="password" class="form-control" placeholder="********" required data-i18n="ph_pass">
-        </div>
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 6px;">
+              <label class="req" style="margin-bottom: 0 !important;">รหัสผ่าน (Password)</label>
+              <button type="button" onclick="togglePasswordVisibility()" style="background:none; border:none; color:#2563EB; font-size:12px; cursor:pointer; font-weight:600;">แสดงรหัส</button>
+            </div>
+            <input id="passwordInput" type="password" class="form-control" placeholder="••••••••" required value="">
+          </div>
 
-        <div class="form-group" style="grid-template-columns:auto 1fr; gap:8px;">
-          <input type="checkbox" id="remember" style="margin:0;">
-          <label for="remember" style="text-align:left; font-weight:normal; font-size:14px;" data-i18n="label_remember">จดจำการเข้าสู่ระบบ</label>
-        </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; font-size: 13.5px; width: 100%;">
+            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; color: #475569;">
+              <input type="checkbox" checked>
+              <span>จดจำการเข้าสู่ระบบ</span>
+            </label>
+            <a href="forgot-password.html" style="color: #2563EB; text-decoration: none; font-weight: 600;">ลืมรหัสผ่าน?</a>
+          </div>
 
-        <div class="auth-links">
-          <a href="forgot-password.html" data-i18n="link_forgot">ลืมรหัสผ่าน?</a>
-          <a href="register.html" data-i18n="link_register_new">สมัครติวเตอร์ใหม่</a>
-        </div>
+          <button type="submit" class="btn-submit-auth">
+            <span>เข้าสู่ระบบ</span> →
+          </button>
+        </form>
 
-        <button type="submit" class="btn btn-yellow" data-i18n="btn_login_submit">เข้าสู่ระบบ</button>
-      </form>
-
-      <div style="margin-top:25px; padding-top:20px; border-top:1px solid var(--gray-border); text-align:center;">
-        <p style="font-size:13px; color:var(--secondary); margin-bottom:12px;" data-i18n="social_login_text">หรือเข้าสู่ระบบด้วย</p>
-        <div style="display:flex; justify-content:center; gap:10px;">
-          <button type="button" class="btn btn-outline btn-sm" style="border-color:#1877F2; color:#1877F2;">📘 Facebook</button>
-          <button type="button" class="btn btn-outline btn-sm" style="border-color:#06C755; color:#06C755;">🟢 Line</button>
-          <button type="button" class="btn btn-outline btn-sm" style="border-color:#4285F4; color:#4285F4;">🔍 Google</button>
+        <div style="text-align: center; font-size: 14px; color: #64748B; margin-top: 20px;">
+          <div style="margin-bottom: 10px;">
+            ยังไม่มีบัญชีติวเตอร์? <a href="register.html" style="color: #2563EB; font-weight: 600; text-decoration: none;">สมัครเป็นติวเตอร์ที่นี่</a>
+          </div>
+          <div>
+            <a href="index.html" style="color: #94A3B8; font-size: 13px; text-decoration: none;">← กลับสู่หน้าหลัก</a>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <footer class="footer" style="margin-top:0;">
-    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+  <footer class="footer">
+    <div class="copyright">© 2026 มุ่งเรียน. All rights reserved.</div>
   </footer>
 
-  <script src="js/lang.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    function togglePasswordVisibility() {
+      const pwd = document.getElementById('passwordInput');
+      pwd.type = pwd.type === 'password' ? 'text' : 'password';
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const u = document.getElementById('usernameInput').value.toLowerCase();
+      let redirectTarget = 'tutor-profile.html';
+      if (u.includes('admin')) {
+        redirectTarget = 'admin/dashboard.html';
+      } else if (u.includes('student')) {
+        redirectTarget = 'student-profile.html';
+      } else {
+        redirectTarget = 'tutor-profile.html';
+      }
+      window.location.href = redirectTarget;
+    }
+  </script>
 </body>
 </html>
-
-
-

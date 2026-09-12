@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เป็นติวเตอร์กับเรา (อัปเกรดบัญชี) | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <!-- Language Switcher TH | EN -->
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>น.ส. นพมาศ ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="student-profile.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-user"></use></svg> บัญชีของฉัน</a>
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> ออกจากระบบ</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="jobs.html">ประกาศงานสอน</a></li>
+        <li><a href="student.html">สำหรับนักเรียน</a></li>
+        <li><a href="register.html">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html">Webboard</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<section class="section" style="padding: 40px 16px;">
+  <div class="container" style="max-width: 760px;">
+    <div style="text-align:center; margin-bottom: 24px;">
+      <h2 class="section-title" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+        <svg class="ic" aria-hidden="true" style="width:28px;height:28px;"><use href="icons.svg#ic-teacher"></use></svg>
+        เป็นติวเตอร์กับเรา (อัปเกรดบัญชี)
+      </h2>
+      <p class="section-sub" style="color:var(--secondary); font-size:14.5px; margin-top:6px;">
+        กรอกข้อมูลประวัติการศึกษาและวิชาที่ต้องการสอนเพิ่มเติม เพื่อเปิดรับงานสอนพิเศษกับมุ่งเรียน
+      </p>
+    </div>
+
+    <div style="background:var(--light); border:1px solid var(--gray-border); border-radius:12px; padding:28px; box-shadow:0 4px 16px rgba(0,0,0,0.04);">
+      <form onsubmit="handleUpgrade(event)">
+        <div class="form-section-title" style="font-size:16px; font-weight:700; color:#1E3A8A; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid var(--gray-border);">
+          1. ข้อมูลส่วนตัวเพิ่มเติม
+        </div>
+
+        <div style="display:grid; grid-template-columns:120px 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">คำนำหน้า <span style="color:var(--danger);">*</span></label>
+            <select class="form-control" required>
+              <option>นาย</option>
+              <option>นางสาว</option>
+              <option>นาง</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ชื่อเล่น / นามแฝงสอน <span style="color:var(--danger);">*</span></label>
+            <input type="text" class="form-control" placeholder="เช่น ครูพี่นนท์" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">เพศสภาพ</label>
+          <div style="display:flex; gap:24px; padding-top:4px;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="radio" name="gender" value="male" checked> ชาย</label>
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="radio" name="gender" value="female"> หญิง</label>
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="radio" name="gender" value="other"> อื่นๆ / ไม่ระบุ</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">ที่อยู่ / พื้นที่พักอาศัยปัจจุบัน</label>
+          <input type="text" class="form-control" placeholder="เช่น จตุจักร กรุงเทพฯ">
+        </div>
+
+        <div class="form-section-title" style="font-size:16px; font-weight:700; color:#1E3A8A; margin:24px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--gray-border);">
+          2. ข้อมูลการศึกษา (Education)
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1.5fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">ระดับการศึกษาสูงสุด <span style="color:var(--danger);">*</span></label>
+            <select class="form-control" required>
+              <option>กำลังศึกษาระดับปริญญาตรี</option>
+              <option>จบการศึกษาระดับปริญญาตรี</option>
+              <option>ปริญญาโท</option>
+              <option>ปริญญาเอก</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">มหาวิทยาลัย / สถาบันการศึกษา <span style="color:var(--danger);">*</span></label>
+            <input type="text" class="form-control" placeholder="เช่น จุฬาลงกรณ์มหาวิทยาลัย" required>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:2fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">คณะ / สาขาวิชา <span style="color:var(--danger);">*</span></label>
+            <input type="text" class="form-control" placeholder="เช่น วิศวกรรมศาสตร์ ภาคคอมพิวเตอร์" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">เกรดเฉลี่ยสะสม (GPAX)</label>
+            <input type="text" class="form-control" placeholder="เช่น 3.75">
+          </div>
+        </div>
+
+        <div class="form-section-title" style="font-size:16px; font-weight:700; color:#1E3A8A; margin:24px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--gray-border);">
+          3. วิชาและประสบการณ์สอน (Teaching Info)
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">วิชาที่สะดวกสอน <span style="color:var(--danger);">*</span> (เลือกได้หลายวิชา)</label>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:12px; border-radius:8px;">
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;"><input type="checkbox" checked> คณิตศาสตร์ ม.ต้น/ปลาย</label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;"><input type="checkbox"> ฟิสิกส์</label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;"><input type="checkbox"> เคมี</label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;"><input type="checkbox"> ชีววิทยา</label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;"><input type="checkbox"> ภาษาอังกฤษ / สนทนา</label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;"><input type="checkbox"> ภาษาไทย / สังคม</label>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">ประสบการณ์การสอน (ปี)</label>
+            <input type="number" class="form-control" value="2" min="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label">เรทสอนที่ต้องการ (บาท/ชม.) <span style="color:var(--danger);">*</span></label>
+            <input type="number" class="form-control" value="400" min="200" step="50" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">เทคนิคการสอนและแนะนำตัวเพิ่มเติม</label>
+          <textarea class="form-control" rows="3" placeholder="แนะนำรูปแบบการสอน จุดเด่น และเทคนิคในการสอนผู้เรียน"></textarea>
+        </div>
+
+        <div style="margin-top:24px; display:flex; gap:12px;">
+          <button type="submit" class="btn btn-primary" style="flex:1; height:44px; font-size:15px; font-weight:600;">
+            ✓ ยืนยันการอัปเกรดเป็นติวเตอร์
+          </button>
+          <a href="student-profile.html" class="btn btn-outline" style="line-height:44px; text-align:center; padding:0 20px;">
+            ยกเลิก
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="copyright">© 2026 มุ่งเรียน. All rights reserved.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+  function handleUpgrade(e) {
+    e.preventDefault();
+    alert('✓ อัปเกรดบัญชีของท่านเป็นติวเตอร์สำเร็จ! ข้อมูลถูกส่งเข้าสู่ระบบตรวจสอบติวเตอร์แล้ว');
+    window.location.href = 'tutor-profile.html';
+  }
+</script>
+
+</body>
+</html>

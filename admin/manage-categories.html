@@ -1,364 +1,192 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>จัดการหมวดหมู่ - Admin | มุ่งเรียน</title>
-  <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จัดการหมวดหมู่ | มุ่งเรียน Admin Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/translator.css">
+<link rel="stylesheet" href="../css/panel.css">
+<style>
+.cat-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .cat-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
 </head>
-<body>
+<body class="admin-body">
 
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="../index.html" class="logo">
-        <div class="logo-icon">🎓</div>
-        <div>
-          <div class="logo-text">มุ่ง<span>เรียน</span></div>
-          <div class="logo-tag">Admin Panel</div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-cap"></use></svg></div>
+      <div>
+        <div class="logo-text">มุ่ง<span>เรียน</span></div>
+        <div class="logo-tag">ศูนย์บริหารจัดการสารสนเทศ (Admin Console)</div>
+      </div>
+    </a>
+    <div class="panel-user-nav">
+      <!-- Language Switcher TH | EN -->
+      <div class="lang-switch-wrap panel-lang-switch" title="เลือกภาษา / Change Language">
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+            <span>🇹🇭</span> TH
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+            <span>🇬🇧</span> EN
+          </button>
         </div>
+      </div>
+
+      <span style="font-size:13px; color:#64748B;">ผู้ดูแล: <strong>Administrator</strong></span>
+      <a href="manage-notifications.html" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px;" title="ระบบแจ้งเตือน">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน <span style="color:#EF4444; font-weight:700;">(5)</span>
       </a>
-      <div style="display:flex; align-items:center; gap:15px;">
-        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
-          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
-          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
-        </div>
-        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
-        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      <a href="../index.html" class="btn btn-outline btn-sm" target="_blank">🌐 ดูหน้าเว็บไซต์</a>
+      <a href="../login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <h3><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ระบบสารสนเทศ</h3>
+    <ul class="admin-menu">
+      <li class="menu-sec">ภาพรวมและรายงาน</li>
+      <li><a href="dashboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> แดชบอร์ดสรุปผล</a></li>
+      <li><a href="revenue.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
+
+      <li class="menu-sec">การจัดสรรและธุรกรรม</li>
+      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
+      <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+
+      <li class="menu-sec">บุคลากรทางการศึกษา</li>
+      <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
+      <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
+
+      <li class="menu-sec">การสื่อสารและสมาชิก</li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
+
+      <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
+      <li><a href="home-content.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-categories.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
+
+      <li class="menu-sec">การจัดการระบบ</li>
+      <li><a href="settings.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ตั้งค่าระบบสารสนเทศ</a></li>
+      <li><a href="javascript:void(0)" onclick="alert('📥 ส่งออกข้อมูล Excel ทั้งหมดเรียบร้อย')" style="color:#059669; font-weight:600;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> 📥 ส่งออก Excel ทั้งหมด</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</h2>
+        <p style="color:var(--secondary); font-size:14px;">หมวดหมู่ที่เปิดใช้จะแสดงในฟอร์มนักเรียน / ฟอร์มสมัครติวเตอร์ / ตัวกรองงานสอน</p>
       </div>
     </div>
-  </nav>
 
-  <div class="admin-layout">
-    <aside class="admin-sidebar">
-      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
-      <ul class="admin-menu">
-        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
-        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
-        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
-        <li><a href="manage-users.html" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
-        <li><a href="manage-categories.html" class="active" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
-        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
-        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
-        <li><a href="settings.html" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
-      </ul>
-    </aside>
-
-    <main class="admin-content">
-      <div class="admin-header">
-        <div>
-          <h2>🏷️ จัดการหมวดหมู่</h2>
-          <p style="color:var(--secondary); font-size:14px;">จัดการหมวดหมู่และรายการย่อยสำหรับงานสอน</p>
+    <div class="cat-grid">
+      <div class="panel-card" style="margin-bottom:0;">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>ชื่อวิชา/หมวดหมู่</th>
+                <th>สถานะ</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td style="font-weight:600;">คณิตศาสตร์ (Mathematics)</td>
+                <td><span class="badge badge-success">เปิดใช้</span></td>
+                <td class="row-actions" style="white-space:nowrap;">
+                  <button type="button" onclick="alert('แก้ไขหมวดหมู่วิชา');" class="btn btn-outline btn-sm">แก้ไข</button>
+                  <button type="button" onclick="if(confirm('ลบหมวดหมู่นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td style="font-weight:600;">วิทยาศาสตร์ (Science / ฟิสิกส์ เคมี ชีวะ)</td>
+                <td><span class="badge badge-success">เปิดใช้</span></td>
+                <td class="row-actions" style="white-space:nowrap;">
+                  <button type="button" onclick="alert('แก้ไขหมวดหมู่วิชา');" class="btn btn-outline btn-sm">แก้ไข</button>
+                  <button type="button" onclick="if(confirm('ลบหมวดหมู่นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td style="font-weight:600;">ภาษาอังกฤษ (English / IELTS / TOEIC)</td>
+                <td><span class="badge badge-success">เปิดใช้</span></td>
+                <td class="row-actions" style="white-space:nowrap;">
+                  <button type="button" onclick="alert('แก้ไขหมวดหมู่วิชา');" class="btn btn-outline btn-sm">แก้ไข</button>
+                  <button type="button" onclick="if(confirm('ลบหมวดหมู่นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td style="font-weight:600;">ภาษาต่างประเทศอื่นๆ (จีน, ญี่ปุ่น, เกาหลี, ฝรั่งเศส)</td>
+                <td><span class="badge badge-success">เปิดใช้</span></td>
+                <td class="row-actions" style="white-space:nowrap;">
+                  <button type="button" onclick="alert('แก้ไขหมวดหมู่วิชา');" class="btn btn-outline btn-sm">แก้ไข</button>
+                  <button type="button" onclick="if(confirm('ลบหมวดหมู่นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td style="font-weight:600;">คอมพิวเตอร์และเขียนโปรแกรม (Coding / AI)</td>
+                <td><span class="badge badge-success">เปิดใช้</span></td>
+                <td class="row-actions" style="white-space:nowrap;">
+                  <button type="button" onclick="alert('แก้ไขหมวดหมู่วิชา');" class="btn btn-outline btn-sm">แก้ไข</button>
+                  <button type="button" onclick="if(confirm('ลบหมวดหมู่นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <div class="toolbar">
-        <div class="toolbar-search">
-          <input type="text" class="form-control" placeholder="🔍 ค้นหาชื่อหมวดหมู่ (ไทย/อังกฤษ)...">
-        </div>
-        <div class="toolbar-actions">
-          <button class="btn btn-yellow btn-sm">➕ เพิ่มหมวดหมู่</button>
-        </div>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>ชื่อหมวดหมู่ (ไทย)</th>
-              <th>ชื่อหมวดหมู่ (อังกฤษ)</th>
-              <th>รายการย่อย</th>
-              <th>ไอคอน</th>
-              <th>งานสอนที่เกี่ยวข้อง</th>
-              <th>สถานะ</th>
-              <th>ลำดับการแสดง</th>
-              <th style="width:140px;">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>CAT-001</strong></td>
-              <td>วิทย์-คณิต</td>
-              <td>Science-Math</td>
-              <td style="color:var(--accent); font-weight:600;">7 รายการ</td>
-              <td><span style="font-size:24px;">🔬</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">1,248</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">1</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-002</strong></td>
-              <td>ภาษา-สังคม</td>
-              <td>Language-Social</td>
-              <td style="color:var(--accent); font-weight:600;">6 รายการ</td>
-              <td><span style="font-size:24px;">📖</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">892</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">2</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-003</strong></td>
-              <td>ดนตรี-ศิลปะ</td>
-              <td>Music-Art</td>
-              <td style="color:var(--accent); font-weight:600;">5 รายการ</td>
-              <td><span style="font-size:24px;">🎨</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">425</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">3</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-004</strong></td>
-              <td>กีฬา</td>
-              <td>Sports</td>
-              <td style="color:var(--accent); font-weight:600;">4 รายการ</td>
-              <td><span style="font-size:24px;">⚽</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">312</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">4</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-005</strong></td>
-              <td>Programming</td>
-              <td>Programming</td>
-              <td style="color:var(--accent); font-weight:600;">8 รายการ</td>
-              <td><span style="font-size:24px;">💻</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">687</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">5</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-006</strong></td>
-              <td>ภาษาจีน</td>
-              <td>Chinese Language</td>
-              <td style="color:var(--accent); font-weight:600;">3 รายการ</td>
-              <td><span style="font-size:24px;">🇨🇳</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">215</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">6</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-007</strong></td>
-              <td>ภาษาญี่ปุ่น</td>
-              <td>Japanese Language</td>
-              <td style="color:var(--accent); font-weight:600;">3 รายการ</td>
-              <td><span style="font-size:24px;">🇯🇵</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">178</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">7</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-008</strong></td>
-              <td>เตรียมสอบเข้ามหาวิทยาลัย</td>
-              <td>University Entrance</td>
-              <td style="color:var(--accent); font-weight:600;">4 รายการ</td>
-              <td><span style="font-size:24px;">🎯</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">542</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">8</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-009</strong></td>
-              <td>ทักษะชีวิต</td>
-              <td>Life Skills</td>
-              <td style="color:var(--accent); font-weight:600;">2 รายการ</td>
-              <td><span style="font-size:24px;">🌟</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">89</strong></td>
-              <td><span style="background:#FEE2E2; color:#991B1B; padding:3px 10px; border-radius:12px; font-size:12px;">❌ ปิดใช้</span></td>
-              <td style="text-align:center;">9</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>CAT-010</strong></td>
-              <td>เสริมทักษะเด็กเล็ก</td>
-              <td>Early Childhood</td>
-              <td style="color:var(--accent); font-weight:600;">4 รายการ</td>
-              <td><span style="font-size:24px;">🧸</span></td>
-              <td style="text-align:center;"><strong style="color:var(--dark);">263</strong></td>
-              <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ เปิดใช้</span></td>
-              <td style="text-align:center;">10</td>
-              <td>
-                <div class="row-actions">
-                  <button class="btn btn-primary btn-sm">👁️ ดู</button>
-                  <button class="btn btn-yellow btn-sm">✏️ แก้ไข</button>
-                  <button class="btn btn-danger btn-sm">🗑️ ลบ</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:15px; margin-bottom:35px;">
-        <div style="font-size:14px; color:var(--secondary);">
-          แสดง <strong>1-10</strong> จากทั้งหมด <strong>10</strong> รายการ
-        </div>
-        <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">⏮️ แรก</button>
-          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">◀️ ก่อนหน้า</button>
-          <button class="btn btn-yellow btn-sm" style="padding:8px 14px;"><strong>1</strong></button>
-          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">ถัดไป ▶️</button>
-          <button class="btn btn-outline btn-sm" style="padding:8px 14px;">สุดท้าย ⏭️</button>
-        </div>
-      </div>
-
-      <div class="form-container">
-        <div class="form-section-title">📝 ฟอร์มเพิ่ม/แก้ไขหมวดหมู่</div>
-
-        <div class="form-group">
-          <label class="req">ชื่อหมวดหมู่ (ภาษาไทย)</label>
-          <input type="text" class="form-control" placeholder="เช่น วิทย์-คณิต">
-        </div>
-
-        <div class="form-group">
-          <label class="req">ชื่อหมวดหมู่ (ภาษาอังกฤษ)</label>
-          <input type="text" class="form-control" placeholder="เช่น Science-Math">
-        </div>
-
-        <div class="form-group">
-          <label>ไอคอนหมวดหมู่</label>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--primary); background:var(--primary); font-size:22px;">🔬</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">📖</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">🎨</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">⚽</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">💻</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">🇨🇳</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">🇯🇵</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">🎯</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">🌟</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">🧸</button>
-            <button type="button" style="padding:10px 15px; border-radius:8px; border:2px solid var(--gray-border); background:#fff; font-size:22px;">➕</button>
+      <div class="panel-card" style="margin-bottom:0;">
+        <h3 style="font-size:16px; margin-bottom:12px;">+ เพิ่มหมวดหมู่ใหม่</h3>
+        <form onsubmit="event.preventDefault(); alert('เพิ่มหมวดหมู่วิชาใหม่สำเร็จ!'); this.reset();">
+          <div class="form-group">
+            <label class="form-label">ชื่อหมวดหมู่วิชา</label>
+            <input type="text" class="form-control" placeholder="เช่น ศิลปะและการออกแบบ" required>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label class="req">ลำดับการแสดง</label>
-          <input type="number" class="form-control" value="11" min="1" style="max-width:150px;">
-        </div>
-
-        <div class="form-group">
-          <label class="req">สถานะ</label>
-          <div style="display:flex; gap:20px;">
-            <label style="display:flex; align-items:center; gap:6px; font-weight:normal;">
-              <input type="radio" name="status" checked>
-              <span>✅ เปิดใช้งาน</span>
-            </label>
-            <label style="display:flex; align-items:center; gap:6px; font-weight:normal;">
-              <input type="radio" name="status">
-              <span>❌ ปิดใช้งาน</span>
+          <div class="form-group">
+            <label class="form-label">ลำดับการแสดงผล</label>
+            <input type="number" class="form-control" value="6" required>
+          </div>
+          <div class="form-group">
+            <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer;">
+              <input type="checkbox" checked> เปิดใช้งานทันที
             </label>
           </div>
-        </div>
-
-        <div style="padding:20px; background:var(--gray-bg); border-radius:8px; margin:25px 0;">
-          <h4 style="margin-bottom:15px; color:var(--dark);">📋 รายการย่อยในหมวดหมู่ <small style="color:var(--secondary); font-weight:normal;">(สามารถเพิ่ม/แก้ไข/ลบได้)</small></h4>
-          <div style="display:grid; gap:10px;">
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <span style="background:var(--primary); color:var(--dark); padding:6px 14px; border-radius:6px; font-weight:600; min-width:40px; text-align:center;">1.</span>
-              <input type="text" class="form-control" placeholder="รายการย่อยที่ 1 เช่น คณิตศาสตร์" value="คณิตศาสตร์" style="flex:1; min-width:200px;">
-              <input type="text" class="form-control" placeholder="English" value="Mathematics" style="flex:1; min-width:150px;">
-              <button class="btn btn-danger btn-sm">🗑️</button>
-            </div>
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <span style="background:var(--primary); color:var(--dark); padding:6px 14px; border-radius:6px; font-weight:600; min-width:40px; text-align:center;">2.</span>
-              <input type="text" class="form-control" placeholder="รายการย่อยที่ 2" value="ฟิสิกส์" style="flex:1; min-width:200px;">
-              <input type="text" class="form-control" placeholder="English" value="Physics" style="flex:1; min-width:150px;">
-              <button class="btn btn-danger btn-sm">🗑️</button>
-            </div>
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <span style="background:var(--primary); color:var(--dark); padding:6px 14px; border-radius:6px; font-weight:600; min-width:40px; text-align:center;">3.</span>
-              <input type="text" class="form-control" placeholder="รายการย่อยที่ 3" value="เคมี" style="flex:1; min-width:200px;">
-              <input type="text" class="form-control" placeholder="English" value="Chemistry" style="flex:1; min-width:150px;">
-              <button class="btn btn-danger btn-sm">🗑️</button>
-            </div>
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <span style="background:var(--primary); color:var(--dark); padding:6px 14px; border-radius:6px; font-weight:600; min-width:40px; text-align:center;">4.</span>
-              <input type="text" class="form-control" placeholder="รายการย่อยที่ 4" value="ชีววิทยา" style="flex:1; min-width:200px;">
-              <input type="text" class="form-control" placeholder="English" value="Biology" style="flex:1; min-width:150px;">
-              <button class="btn btn-danger btn-sm">🗑️</button>
-            </div>
-            <button class="btn btn-outline btn-sm" style="max-width:200px;">➕ เพิ่มรายการย่อย</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>คำอธิบายหมวดหมู่</label>
-          <textarea class="form-control" placeholder="คำอธิบายรายละเอียดของหมวดหมู่นี้..."></textarea>
-        </div>
-
-        <div class="form-actions">
-          <button class="btn btn-primary">💾 บันทึกหมวดหมู่</button>
-          <button class="btn btn-outline" style="margin-left:10px;">🔄 รีเซ็ต</button>
-        </div>
+          <button type="submit" class="btn btn-primary">เพิ่มหมวดหมู่</button>
+        </form>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
+</div>
 
-  <script src="../js/lang.js"></script>
-  <script src="../js/main.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/i18n.js"></script>
 </body>
 </html>
-
-

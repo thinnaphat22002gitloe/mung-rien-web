@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>บัญชีของฉัน (นักเรียน) | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .sp-grid { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 840px) {
+      .sp-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <!-- Language Switcher TH | EN -->
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>น.ส. นพมาศ ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="student-profile.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-user"></use></svg> บัญชีของฉัน</a>
+            <a href="tutor-upgrade.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> เป็นติวเตอร์กับเรา</a>
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> ออกจากระบบ</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="jobs.html">ประกาศงานสอน</a></li>
+        <li><a href="student.html">สำหรับนักเรียน</a></li>
+        <li><a href="register.html">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html">Webboard</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<section class="section" style="padding: 40px 16px;">
+  <div class="container" style="max-width: 1080px;">
+    <h2 class="section-title" style="margin-bottom: 24px; display:flex; align-items:center; gap:10px;">
+      <svg class="ic" aria-hidden="true" style="width:28px;height:28px;"><use href="icons.svg#ic-user"></use></svg>
+      บัญชีสมาชิกของฉัน (My Student Profile)
+    </h2>
+
+    <div class="sp-grid">
+      <!-- Left Card: Profile & Upgrade -->
+      <div style="background:var(--light); border:1px solid var(--gray-border); border-radius:12px; padding:24px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <div style="width:90px; height:90px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:36px;">
+          🎓
+        </div>
+        <h3 style="font-size:18px; margin-bottom:4px;">น.ส. นพมาศ วงศ์สว่าง</h3>
+        <div style="margin-bottom:14px;"><span class="badge badge-blue">สมาชิกนักเรียน / ผู้ปกครอง</span></div>
+        
+        <hr style="border:none; border-top:1px solid var(--gray-border); margin:14px 0;">
+        <div style="text-align:left; font-size:13.5px; line-height:2.2;">
+          <div><svg class="ic" aria-hidden="true"><use href="icons.svg#ic-phone"></use></svg> <strong>เบอร์โทร:</strong> 089-123-4567</div>
+          <div><svg class="ic" aria-hidden="true"><use href="icons.svg#ic-chat"></use></svg> <strong>LINE:</strong> nammon_parent</div>
+          <div><svg class="ic" aria-hidden="true"><use href="icons.svg#ic-calendar"></use></svg> <strong>สมัครเมื่อ:</strong> 11 มี.ค. 2569</div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--gray-border); margin:16px 0;">
+        <div style="background:#FFFBEB; border:1px dashed #FCD34D; border-radius:10px; padding:16px; text-align:left;">
+          <div style="font-weight:700; color:#92400E; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+            <svg class="ic" aria-hidden="true"><use href="icons.svg#ic-teacher"></use></svg> อยากสอนหนังสือด้วย?
+          </div>
+          <p style="font-size:13px; color:#78350F; margin-bottom:12px; line-height:1.5;">
+            กรอกประวัติการศึกษาและวิชาที่ต้องการสอน เพื่ออัปเกรดบัญชีนี้เป็นติวเตอร์ได้ทันที
+          </p>
+          <a href="tutor-upgrade.html" class="btn btn-yellow btn-sm" style="width:100%; text-align:center;">
+            เป็นติวเตอร์กับเรา →
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Panels -->
+      <div>
+        <!-- Student's Requests Tracking -->
+        <div style="background:var(--light); border:1px solid var(--gray-border); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+            <h3 style="font-size:17px; margin:0; display:flex; align-items:center; gap:8px;">
+              <svg class="ic" aria-hidden="true"><use href="icons.svg#ic-clipboard"></use></svg> คำขอจัดสรรติวเตอร์ของฉัน
+            </h3>
+            <a href="student.html" class="btn btn-primary btn-sm">+ ส่งคำขอเรียนใหม่</a>
+          </div>
+
+          <div style="border:1px solid var(--gray-border); border-radius:10px; padding:16px; margin-bottom:12px; background:#F8FAFC;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <div>
+                <strong style="font-size:15px; color:#1E3A8A;">JOB-2603-001 · น้องน้ำมนต์ (ม.3)</strong>
+                <div style="font-size:13.5px; color:var(--secondary); margin-top:2px;">คณิตศาสตร์ ม.ต้น เพิ่มเกรด · เรท 450 บ./ชม. (10 ชม.)</div>
+              </div>
+              <span class="badge badge-success">✓ จับคู่สำเร็จ / มีติวเตอร์แล้ว</span>
+            </div>
+            <div style="margin-top:10px; font-size:13px; color:#475569; padding-top:10px; border-top:1px solid #E2E8F0;">
+              ติวเตอร์ผู้สอน: <strong>ครูพี่นนท์ ณัฐนนท์ (วศ.บ. จุฬาฯ)</strong> · วันเวลา: เสาร์ 10:00 - 12:00 น.
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages to Admin -->
+        <div style="background:var(--light); border:1px solid var(--gray-border); border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+            <h3 style="font-size:17px; margin:0; display:flex; align-items:center; gap:8px;">
+              <svg class="ic" aria-hidden="true"><use href="icons.svg#ic-mail"></use></svg> ข้อความที่ติดต่อแอดมิน
+            </h3>
+            <button class="btn btn-outline btn-sm" onclick="sendInquiryPrompt()">+ ส่งข้อความถึงแอดมิน</button>
+          </div>
+
+          <div id="inquiryList">
+            <div style="border:1px solid var(--gray-border); border-radius:8px; padding:12px 14px; margin-bottom:10px;">
+              <div style="font-size:13.5px;">แจ้งชำระเงินค่าเรียนผ่านพร้อมเพย์แล้วค่ะ ส่งสลิปให้ทางไลน์เรียบร้อย รบกวนตรวจสอบนะคะ</div>
+              <div style="font-size:12px; color:var(--secondary); margin-top:6px;">
+                12 มี.ค. 2569 14:25 น. · <span class="badge badge-success">แอดมินตอบรับแล้ว</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="copyright">© 2026 มุ่งเรียน. All rights reserved.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+  function sendInquiryPrompt() {
+    const msg = prompt('พิมพ์ข้อความที่ต้องการส่งถึงทีมงานมุ่งเรียน:');
+    if (msg) {
+      const box = document.getElementById('inquiryList');
+      const div = document.createElement('div');
+      div.style = 'border:1px solid var(--gray-border); border-radius:8px; padding:12px 14px; margin-bottom:10px; background:#F8FAFC;';
+      div.innerHTML = `
+        <div style="font-size:13.5px;">${msg}</div>
+        <div style="font-size:12px; color:var(--secondary); margin-top:6px;">
+          เมื่อสักครู่ · <span class="badge badge-pending">รอแอดมินอ่าน</span>
+        </div>
+      `;
+      box.prepend(div);
+      alert('✓ ส่งข้อความถึงแอดมินเรียบร้อยแล้ว ทีมงานจะตอบกลับโดยเร็ว');
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สมัครสมาชิก (นักเรียน/ผู้ปกครอง) | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <!-- Language Switcher TH | EN -->
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>บัญชี ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> เข้าสู่ระบบ</a>
+            <a href="register.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> สมัครเป็นติวเตอร์</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="jobs.html">ประกาศงานสอน</a></li>
+        <li><a href="student.html" class="active">สำหรับนักเรียน</a></li>
+        <li><a href="register.html">สมัครติวเตอร์</a></li>
+        <li><a href="webboard.html">Webboard</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<section class="section" style="padding: 40px 16px;">
+  <div class="container" style="max-width: 680px;">
+    <div style="text-align:center; margin-bottom: 24px;">
+      <h2 class="section-title" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+        <svg class="ic" aria-hidden="true" style="width:28px;height:28px;"><use href="icons.svg#ic-user"></use></svg>
+        สมัครสมาชิก (นักเรียน / ผู้ปกครอง)
+      </h2>
+      <p class="section-sub" style="color:var(--secondary); font-size:14.5px; margin-top:6px;">
+        สมัครฟรีภายใน 1 นาที เพื่อส่งข้อความติดตามสถานะหาติวเตอร์และดูข้อมูลการเรียน
+      </p>
+    </div>
+
+    <div style="background:var(--light); border:1px solid var(--gray-border); border-radius:12px; padding:28px; box-shadow:0 4px 16px rgba(0,0,0,0.04);">
+      <form onsubmit="handleStudentRegister(event)">
+        <div class="form-group">
+          <label class="form-label">ชื่อผู้ใช้ (Username) <span style="color:var(--danger);">*</span></label>
+          <input type="text" class="form-control" placeholder="เช่น somchai_study" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">อีเมล <span style="color:var(--danger);">*</span></label>
+          <input type="email" class="form-control" placeholder="example@email.com" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">รหัสผ่าน <span style="color:var(--danger);">*</span></label>
+            <input type="password" class="form-control" placeholder="อย่างน้อย 8 ตัวอักษร" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ยืนยันรหัสผ่าน <span style="color:var(--danger);">*</span></label>
+            <input type="password" class="form-control" placeholder="พิมพ์รหัสผ่านซ้ำอีกครั้ง" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">ชื่อ-นามสกุล ผู้เรียนหรือผู้ปกครอง <span style="color:var(--danger);">*</span></label>
+          <input type="text" class="form-control" placeholder="เช่น นายสมชาย ใจดี" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label">เบอร์โทรศัพท์ <span style="color:var(--danger);">*</span></label>
+            <input type="tel" class="form-control" placeholder="08x-xxx-xxxx" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">LINE ID</label>
+            <input type="text" class="form-control" placeholder="ไอดีไลน์ (ถ้ามี)">
+          </div>
+        </div>
+
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
+          <button type="submit" class="btn btn-primary" style="height:44px; font-size:15px; font-weight:600;">
+            ✓ ยืนยันการสมัครสมาชิก
+          </button>
+          <a href="login.html" class="btn btn-outline" style="text-align:center;">
+            มีบัญชีแล้ว? เข้าสู่ระบบ
+          </a>
+        </div>
+      </form>
+
+      <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--gray-border); text-align:center; font-size:13.5px; color:var(--secondary);">
+        หากท่านต้องการสมัครสอนหนังสือ <a href="register.html" style="color:var(--accent); font-weight:600;">สมัครเป็นติวเตอร์โดยตรงได้ที่นี่</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="copyright">© 2026 มุ่งเรียน. All rights reserved.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+  function handleStudentRegister(e) {
+    e.preventDefault();
+    alert('✓ สมัครสมาชิกนักเรียนสำเร็จเรียบร้อย! นำท่านเข้าสู่หน้าแดชบอร์ดนักเรียน');
+    window.location.href = 'student-profile.html';
+  }
+</script>
+
+</body>
+</html>

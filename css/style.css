@@ -20,3 +20,6 @@
 
 /* 6. Media Queries (Responsive) */
 @import url('responsive.css');
+
+/* 7. ปรับสเกลตามขนาดจอ (มือถือ → จอ 4K) */
+@import url('scaling.css');

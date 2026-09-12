@@ -3,13 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>จัดการผู้ใช้งาน | มุ่งเรียน Admin Console</title>
+<title>แก้ไขงานสอน JOB-0912 | มุ่งเรียน Admin Console</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/translator.css">
 <link rel="stylesheet" href="../css/panel.css">
+<style>
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body class="admin-body">
 
@@ -56,7 +62,7 @@
 
       <li class="menu-sec">การจัดสรรและธุรกรรม</li>
       <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
-      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-jobs.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
       <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
       <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
 
@@ -65,7 +71,7 @@
       <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
 
       <li class="menu-sec">การสื่อสารและสมาชิก</li>
-      <li><a href="manage-users.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
       <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
       <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
 
@@ -82,77 +88,108 @@
 
   <main class="admin-content">
     <div class="admin-header">
-      <div><h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> จัดการผู้ใช้งานระบบ</h2></div>
-    </div>
-
-    <div class="toolbar">
-      <form class="toolbar-search" onsubmit="event.preventDefault();">
-        <select id="userRoleFilter" class="form-control" style="max-width:240px;" onchange="filterUsers(this.value)">
-          <option value="">— ทั้งหมดทุกประเภท —</option>
-          <option value="superadmin">Superadmin</option>
-          <option value="admin">Admin Staff</option>
-          <option value="tutor">ติวเตอร์ (Tutor)</option>
-          <option value="student">นักเรียน / ผู้ปกครอง</option>
-        </select>
-      </form>
+      <div>
+        <h2>แก้ไขงานสอน JOB-0912</h2>
+        <p style="color:var(--secondary); font-size:14px;">
+          คำขอ: ด.ช.ภูริภัทร ใจดี · ฟิสิกส์ ม.5 · 
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-phone"></use></svg> 081-444-9876
+        </p>
+      </div>
+      <a href="manage-transactions.html?job=JOB-0912" class="btn btn-success btn-sm">+ บันทึกรับเงิน/คืนเงิน</a>
     </div>
 
     <div class="panel-card">
+      <form class="form-container" onsubmit="event.preventDefault(); alert('✅ บันทึกข้อมูลงานสอนเรียบร้อย'); location.href='manage-jobs.html';">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">รหัสงาน (Code)</label>
+            <input type="text" class="form-control" value="JOB-0912" readonly style="background:#F1F5F9;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">สถานะงาน (Status)</label>
+            <select class="form-control">
+              <option value="NEW">คำขอใหม่ (New)</option>
+              <option value="MATCHING">กำลังจับคู่ติวเตอร์ (Matching)</option>
+              <option value="WAIT_STUDENT">เสนอนักเรียนแล้ว (Wait Student)</option>
+              <option value="PENDING_PAYMENT">รอชำระเงินมัดจำ (Pending Payment)</option>
+              <option value="MATCH_SUCCESS" selected>เริ่มสอนแล้ว (Match Success)</option>
+              <option value="COMPLETED">จบการสอน (Completed)</option>
+              <option value="CANCELLED">ยกเลิก (Cancelled)</option>
+              <option value="REFUNDED">คืนเงินแล้ว (Refunded)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">ติวเตอร์ที่รับผิดชอบ</label>
+            <select class="form-control">
+              <option value="1" selected>อ.ดร.กิตติพงษ์ วัฒนเวคิน (วิศวะ จุฬาฯ)</option>
+              <option value="2">ครูแพรวา สอนศิลป์ (อักษรฯ จุฬาฯ)</option>
+              <option value="3">ครูเบนซ์ (เคมี มหิดล)</option>
+              <option value="0">— ยังไม่จับคู่ —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ผู้ดูแลในระบบ (Admin Assigned)</label>
+            <select class="form-control">
+              <option value="admin_nut" selected>admin_nut (ณัฐพงษ์)</option>
+              <option value="admin_prae">admin_prae (แพรวา)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">ค่าสอนต่อชั่วโมง (บาท)</label>
+            <input type="number" class="form-control" value="500">
+          </div>
+          <div class="form-group">
+            <label class="form-label">จำนวนชั่วโมงเรียนทั้งหมด</label>
+            <input type="number" class="form-control" value="10">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">สถานที่และเวลาที่นัดเรียน</label>
+          <input type="text" class="form-control" value="บ้านผู้เรียน แขวงบางนา / พุธ และ ศุกร์ เวลา 17:30 - 19:30">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">หมายเหตุการเรียน / เงื่อนไขพิเศษ</label>
+          <textarea class="form-control" rows="3">เน้นเตรียมสอบกลางภาค เรื่องฟิสิกส์การเคลื่อนที่และแรง เสริมโจทย์เข้ามหาวิทยาลัย</textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">บันทึก</button>
+          <a href="manage-jobs.html" class="btn btn-outline">ยกเลิก</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Related Transactions -->
+    <div class="panel-card" style="margin-top:20px;">
+      <h3 style="font-size:16px; margin-bottom:10px;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ธุรกรรมของงานนี้</h3>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Username</th>
-              <th>ชื่อ</th>
-              <th>อีเมล</th>
+              <th>TXN</th>
               <th>ประเภท</th>
-              <th>สถานะ</th>
-              <th>เข้าร่วมเมื่อ</th>
-              <th></th>
+              <th style="text-align:right;">จำนวนเงิน</th>
+              <th style="text-align:right;">ค่าธรรมเนียม</th>
+              <th>ช่องทาง</th>
+              <th>วันที่</th>
             </tr>
           </thead>
-          <tbody id="userTableBody">
-            <tr data-role="superadmin">
-              <td style="font-weight:600;">admin</td>
-              <td>Administrator System</td>
-              <td>admin@mung-rien.com</td>
-              <td><span class="badge badge-danger">Superadmin</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">01/01/2026</td>
-              <td><span style="color:var(--secondary); font-size:12px;">บัญชีหลัก</span></td>
-            </tr>
-            <tr data-role="admin">
-              <td style="font-weight:600;">admin_nut</td>
-              <td>ณัฐพงษ์ ผู้ดูแลระบบ</td>
-              <td>nut@mung-rien.com</td>
-              <td><span class="badge badge-primary">Admin</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">15/01/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
-              </td>
-            </tr>
-            <tr data-role="tutor">
-              <td style="font-weight:600;">tutor_kittipong</td>
-              <td>ดร.กิตติพงษ์ วัฒนเวคิน</td>
-              <td>kittipong.w@gmail.com</td>
-              <td><span class="badge badge-primary">ติวเตอร์</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">10/01/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
-              </td>
-            </tr>
-            <tr data-role="student">
-              <td style="font-weight:600;">student_kan</td>
-              <td>น้องกานต์ วงศ์สว่าง</td>
-              <td>kan.w@gmail.com</td>
-              <td><span class="badge badge-primary">นักเรียน</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">12/03/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
-              </td>
+          <tbody>
+            <tr>
+              <td style="font-weight:700;">TXN-8801</td>
+              <td><span class="badge badge-success">รับชำระ</span></td>
+              <td style="text-align:right; font-weight:600;">5,000.00</td>
+              <td style="text-align:right;">1,000.00</td>
+              <td>โอนเงินผ่านธนาคาร / QR</td>
+              <td>12/03/2026</td>
             </tr>
           </tbody>
         </table>
@@ -163,17 +200,5 @@
 
 <script src="../js/main.js"></script>
 <script src="../js/i18n.js"></script>
-<script>
-function filterUsers(role) {
-  const rows = document.querySelectorAll('#userTableBody tr');
-  rows.forEach(r => {
-    if (!role || r.getAttribute('data-role') === role) {
-      r.style.display = '';
-    } else {
-      r.style.display = 'none';
-    }
-  });
-}
-</script>
 </body>
 </html>

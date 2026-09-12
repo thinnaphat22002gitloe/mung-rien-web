@@ -3,25 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>งานสอน (สำหรับติวเตอร์) | มุ่งเรียน</title>
+  <title>รายการประกาศงานสอนที่เปิดรับสมัคร | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/translator.css">
+  <style>
+    :root {
+      --font-family: 'Prompt', 'Plus Jakarta Sans', 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: var(--font-family) !important;
+    }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; font-size: 12px; font-weight: 600; border-radius: 9999px; }
+    .badge-success { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
+    .badge-pending { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+    .badge-primary { background: #EFF6FF; color: #1E3A8A; border: 1px solid #BFDBFE; }
+
+    /* Job Card Hover & Polish */
+    .job-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease-in-out;
+    }
+    .job-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      border-color: #CBD5E1;
+    }
+    .filter-tab-btn {
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 500;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-tab-btn.active {
+      background: #1E3A8A;
+      color: #FFFFFF;
+      border-color: #1E3A8A;
+    }
+
+    /* Modal Backdrop */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5000;
+      padding: 16px;
+    }
+    .modal-box {
+      background: #FFFFFF;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+      animation: modalFade 0.25s ease-out;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
-      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
-        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
-        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>บัญชี ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> เข้าสู่ระบบ</a>
+            <a href="register.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> สมัครเป็นติวเตอร์</a>
+          </div>
+        </details>
       </div>
     </div>
   </div>
 
+  <!-- Main Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">🎓</div>
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
         <div>
           <div class="logo-text">มุ่ง<span>เรียน</span></div>
           <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
@@ -30,309 +133,467 @@
       <button class="nav-toggle" aria-label="menu">☰</button>
       <ul class="nav-menu">
         <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
-        <li><a href="jobs.html" class="active" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
-        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน</a></li>
-        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
-        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
-        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+        <li><a href="jobs.html" class="active" data-i18n="nav_jobs">ประกาศงานสอน</a></li>
+        <li><a href="student.html" data-i18n="nav_student">สำหรับนักเรียน (หาติวเตอร์)</a></li>
+        <li><a href="register.html" data-i18n="nav_register">ลงทะเบียนติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">พื้นที่วิชาการ (Webboard)</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
       </ul>
     </div>
   </nav>
 
-  <section class="section section-gray" style="padding:30px 0 50px;">
+  <section class="section" style="padding-top: 40px; padding-bottom: 80px;">
     <div class="container">
-      <h2 class="section-title"><span data-i18n="jobs_title_part1">งานสอน</span> <span data-i18n="jobs_title_part2">(สำหรับติวเตอร์)</span></h2>
-      <p class="section-sub" data-i18n="jobs_page_sub">เลือกดูรายการงานสอนตามหมวด แล้วสมัครเลยผ่านปุ่ม รายละเอียด</p>
+      
+      <!-- Header Section -->
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 36px;">
+        <span class="badge badge-primary" style="margin-bottom: 8px;">ศูนย์รวมงานสอนพิเศษ</span>
+        <h1 style="font-size: clamp(1.6rem, 3vw, 2.2rem); color: #0F172A; margin: 8px 0 10px; font-weight: 700;">
+          รายการประกาศงานสอนที่เปิดรับสมัคร
+        </h1>
+        <p style="color: #475569; font-size: 15px; margin: 0; line-height: 1.6;">
+          ค้นหางานสอนพิเศษที่ตรงกับความเชี่ยวชาญและช่วงเวลาที่คุณสะดวก ติวเตอร์ที่สนใจสามารถยื่นความจำนงผ่านระบบหรือติดต่อเจ้าหน้าที่ประสานงานได้ทันที
+        </p>
+      </div>
 
-      <div class="toolbar" style="margin-bottom:30px;">
-        <div class="toolbar-search">
-          <select class="form-control" style="max-width:180px;">
-            <option data-i18n="filter_all">ทุกหมวด</option>
-            <option data-i18n="filter_math_sci">งานสอนวิทย์-คณิต</option>
-            <option data-i18n="filter_lang_soc">งานสอนภาษา-สังคม</option>
-            <option data-i18n="filter_music">งานสอนดนตรี</option>
-            <option data-i18n="filter_sport">งานสอนกีฬา</option>
-          </select>
-          <input class="form-control" placeholder="ค้นหาวิชา, สถานที่, Job ID..." data-i18n="ph_search_jobs">
-          <button class="btn btn-yellow btn-sm" data-i18n="btn_search">🔍 ค้นหา</button>
+      <!-- Search & Filter Toolbar -->
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px 20px; box-shadow: var(--shadow-sm); margin-bottom: 28px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center;">
+        <div style="display: flex; gap: 10px; flex: 1; min-width: 280px;">
+          <input id="jobSearchInput" class="form-control" placeholder="ค้นหารายวิชา, สถานที่, หรือ Job ID..." style="border-radius: 8px;" oninput="filterJobs()">
+          <button class="btn btn-primary btn-sm" type="button" style="padding: 10px 20px;" onclick="filterJobs()">
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-search"></use></svg> ค้นหา
+          </button>
+          <button class="btn btn-outline btn-sm" type="button" style="padding: 10px 16px;" onclick="resetFilter()">ล้างการค้นหา</button>
         </div>
-        <div class="toolbar-actions">
-          <button class="btn btn-outline btn-sm" data-i18n="btn_refresh">🔄 รีเฟรช</button>
+        <a href="register.html" class="btn btn-primary btn-sm" style="padding: 10px 18px; font-weight: 600;">
+          + ลงทะเบียนติวเตอร์ใหม่
+        </a>
+      </div>
+
+      <!-- Categories Tabs -->
+      <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 24px; border-bottom: 1px solid #E2E8F0;">
+        <button type="button" class="filter-tab-btn active" data-cat="all" onclick="selectTab('all', this)">
+          งานสอนทั้งหมด (8)
+        </button>
+        <button type="button" class="filter-tab-btn" data-cat="math-sci" onclick="selectTab('math-sci', this)">
+          วิทย์-คณิต (5)
+        </button>
+        <button type="button" class="filter-tab-btn" data-cat="lang" onclick="selectTab('lang', this)">
+          ภาษา (2)
+        </button>
+        <button type="button" class="filter-tab-btn" data-cat="music" onclick="selectTab('music', this)">
+          ดนตรี / อื่นๆ (1)
+        </button>
+      </div>
+
+      <!-- Job Cards Grid -->
+      <div id="jobsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px;">
+        
+        <!-- Job 1 -->
+        <article class="job-card" data-code="JOB-0001" data-cat="math-sci" data-title="คณิตศาสตร์ ม.3 ติวเข้มเตรียมสอบเข้า ม.4 เตรียมอุดมฯ" data-loc="Online (Zoom) หรือ สยามสแควร์" data-sched="เสาร์ 10:00 - 12:00 น. (2 ชม./สัปดาห์)" data-rate="350 - 450 บาท/ชม." data-desc="เน้นปูพื้นฐานและตะลุยโจทย์ข้อสอบเก่าย้อนหลัง 5 ปี พร้อมเทคนิคคิดลัด มีเอกสารประกอบครบถ้วน">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0001</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              คณิตศาสตร์ ม.3 ติวเข้มเตรียมสอบเข้า ม.4 เตรียมอุดมฯ
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">Online (Zoom) หรือ สยามสแควร์</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">เสาร์ 10:00 - 12:00 น. (2 ชม./สัปดาห์)</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">คณิตศาสตร์ (ม.ต้น)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">350 - 450 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0001')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 2 -->
+        <article class="job-card" data-code="JOB-0002" data-cat="lang" data-title="ภาษาอังกฤษ เตรียมสอบ IELTS 6.5+ (เน้น Writing & Speaking)" data-loc="ใกล้ BTS อารีย์ / Online" data-sched="อาทิตย์ 13:30 - 15:30 น." data-rate="500 - 650 บาท/ชม." data-desc="เน้นปรับโครงสร้าง Academic Writing และจำลองสอบ Speaking ตัวต่อตัว ตรวจการบ้านละเอียด">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0002</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              ภาษาอังกฤษ เตรียมสอบ IELTS 6.5+ (เน้น Writing & Speaking)
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">ใกล้ BTS อารีย์ / Online</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">อาทิตย์ 13:30 - 15:30 น.</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">ภาษาอังกฤษ (เตรียมสอบ)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">500 - 650 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0002')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 3 -->
+        <article class="job-card" data-code="JOB-0003" data-cat="math-sci" data-title="ฟิสิกส์ ม.5 กลศาสตร์และคลื่น ติวเพิ่มเกรดและเตรียม A-Level" data-loc="บ้านผู้เรียน (โซนบางนา-ศรีนครินทร์)" data-sched="พุธ / ศุกร์ 17:30 - 19:30 น." data-rate="400 - 500 บาท/ชม." data-desc="เน้นความเข้าใจที่มาของสูตร ไม่ท่องจำอย่างเดียว วิเคราะห์โจทย์ประยุกต์และข้อสอบแข่งขัน">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0003</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              ฟิสิกส์ ม.5 กลศาสตร์และคลื่น ติวเพิ่มเกรดและเตรียม A-Level
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">บ้านผู้เรียน (โซนบางนา-ศรีนครินทร์)</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">พุธ / ศุกร์ 17:30 - 19:30 น.</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">ฟิสิกส์ (ม.ปลาย)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">400 - 500 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0003')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 4 -->
+        <article class="job-card" data-code="JOB-0004" data-cat="lang" data-title="ภาษาจีนพื้นฐานเพื่อการสื่อสาร และเตรียมสอบ HSK 3-4" data-loc="Online หรือ คาเฟ่ย่านสีลม" data-sched="อังคาร / พฤหัสบดี 19:00 - 20:30 น." data-rate="400 - 450 บาท/ชม." data-desc="สอนการออกเสียง Pinyin ไวยากรณ์สำคัญ และคำศัพท์ในชีวิตประจำวัน ติวเตอร์จบจากปักกิ่ง">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0004</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              ภาษาจีนพื้นฐานเพื่อการสื่อสาร และเตรียมสอบ HSK 3-4
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">Online หรือ คาเฟ่ย่านสีลม</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">อังคาร / พฤหัสบดี 19:00 - 20:30 น.</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">ภาษาจีน (HSK)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">400 - 450 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0004')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 5 -->
+        <article class="job-card" data-code="JOB-0005" data-cat="math-sci" data-title="เคมี ม.4 พันธะเคมีและปริมาณสารสัมพันธ์ ติวเข้มเกรด 4" data-loc="เซ็นทรัลลาดพร้าว หรือ Online" data-sched="เสาร์ 14:00 - 16:00 น." data-rate="350 - 450 บาท/ชม." data-desc="สอนปูพื้นฐานเคมีคำนวณอย่างเป็นขั้นตอน แก้จุดผิดบ่อย มีแบบฝึกหัดเสริมความมั่นใจ">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0005</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              เคมี ม.4 พันธะเคมีและปริมาณสารสัมพันธ์ ติวเข้มเกรด 4
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">เซ็นทรัลลาดพร้าว หรือ Online</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">เสาร์ 14:00 - 16:00 น.</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">เคมี (ม.ปลาย)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">350 - 450 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0005')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 6 -->
+        <article class="job-card" data-code="JOB-0006" data-cat="math-sci" data-title="ชีววิทยา ม.ปลาย สรุปเนื้อหาภาพรวมและตะลุยโจทย์ สอวน." data-loc="Online หรือ เดอะมอลล์งามวงศ์วาน" data-sched="อาทิตย์ 09:30 - 12:00 น." data-rate="400 บาท/ชม." data-desc="เทคนิคจำภาพ Diagram และ Mind Map จำแม่น ไม่สับสน พร้อมวิเคราะห์แนวข้อสอบโอลิมปิก">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0006</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              ชีววิทยา ม.ปลาย สรุปเนื้อหาภาพรวมและตะลุยโจทย์ สอวน.
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">Online หรือ เดอะมอลล์งามวงศ์วาน</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">อาทิตย์ 09:30 - 12:00 น.</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">ชีววิทยา (ม.ปลาย)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">400 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0006')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 7 -->
+        <article class="job-card" data-code="JOB-0007" data-cat="math-sci" data-title="วิทยาศาสตร์ ป.5-ป.6 ติวสอบเข้า ม.1 ห้องเรียนพิเศษ (Gifted)" data-loc="บ้านผู้เรียน (รามอินทรา / เลียบด่วน)" data-sched="เสาร์ 10:00 - 12:00 น." data-rate="350 บาท/ชม." data-desc="สอนสนุก เป็นกันเอง เชื่อมโยงวิทยาศาสตร์กับสิ่งรอบตัว ตะลุยโจทย์เข้า ม.1 โรงเรียนดัง">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0007</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              วิทยาศาสตร์ ป.5-ป.6 ติวสอบเข้า ม.1 ห้องเรียนพิเศษ (Gifted)
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">บ้านผู้เรียน (รามอินทรา / เลียบด่วน)</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">เสาร์ 10:00 - 12:00 น.</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">วิทยาศาสตร์ (ประถม)</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">350 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0007')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+        <!-- Job 8 -->
+        <article class="job-card" data-code="JOB-0008" data-cat="music" data-title="เปียโนคลาสสิกและป๊อป สำหรับเด็กและผู้เริ่มต้น ปูพื้นฐาน" data-loc="บ้านผู้เรียน (มีเปียโน) หรือสตูดิโอ" data-sched="เสาร์ หรือ อาทิตย์ บ่าย" data-rate="500 - 600 บาท/ชม." data-desc="ฝึกทักษะการอ่านโน้ต สรีระท่านิ้ว จังหวะ และเพลงที่ผู้เรียนชื่นชอบ มีความสุขกับการเล่นดนตรี">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span class="badge badge-success">● เปิดรับสมัคร</span>
+              <span style="font-size: 12px; font-weight: 600; color: #94A3B8; font-family: 'Plus Jakarta Sans', monospace;">JOB-0008</span>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 600; color: #0F172A; margin: 0 0 14px; line-height: 1.4;">
+              เปียโนคลาสสิกและป๊อป สำหรับเด็กและผู้เริ่มต้น ปูพื้นฐาน
+            </h3>
+            <div style="font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+              <div><span style="color: #94A3B8; margin-right: 6px;">สถานที่:</span> <strong style="color: #1E293B;">บ้านผู้เรียน (มีเปียโน) หรือสตูดิโอ</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">วัน-เวลา:</span> <strong style="color: #1E293B;">เสาร์ หรือ อาทิตย์ บ่าย</strong></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">หมวดวิชา:</span> <span style="color: #1E3A8A; font-weight: 600;">เปียโน / ดนตรี</span></div>
+              <div><span style="color: #94A3B8; margin-right: 6px;">ค่าสอน:</span> <span style="color: #D97706; font-weight: 700;">500 - 600 บาท/ชม.</span></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #F1F5F9; padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 11.5px; color: #94A3B8; display: block;">ผู้ประสานงาน</span>
+              <span style="font-size: 13px; font-weight: 600; color: #0F172A;">ศูนย์วิชาการมุ่งเรียน</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 13px; font-weight: 600;" onclick="openJobModal('JOB-0008')">
+              ยื่นความจำนงขอรับงาน
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- No Result Placeholder -->
+      <div id="noResults" style="display: none; background: #FFFFFF; border: 1px dashed #CBD5E1; border-radius: 16px; padding: 48px 24px; text-align: center; color: #64748B; margin-top: 20px;">
+        <div style="font-size: 2.2rem; margin-bottom: 12px;">📋</div>
+        <h3 style="font-size: 1.1rem; color: #1E293B; margin-bottom: 6px;">ไม่พบรายการประกาศงานสอนที่ตรงกับการค้นหา</h3>
+        <p style="font-size: 14px; margin: 0;">ลองเปลี่ยนคำค้นหา หรือคลิก "ล้างการค้นหา" เพื่อดูรายการทั้งหมด</p>
+      </div>
+
+      <!-- Contact Notice -->
+      <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px; padding: 16px 20px; margin-top: 36px; display: flex; align-items: center; gap: 14px;">
+        <div style="font-size: 1.5rem; color: #1E3A8A;">💬</div>
+        <div style="font-size: 13.5px; color: #1E3A8A; line-height: 1.5;">
+          <strong>คำแนะนำสำหรับติวเตอร์:</strong> หากประสงค์รับงานสอนรายการใด สามารถระบุ <strong>Job ID</strong> และแจ้งต่อเจ้าหน้าที่ผ่านทาง LINE: <strong>@mungrien</strong> เพื่อดำเนินการตรวจสอบคิวงานได้ตลอด 24 ชั่วโมง
         </div>
       </div>
 
-      <div class="tabs-container">
-        <div class="tabs">
-          <button class="tab-btn active" data-tab="tab1" data-i18n="tab_math_sci">งานสอนวิทย์-คณิต</button>
-          <button class="tab-btn" data-tab="tab2" data-i18n="tab_lang_soc">งานสอนภาษา-สังคม</button>
-          <button class="tab-btn" data-tab="tab3" data-i18n="tab_music">งานสอนดนตรี</button>
-          <button class="tab-btn" data-tab="tab4" data-i18n="tab_sport">งานสอนกีฬา</button>
-        </div>
-
-        <div class="tab-content active" data-tab="tab1">
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th data-i18n="th_subject">วิชา</th>
-                  <th data-i18n="th_location">สถานที่เรียน</th>
-                  <th data-i18n="th_time">วันเวลาเรียน</th>
-                  <th data-i18n="th_jobid">Job ID</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="badge-new">NEW</span>วิทย์ (ป.4 เป็นติวสอบเข้า ม.1)●เรียนพร้อมกัน 2 คน</td>
-                  <td>THE CITY ราบอินทรา 3 (ใกล้ รร.นวนิกร ราชินูทิศ เมษุณยาราชาลัย)</td>
-                  <td>เสาร์ อาทิตย์ 13.00 น.เป็นต้นไป (เลือก 1 วัน/สัปดาห์ | 2 ชม.)</td>
-                  <td>SC 69081813</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm" data-i18n="btn_details">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>คณิต (ป.4 เป็นติวสอบเข้า ม.1)●เรียนพร้อมกัน 2 คน</td>
-                  <td>THE CITY ราบอินทรา 3 (ใกล้ รร.นวนิกร ราชินูทิศ เมษุณยาราชาลัย)</td>
-                  <td>เสาร์ อาทิตย์ 13.00 น.เป็นต้นไป (เลือก 1 วัน/สัปดาห์ | 2 ชม.)</td>
-                  <td>SC 69081812</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.3) เป็นติวสอบเข้า ม.4 รร.ไพธิสาร</td>
-                  <td>เดอะมอลล์ ท่าพระ</td>
-                  <td>วันธรรมดา (ยกเว้นศุกร์) 19.00-21.00 น. (เลือก 1 วัน/สัปดาห์)</td>
-                  <td>SC 69081811</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.4)</td>
-                  <td>Online</td>
-                  <td>จันทร์-พฤหัส 18.00-19.00 น. (เรียน 4 วัน/สัปดาห์)</td>
-                  <td>SC 69081810</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>ฟิสิกส์ (ม.4)</td>
-                  <td>La Villa BTS อารีย์</td>
-                  <td>พุธ 16.00-18.00 น.</td>
-                  <td>SC 69081808</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>คณิตศาสตร์ (ม.2) ●ติวสอบ TU / สอวน.</td>
-                  <td>คอนโดเดอะทรี อินเตอร์เชนจ์ (ใกล้ Gateway บางซื่อ)</td>
-                  <td>พฤหัสบดี 17.30-19.30 น.</td>
-                  <td>SC 69081807</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>คณิต (ม.3) เนื้อหาอังกฤษ อธิบายไทย</td>
-                  <td>McDonald's วิคตอรีย การ์เด้น - เพชรเกษม 69</td>
-                  <td>อังคาร 17.00-19.00 น.</td>
-                  <td>SC 69081806</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>วิทยาศาสตร์ (ป.6) ติวสอบเข้า ม.1</td>
-                  <td>บ้านห้วยคอนโด Aspire งามวงศ์วาน (ใกล้ BTS สะพานใหม่)</td>
-                  <td>วันจันทร์ 15.00-17.00 น. / 17.00-19.00 น. (เลือก 2 ชม.)</td>
-                  <td>SC 69081805</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>เคมี (ม.5) - สอบเข้า มหาวิทยาลัย</td>
-                  <td>Cafe Amazon - ตลาดพลู</td>
-                  <td>เสาร์-อาทิตย์ 09.00-11.00 น.</td>
-                  <td>SC 69081804</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>คณิตศาสตร์ (ป.3) พื้นฐาน</td>
-                  <td>บ้าน - จรัญสนิทวงศ์ 24</td>
-                  <td>จันทร์-อังคาร-พุธ 16.00-17.30 น.</td>
-                  <td>SC 69081803</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="tab-content" data-tab="tab2">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
-              <tbody>
-                <tr>
-                  <td><span class="badge-new">NEW</span>ภาษาอังกฤษ (ม.5) IELTS 6.5+</td>
-                  <td>สุขุมวิท 23 (ใกล้ BTS อโศก)</td>
-                  <td>เสาร์ 10.00-12.00 น.</td>
-                  <td>EN 69081711</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td><span class="badge-new">NEW</span>ภาษาอังกฤษ พูด-ฟัง สำหรับผู้ใหญ่</td>
-                  <td>Online Zoom</td>
-                  <td>จันทร์-พุธ 19.30-21.00 น.</td>
-                  <td>EN 69081712</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>ภาษาไทย (ป.6) ติวเข้า ม.1</td>
-                  <td>รัชดา - ห้วยขวาง</td>
-                  <td>จันทร์-พุธ 17.00-19.00 น.</td>
-                  <td>TH 69081710</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>สังคมศึกษา (ม.3) เตรียมเข้า ม.4</td>
-                  <td>Online Zoom</td>
-                  <td>อาทิตย์ 09.00-11.00 น.</td>
-                  <td>SC 69081709</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>ภาษาจีน (ม.1) พื้นฐาน HSK1</td>
-                  <td>True Coffee - บางนา</td>
-                  <td>เสาร์ 14.00-16.00 น.</td>
-                  <td>CN 69081708</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>TOEIC สำหรับอาสาสมัครสาธารณสุข</td>
-                  <td>BTS หมอชิต</td>
-                  <td>พุธ-ศุกร์ 18.00-20.00 น.</td>
-                  <td>TO 69081707</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="tab-content" data-tab="tab3">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
-              <tbody>
-                <tr>
-                  <td><span class="badge-new">NEW</span>เปียโน (เด็ก 7 ขวบ) เริ่มต้น</td>
-                  <td>บ้านสวนหมู่ บางนา</td>
-                  <td>เสาร์ 14.00-15.00 น.</td>
-                  <td>PN 69081601</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>กีตาร์โปร่ง (ม.2)</td>
-                  <td>สยามสแควร์</td>
-                  <td>ศุกร์ 18.00-19.00 น.</td>
-                  <td>GT 69081602</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>ออร์แกน (ผู้ใหญ่) เล่นเพลงไทย</td>
-                  <td>บ้าน - ดอนเมือง</td>
-                  <td>วันเสาร์ 10.00-11.30 น.</td>
-                  <td>OR 69081603</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="tab-content" data-tab="tab4">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th data-i18n="th_subject">วิชา</th><th data-i18n="th_location">สถานที่เรียน</th><th data-i18n="th_time">วันเวลาเรียน</th><th data-i18n="th_jobid">Job ID</th><th></th></tr></thead>
-              <tbody>
-                <tr>
-                  <td><span class="badge-new">NEW</span>ว่ายน้ำ (เด็ก ป.2) ติวพื้นฐาน</td>
-                  <td>สระว่ายน้ำ Tawanna Bangkapi</td>
-                  <td>เสาร์-อาทิตย์ 08.00-09.00 น.</td>
-                  <td>SW 69081501</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>แบดมินตัน (ผู้ใหญ่ เริ่มต้น)</td>
-                  <td>สนาม Central Eastville</td>
-                  <td>พุธ 19.00-20.00 น.</td>
-                  <td>BM 69081502</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-                <tr>
-                  <td>ฟุตบอล (เด็ก 10 ขวบ) เทคนิคพื้นฐาน</td>
-                  <td>สนาม 7 ศาสนา - บางแค</td>
-                  <td>อาทิตย์ 07.00-09.00 น.</td>
-                  <td>FB 69081503</td>
-                  <td><a href="#" class="btn btn-yellow btn-sm">รายละเอียด</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:25px; text-align:center;">
-        <nav style="display:inline-flex; gap:6px;">
-          <button class="btn btn-sm btn-outline" data-i18n="btn_prev">« ก่อนหน้า</button>
-          <button class="btn btn-sm btn-yellow">1</button>
-          <button class="btn btn-sm btn-outline">2</button>
-          <button class="btn btn-sm btn-outline">3</button>
-          <button class="btn btn-sm btn-outline">4</button>
-          <button class="btn btn-sm btn-outline">5</button>
-          <button class="btn btn-sm btn-outline" data-i18n="btn_next">ถัดไป »</button>
-        </nav>
-      </div>
     </div>
   </section>
 
-  <div class="float-chat">
-    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
-    <div class="chat-label">สอบถามโปรโมชั่น คลิก</div>
+  <!-- Job Application Modal -->
+  <div id="jobModal" class="modal-overlay">
+    <div class="modal-box">
+      <div style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 20px 24px; color: #FFFFFF; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span id="modalJobCode" style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 99px; font-weight: 700; letter-spacing: 0.5px;">JOB-0001</span>
+          <h3 id="modalJobTitle" style="margin: 8px 0 0; font-size: 18px; color: #FFFFFF;">รายละเอียดงานสอน</h3>
+        </div>
+        <button type="button" onclick="closeJobModal()" style="background: none; border: none; color: #FFFFFF; font-size: 24px; cursor: pointer; line-height: 1;">×</button>
+      </div>
+
+      <div style="padding: 24px;">
+        <!-- Details Overview -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 20px; font-size: 13.5px; color: #475569; display: flex; flex-direction: column; gap: 6px;">
+          <div><strong>สถานที่:</strong> <span id="modalJobLoc">-</span></div>
+          <div><strong>วัน-เวลา:</strong> <span id="modalJobSched">-</span></div>
+          <div><strong>อัตราค่าสอน:</strong> <span id="modalJobRate" style="color: #D97706; font-weight: 700;">-</span></div>
+          <div><strong>รายละเอียดเพิ่มเติม:</strong> <span id="modalJobDesc">-</span></div>
+        </div>
+
+        <!-- Application Form -->
+        <form onsubmit="handleApplySubmit(event)">
+          <div style="font-weight: 700; font-size: 15px; color: #0F172A; margin-bottom: 12px;">กรอกข้อมูลเพื่อยื่นความจำนงรับงานสอน</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#475569; margin-bottom:4px;">ชื่อ-นามสกุล *</label>
+              <input type="text" required class="form-control" placeholder="เช่น นายสมเกียรติ มุ่งมั่น" style="padding:8px 12px; font-size:14px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#475569; margin-bottom:4px;">เบอร์โทรศัพท์ *</label>
+              <input type="tel" required class="form-control" placeholder="08XXXXXXXX" style="padding:8px 12px; font-size:14px;">
+            </div>
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label style="display:block; font-size:12.5px; font-weight:600; color:#475569; margin-bottom:4px;">Line ID</label>
+            <input type="text" class="form-control" placeholder="@yourlineid" style="padding:8px 12px; font-size:14px;">
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 10px;">
+            <button type="button" class="btn btn-outline btn-sm" onclick="closeJobModal()">ยกเลิก</button>
+            <button type="submit" class="btn btn-primary btn-sm" style="padding: 10px 20px;">ยืนยันการยื่นขอรับงาน</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
       <div>
-        <h4 data-i18n="footer_col1_title">มุ่งเรียน</h4>
+        <h4>มุ่งเรียน (Mung-Rien)</h4>
         <ul>
-          <li data-i18n="footer_col1_li1">🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
-          <li><span data-i18n="footer_col1_li2">📍 ทำเลศักยภาพ: </span><a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
-          <li>📧 info@มุ่งเรียน.com</li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-cap"></use></svg> ระบบนายหน้าและศูนย์ประสานงานเพื่อการศึกษา</li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-mail"></use></svg> contact@mungrien.com</li>
         </ul>
       </div>
       <div>
-        <h4 data-i18n="footer_col2_title">สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <h4>สำหรับนักเรียน/ผู้ปกครอง</h4>
         <ul>
-          <li><a href="student.html" data-i18n="footer_col2_li1">ขอหาติวเตอร์สอนพิเศษ</a></li>
-          <li><a href="#" data-i18n="footer_col2_li2">คอร์สสอนยอดนิยม</a></li>
-          <li><a href="webboard.html" data-i18n="footer_col2_li3">Webboard / ความรู้</a></li>
+          <li><a href="student.html">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="jobs.html">ดูประกาศงานสอน</a></li>
+          <li><a href="webboard.html">Webboard / บทความ</a></li>
         </ul>
       </div>
       <div>
-        <h4 data-i18n="footer_col3_title">สำหรับติวเตอร์</h4>
+        <h4>สำหรับติวเตอร์</h4>
         <ul>
-          <li><a href="register.html" data-i18n="footer_col3_li1">สมัครเป็นติวเตอร์</a></li>
-          <li><a href="jobs.html" data-i18n="footer_col3_li2">ดูรายการงานสอน</a></li>
-          <li><a href="#" data-i18n="footer_col3_li3">สิ่งที่ติวเตอร์ควรรู้</a></li>
+          <li><a href="register.html">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html">ดูรายการงานสอน</a></li>
+          <li><a href="login.html">เข้าสู่ระบบติวเตอร์</a></li>
         </ul>
       </div>
       <div>
-        <h4 data-i18n="footer_col4_title">ติดต่อเรา</h4>
+        <h4>ติดต่อศูนย์ประสานงาน</h4>
         <ul>
-          <li>Facebook: facebook.com/มุ่งเรียน</li>
-          <li>Line ID: @มุ่งเรียน</li>
-          <li>📞 02-XXX-XXXX</li>
+          <li>Facebook: <a href="https://facebook.com" target="_blank" rel="noopener">มุ่งเรียน ติวเตอร์</a></li>
+          <li>Line ID: <a href="https://line.me" target="_blank" rel="noopener">@mungrien</a></li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-phone"></use></svg> 02-123-4567</li>
         </ul>
       </div>
     </div>
-    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+    <div class="copyright">© 2026 มุ่งเรียน (TutorBroker). All rights reserved.</div>
   </footer>
 
-  <script src="js/lang.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    let currentCategory = 'all';
+
+    function selectTab(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterJobs();
+    }
+
+    function filterJobs() {
+      const q = (document.getElementById('jobSearchInput').value || '').trim().toLowerCase();
+      const cards = document.querySelectorAll('.job-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        const code = (card.getAttribute('data-code') || '').toLowerCase();
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const loc = (card.getAttribute('data-loc') || '').toLowerCase();
+
+        const matchCat = (currentCategory === 'all') || (cat === currentCategory);
+        const matchSearch = !q || code.includes(q) || title.includes(q) || loc.includes(q);
+
+        if (matchCat && matchSearch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function resetFilter() {
+      document.getElementById('jobSearchInput').value = '';
+      selectTab('all', document.querySelector('.filter-tab-btn[data-cat="all"]'));
+    }
+
+    // Modal Handling
+    function openJobModal(code) {
+      const card = document.querySelector(`.job-card[data-code="${code}"]`);
+      if (!card) return;
+
+      document.getElementById('modalJobCode').textContent = code;
+      document.getElementById('modalJobTitle').textContent = card.getAttribute('data-title');
+      document.getElementById('modalJobLoc').textContent = card.getAttribute('data-loc');
+      document.getElementById('modalJobSched').textContent = card.getAttribute('data-sched');
+      document.getElementById('modalJobRate').textContent = card.getAttribute('data-rate');
+      document.getElementById('modalJobDesc').textContent = card.getAttribute('data-desc');
+
+      document.getElementById('jobModal').style.display = 'flex';
+    }
+
+    function closeJobModal() {
+      document.getElementById('jobModal').style.display = 'none';
+    }
+
+    function handleApplySubmit(e) {
+      e.preventDefault();
+      const code = document.getElementById('modalJobCode').textContent;
+      closeJobModal();
+      alert(`🎉 ยื่นความจำนงสำหรับรหัส ${code} เรียบร้อยแล้ว!\n\nเจ้าหน้าที่จะตรวจสอบคุณสมบัติและติดต่อกลับผ่าน LINE ภายใน 12 ชม.`);
+    }
+
+    // Check URL parameters for direct job focus e.g. jobs.html?job=JOB-0001
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const jParam = params.get('job');
+      if (jParam) {
+        document.getElementById('jobSearchInput').value = jParam;
+        filterJobs();
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-

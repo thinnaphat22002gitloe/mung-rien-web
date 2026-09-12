@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>วิเคราะห์รายได้ | มุ่งเรียน Admin Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/translator.css">
+<link rel="stylesheet" href="../css/panel.css">
+</head>
+<body class="admin-body">
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-cap"></use></svg></div>
+      <div>
+        <div class="logo-text">มุ่ง<span>เรียน</span></div>
+        <div class="logo-tag">ศูนย์บริหารจัดการสารสนเทศ (Admin Console)</div>
+      </div>
+    </a>
+    <div class="panel-user-nav">
+      <!-- Language Switcher TH | EN -->
+      <div class="lang-switch-wrap panel-lang-switch" title="เลือกภาษา / Change Language">
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+            <span>🇹🇭</span> TH
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+            <span>🇬🇧</span> EN
+          </button>
+        </div>
+      </div>
+
+      <span style="font-size:13px; color:#64748B;">ผู้ดูแล: <strong>Administrator</strong></span>
+      <a href="manage-notifications.html" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px;" title="ระบบแจ้งเตือน">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน <span style="color:#EF4444; font-weight:700;">(5)</span>
+      </a>
+      <a href="../index.html" class="btn btn-outline btn-sm" target="_blank">🌐 ดูหน้าเว็บไซต์</a>
+      <a href="../login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <h3><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ระบบสารสนเทศ</h3>
+    <ul class="admin-menu">
+      <li class="menu-sec">ภาพรวมและรายงาน</li>
+      <li><a href="dashboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> แดชบอร์ดสรุปผล</a></li>
+      <li><a href="revenue.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
+
+      <li class="menu-sec">การจัดสรรและธุรกรรม</li>
+      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
+      <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+
+      <li class="menu-sec">บุคลากรทางการศึกษา</li>
+      <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
+      <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
+
+      <li class="menu-sec">การสื่อสารและสมาชิก</li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
+
+      <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
+      <li><a href="home-content.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-categories.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
+
+      <li class="menu-sec">การจัดการระบบ</li>
+      <li><a href="settings.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ตั้งค่าระบบสารสนเทศ</a></li>
+      <li><a href="javascript:void(0)" onclick="alert('📥 ส่งออกข้อมูล Excel ทั้งหมดเรียบร้อย')" style="color:#059669; font-weight:600;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> 📥 ส่งออก Excel ทั้งหมด</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <div>
+        <h2 id="revTitle"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> วิเคราะห์รายได้ รายเดือน</h2>
+        <p style="color:var(--secondary); font-size:14px;">Gross = ยอดรับชำระ · Refund = ยอดคืนเงิน · Net Platform Fee = ค่าธรรมเนียมสุทธิของแพลตฟอร์ม</p>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button type="button" id="btnDaily" class="btn btn-outline btn-sm" onclick="setMode('daily')">รายวัน</button>
+        <button type="button" id="btnMonthly" class="btn btn-primary btn-sm" onclick="setMode('monthly')">รายเดือน</button>
+        <button type="button" class="btn btn-success btn-sm" onclick="alert('📥 ดาวน์โหลดรายงาน Excel สำเร็จ')">
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> Export Excel
+        </button>
+      </div>
+    </div>
+
+    <div class="stats-grid-4">
+      <div class="stat-card">
+        <div class="stat-label">Total Revenue (Gross)</div>
+        <div class="stat-value">฿284,500.00</div>
+        <div class="stat-sub" style="color:var(--secondary);">34 รายการชำระ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Net Platform Revenue</div>
+        <div class="stat-value" style="color:#059669;">฿42,675.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Refunded</div>
+        <div class="stat-value" style="color:var(--danger);">฿3,200.00</div>
+        <div class="stat-sub" style="color:var(--secondary);">1 รายการ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Net Volume</div>
+        <div class="stat-value">฿281,300.00</div>
+      </div>
+    </div>
+
+    <div class="panel-card" style="margin-bottom:14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
+        <h3 id="chartTitle" style="font-size:14.5px; font-weight:700; margin:0;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> กราฟรายเดือน (บาท)</h3>
+        <div style="font-size:11.5px; color:var(--secondary);">
+          <span style="margin-right:12px;"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#2a78d6;"></span> Gross Volume</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#1baf7a;"></span> Net Platform Fee</span>
+        </div>
+      </div>
+      <div style="position:relative; height:180px; width:100%; min-width:0;">
+        <canvas id="revChart"></canvas>
+      </div>
+    </div>
+
+    <div class="panel-card">
+      <div class="table-wrap" style="margin-bottom:0;">
+        <table>
+          <thead>
+            <tr>
+              <th id="thPeriod">เดือน</th>
+              <th style="text-align:right;">Paid Orders</th>
+              <th style="text-align:right;">Gross Volume (บาท)</th>
+              <th style="text-align:right;">Refund (บาท)</th>
+              <th style="text-align:right;">Net Platform Fee (บาท)</th>
+            </tr>
+          </thead>
+          <tbody id="revTableBody">
+            <!-- Populated dynamically based on mode -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../vendor/chart.umd.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/i18n.js"></script>
+<script>
+let currentMode = 'monthly';
+let myChart = null;
+
+const monthlyData = {
+  labels: ['10/2025', '11/2025', '12/2025', '01/2026', '02/2026', '03/2026'],
+  gross: [185000, 224000, 268000, 245000, 272000, 284500],
+  net_fee: [27750, 33600, 40200, 36750, 40800, 42675],
+  rows: [
+    { period: '03/2026', orders: 34, gross: '284,500.00', refund: '3,200.00', fee: '42,675.00' },
+    { period: '02/2026', orders: 31, gross: '272,000.00', refund: '0.00', fee: '40,800.00' },
+    { period: '01/2026', orders: 28, gross: '245,000.00', refund: '2,500.00', fee: '36,750.00' },
+    { period: '12/2025', orders: 33, gross: '268,000.00', refund: '0.00', fee: '40,200.00' },
+    { period: '11/2025', orders: 26, gross: '224,000.00', refund: '0.00', fee: '33,600.00' },
+    { period: '10/2025', orders: 22, gross: '185,000.00', refund: '1,800.00', fee: '27,750.00' }
+  ]
+};
+
+const dailyData = {
+  labels: ['05/03', '06/03', '07/03', '08/03', '09/03', '10/03', '11/03', '12/03'],
+  gross: [8500, 14200, 11000, 9800, 16500, 12800, 15400, 14200],
+  net_fee: [1275, 2130, 1650, 1470, 2475, 1920, 2310, 2130],
+  rows: [
+    { period: '12/03/2026', orders: 2, gross: '14,200.00', refund: '0.00', fee: '2,130.00' },
+    { period: '11/03/2026', orders: 3, gross: '15,400.00', refund: '0.00', fee: '2,310.00' },
+    { period: '10/03/2026', orders: 2, gross: '12,800.00', refund: '0.00', fee: '1,920.00' },
+    { period: '09/03/2026', orders: 3, gross: '16,500.00', refund: '3,200.00', fee: '2,475.00' },
+    { period: '08/03/2026', orders: 1, gross: '9,800.00', refund: '0.00', fee: '1,470.00' },
+    { period: '07/03/2026', orders: 2, gross: '11,000.00', refund: '0.00', fee: '1,650.00' },
+    { period: '06/03/2026', orders: 2, gross: '14,200.00', refund: '0.00', fee: '2,130.00' },
+    { period: '05/03/2026', orders: 1, gross: '8,500.00', refund: '0.00', fee: '1,275.00' }
+  ]
+};
+
+function renderView(mode) {
+  const data = (mode === 'monthly') ? monthlyData : dailyData;
+  document.getElementById('revTitle').innerHTML = `<svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> วิเคราะห์รายได้ ` + (mode === 'monthly' ? 'รายเดือน' : 'รายวัน');
+  document.getElementById('chartTitle').innerHTML = `<svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> กราฟ` + (mode === 'monthly' ? 'รายเดือน' : 'รายวัน') + ` (บาท)`;
+  document.getElementById('thPeriod').textContent = (mode === 'monthly') ? 'เดือน' : 'วันที่';
+
+  document.getElementById('btnDaily').className = 'btn ' + (mode === 'daily' ? 'btn-primary' : 'btn-outline') + ' btn-sm';
+  document.getElementById('btnMonthly').className = 'btn ' + (mode === 'monthly' ? 'btn-primary' : 'btn-outline') + ' btn-sm';
+
+  const tbody = document.getElementById('revTableBody');
+  tbody.innerHTML = data.rows.map(r => `
+    <tr>
+      <td style="padding:7px 10px; font-size:13px;">${r.period}</td>
+      <td style="text-align:right; padding:7px 10px; font-size:13px;">${r.orders}</td>
+      <td style="text-align:right; padding:7px 10px; font-size:13px;">${r.gross}</td>
+      <td style="text-align:right; color:var(--danger); padding:7px 10px; font-size:13px;">${r.refund !== '0.00' ? '-' + r.refund : '0.00'}</td>
+      <td style="text-align:right; font-weight:600; padding:7px 10px; font-size:13px;">${r.fee}</td>
+    </tr>
+  `).join('');
+
+  if (myChart) myChart.destroy();
+  myChart = new Chart(document.getElementById('revChart'), {
+    type: 'bar',
+    data: {
+      labels: data.labels,
+      datasets: [
+        { label: 'Gross Volume', data: data.gross, backgroundColor: '#2a78d6', borderRadius: 4, maxBarThickness: 18 },
+        { label: 'Net Platform Fee', data: data.net_fee, backgroundColor: '#1baf7a', borderRadius: 4, maxBarThickness: 18 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      interaction: { mode: 'index', intersect: false },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#898781', maxTicksLimit: 12, font: { size: 10.5 } } },
+        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { color: '#898781', font: { size: 10.5 } } }
+      }
+    }
+  });
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  renderView(mode);
+}
+
+renderView('monthly');
+</script>
+</body>
+</html>

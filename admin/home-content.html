@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จัดการข้อความหน้าแรก & ข่าวสาร | มุ่งเรียน Admin Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/translator.css">
+<link rel="stylesheet" href="../css/panel.css">
+</head>
+<body class="admin-body">
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-cap"></use></svg></div>
+      <div>
+        <div class="logo-text">มุ่ง<span>เรียน</span></div>
+        <div class="logo-tag">ศูนย์บริหารจัดการสารสนเทศ (Admin Console)</div>
+      </div>
+    </a>
+    <div class="panel-user-nav">
+      <!-- Language Switcher TH | EN -->
+      <div class="lang-switch-wrap panel-lang-switch" title="เลือกภาษา / Change Language">
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+            <span>🇹🇭</span> TH
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+            <span>🇬🇧</span> EN
+          </button>
+        </div>
+      </div>
+
+      <span style="font-size:13px; color:#64748B;">ผู้ดูแล: <strong>Administrator</strong></span>
+      <a href="manage-notifications.html" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px;" title="ระบบแจ้งเตือน">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน <span style="color:#EF4444; font-weight:700;">(5)</span>
+      </a>
+      <a href="../index.html" class="btn btn-outline btn-sm" target="_blank">🌐 ดูหน้าเว็บไซต์</a>
+      <a href="../login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <h3><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ระบบสารสนเทศ</h3>
+    <ul class="admin-menu">
+      <li class="menu-sec">ภาพรวมและรายงาน</li>
+      <li><a href="dashboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> แดชบอร์ดสรุปผล</a></li>
+      <li><a href="revenue.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
+
+      <li class="menu-sec">การจัดสรรและธุรกรรม</li>
+      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
+      <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+
+      <li class="menu-sec">บุคลากรทางการศึกษา</li>
+      <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
+      <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
+
+      <li class="menu-sec">การสื่อสารและสมาชิก</li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
+
+      <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
+      <li><a href="home-content.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-categories.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
+
+      <li class="menu-sec">การจัดการระบบ</li>
+      <li><a href="settings.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ตั้งค่าระบบสารสนเทศ</a></li>
+      <li><a href="javascript:void(0)" onclick="alert('📥 ส่งออกข้อมูล Excel ทั้งหมดเรียบร้อย')" style="color:#059669; font-weight:600;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> 📥 ส่งออก Excel ทั้งหมด</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> จัดการข้อความหน้าแรกและข่าวสาร</h2>
+        <p style="color:var(--secondary); font-size:14px; margin-top:2px;">
+          ปรับแต่งข้อความสไลด์หน้าแรก แถบประกาศข่าวประชาสัมพันธ์ และหัวข้อข่าวสาร/บทความวิชาการได้ทันที
+        </p>
+      </div>
+      <div class="admin-header-actions">
+        <a href="manage-webboard.html" class="btn btn-success btn-sm">
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> + เขียนข่าว/บทความใหม่
+        </a>
+        <a href="../index.html" target="_blank" class="btn btn-outline btn-sm">
+          🌐 ดูผลลัพธ์หน้าแรก
+        </a>
+      </div>
+    </div>
+
+    <form onsubmit="event.preventDefault(); alert('💾 บันทึกการเปลี่ยนแปลงหน้าแรกและข่าวสารสำเร็จ!');" style="display:flex; flex-direction:column; gap:20px;">
+      <!-- ส่วนที่ 1: แถบข่าวประชาสัมพันธ์ / ประกาศด่วนหน้าแรก -->
+      <div class="panel-card" style="border-left:4px solid #10B981;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h3 style="font-size:1.1rem; color:#0F172A; margin:0 0 4px; display:flex; align-items:center; gap:8px;">
+              <span>📢</span> แถบข่าวประชาสัมพันธ์ / ประกาศหน้าแรก
+            </h3>
+            <p style="font-size:13px; color:#64748B; margin:0;">
+              กล่องประกาศข่าวสารเด่นที่จะแสดงทันทีใต้สไลด์หน้าแรก เพื่อแจ้งข่าวสารสำคัญให้ผู้เข้าชมทราบ
+            </p>
+          </div>
+          <label style="display:flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; cursor:pointer;">
+            <input type="checkbox" checked> เปิดแสดงแถบประกาศ
+          </label>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 2fr; gap:14px;">
+          <div class="form-group">
+            <label class="form-label">ป้ายสถานะ (Badge Text)</label>
+            <input type="text" class="form-control" value="ประกาศด่วน">
+          </div>
+          <div class="form-group">
+            <label class="form-label">หัวข้อประกาศ (Headline)</label>
+            <input type="text" class="form-control" value="เปิดรับสมัครติวเตอร์คุณภาพ ร่วมงานกับมุ่งเรียน ประจำปีการศึกษา 2569">
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">ข้อความเนื้อหาประกาศ</label>
+            <input type="text" class="form-control" value="สถาบันมุ่งเรียนเปิดรับติวเตอร์ทุกสาขาวิชา ทั้งสอนตัวต่อตัวและออนไลน์ อัตราค่าสอนคุ้มค่า โอนเงินตรงเวลา">
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label">ลิงก์ที่ต้องการส่งไปเมื่อคลิก</label>
+            <input type="text" class="form-control" value="register.html">
+          </div>
+        </div>
+      </div>
+
+      <!-- ส่วนที่ 2: ข้อความสไลด์หน้าแรก (Hero Sliders) -->
+      <div class="panel-card" style="border-left:4px solid #2563EB;">
+        <h3 style="font-size:1.1rem; color:#0F172A; margin:0 0 4px; display:flex; align-items:center; gap:8px;">
+          <span>🖼️</span> ข้อความสไลด์หน้าแรก (Hero Sliders)
+        </h3>
+        <p style="font-size:13px; color:#64748B; margin:0 0 16px;">
+          แก้ไขป้ายข้อความ หัวข้อหลัก และคำอธิบายในสไลด์ที่ 1 (นักเรียน) และสไลด์ที่ 2 (ติวเตอร์)
+        </p>
+
+        <!-- สไลด์ 1: นักเรียน -->
+        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:16px; margin-bottom:16px;">
+          <h4 style="margin:0 0 10px; font-size:14.5px; color:#1E3A8A; display:flex; align-items:center; gap:6px;">
+            🎓 สไลด์ที่ 1: สำหรับนักเรียน & ผู้ปกครอง
+          </h4>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">ป้ายข้อความ (Badge)</label>
+              <input type="text" class="form-control" value="หาติวเตอร์ที่ใช่">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">หัวข้อใหญ่ (Title)</label>
+              <input type="text" class="form-control" value="เรียนรู้ เข้าใจ พัฒนาไปด้วยกันกับติวเตอร์คุณภาพ">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">คำอธิบายย่อย (Subtitle)</label>
+              <input type="text" class="form-control" value="คัดสรรติวเตอร์ตรงใจ สอนเข้าใจง่าย ตรงตามหลักสูตรและเป้าหมายของคุณ">
+            </div>
+          </div>
+        </div>
+
+        <!-- สไลด์ 2: ติวเตอร์ -->
+        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:16px;">
+          <h4 style="margin:0 0 10px; font-size:14.5px; color:#D97706; display:flex; align-items:center; gap:6px;">
+            👨‍🏫 สไลด์ที่ 2: สำหรับติวเตอร์ & ผู้สอน
+          </h4>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">ป้ายข้อความ (Badge)</label>
+              <input type="text" class="form-control" value="โอกาสสำหรับติวเตอร์">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">หัวข้อใหญ่ (Title)</label>
+              <input type="text" class="form-control" value="แบ่งปันความรู้ สร้างรายได้เสริม กับงานสอนหลากหลาย">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">คำอธิบายย่อย (Subtitle)</label>
+              <input type="text" class="form-control" value="ระบบจัดสรรงานสอนที่เป็นธรรม มีงานสอนใหม่ทุกวัน พร้อมระบบสนับสนุนติวเตอร์มืออาชีพ">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ส่วนที่ 3: หัวข้อส่วนข่าวสารและบทความวิชาการ -->
+      <div class="panel-card" style="border-left:4px solid #D97706;">
+        <h3 style="font-size:1.1rem; color:#0F172A; margin:0 0 4px; display:flex; align-items:center; gap:8px;">
+          <span>📰</span> หัวข้อส่วนข่าวสารและบทความวิชาการหน้าแรก
+        </h3>
+        <p style="font-size:13px; color:#64748B; margin:0 0 16px;">
+          กำหนดชื่อส่วนและคำอธิบายใต้หัวข้อที่จะแสดงเหนือบอร์ดบทความหน้าแรก
+        </p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">หัวข้อส่วนข่าวสาร (Section Title)</label>
+            <input type="text" class="form-control" value="ข่าวสาร & บทความน่ารู้">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">คำอธิบายย่อย (Section Subtitle)</label>
+            <input type="text" class="form-control" value="อัปเดตเทคนิคการเรียน การเตรียมตัวสอบ และสาระน่ารู้ทางการศึกษา">
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; padding-top:4px;">
+        <button type="submit" class="btn btn-primary" style="padding:12px 40px; font-size:15px; font-weight:700; min-width:280px; box-shadow:0 6px 20px rgba(30,58,138,0.25);">
+          💾 บันทึกการเปลี่ยนแปลงทั้งหมด
+        </button>
+      </div>
+    </form>
+
+    <!-- ส่วนที่ 4: รายการข่าวสารและบทความที่แสดงในหน้าแรก -->
+    <div class="panel-card" style="margin-top:24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+        <div>
+          <h3 style="font-size:1.1rem; color:#0F172A; margin:0 0 4px;">
+            📝 รายการข่าวและบทความล่าสุด (แก้ไขชื่อข่าว/เนื้อหาได้ที่นี่)
+          </h3>
+          <p style="font-size:13px; color:#64748B; margin:0;">
+            ข่าวหรือบทความเหล่านี้จะถูกนำไปแสดงที่ส่วนล่างของหน้าแรกตามลำดับวันที่
+          </p>
+        </div>
+        <a href="manage-webboard.html" class="btn btn-primary btn-sm">
+          + เขียนข่าวใหม่
+        </a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>หัวข้อข่าว / ชื่อบทความ</th>
+              <th>หมวดหมู่</th>
+              <th>สถานะ</th>
+              <th style="text-align:right;">ยอดอ่าน</th>
+              <th>วันที่ลงข่าว</th>
+              <th style="text-align:center;">จัดการ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600;">
+                <a href="../webboard-detail.html" target="_blank" style="color:#0F172A; text-decoration:none;">
+                  เทคนิคเตรียมตัวสอบ A-Level คณิต 1 ให้ได้ 70+ ภายใน 3 เดือน
+                </a>
+              </td>
+              <td><span class="badge" style="background:#F1F5F9; color:#475569;">แนะแนวการศึกษา</span></td>
+              <td><span class="badge badge-success">เผยแพร่อยู่</span></td>
+              <td style="text-align:right; color:#64748B;">1,420</td>
+              <td style="font-size:13px; color:#64748B;">10/03/2026 10:15</td>
+              <td class="row-actions" style="white-space:nowrap; text-align:center;">
+                <a href="manage-webboard.html" class="btn btn-outline btn-sm">✏️ แก้ไข</a>
+                <button type="button" onclick="if(confirm('ลบข่าวนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">
+                <a href="../webboard-detail.html" target="_blank" style="color:#0F172A; text-decoration:none;">
+                  รวม 100 คำศัพท์ภาษาอังกฤษเจอบ่อยที่สุดในข้อสอบ TGAT
+                </a>
+              </td>
+              <td><span class="badge" style="background:#F1F5F9; color:#475569;">ภาษาต่างประเทศ</span></td>
+              <td><span class="badge badge-success">เผยแพร่อยู่</span></td>
+              <td style="text-align:right; color:#64748B;">2,890</td>
+              <td style="font-size:13px; color:#64748B;">05/03/2026 14:30</td>
+              <td class="row-actions" style="white-space:nowrap; text-align:center;">
+                <a href="manage-webboard.html" class="btn btn-outline btn-sm">✏️ แก้ไข</a>
+                <button type="button" onclick="if(confirm('ลบข่าวนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

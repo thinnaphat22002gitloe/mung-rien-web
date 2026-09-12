@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>จัดการ Webboard | มุ่งเรียน Admin Console</title>
+<title>คำขอเรียน | มุ่งเรียน Admin Console</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@
       <li><a href="revenue.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
 
       <li class="menu-sec">การจัดสรรและธุรกรรม</li>
-      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-requests.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
       <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
       <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
       <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
@@ -71,7 +71,7 @@
 
       <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
       <li><a href="home-content.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
-      <li><a href="manage-webboard.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
       <li><a href="manage-categories.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
 
       <li class="menu-sec">การจัดการระบบ</li>
@@ -82,15 +82,20 @@
 
   <main class="admin-content">
     <div class="admin-header">
-      <div><h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการ Webboard</h2></div>
-      <div style="display:flex; gap:8px;">
-        <button type="button" class="btn btn-primary btn-sm" onclick="openCreateModal()">
-          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> สร้างกระทู้ใหม่
-        </button>
-        <a href="javascript:void(0)" onclick="alert('📥 ส่งออกกระทู้ webboard_export.xlsx เรียบร้อย');" class="btn btn-success btn-sm">
-          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> Export Excel
-        </a>
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอเรียนจากนักเรียน</h2>
+        <p style="color:var(--secondary); font-size:14px;">กด "สร้างงาน" เพื่อเริ่มจับคู่ หรือ "ลงประกาศ" เพื่อโพสต์เป็นงานสอนให้ติวเตอร์เห็น</p>
       </div>
+      <a href="javascript:void(0)" onclick="alert('📥 ดาวน์โหลดรายงานคำขอเรียน requests_export.xlsx สำเร็จ')" class="btn btn-success btn-sm">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> Export Excel
+      </a>
+    </div>
+
+    <div class="toolbar">
+      <form class="toolbar-search" onsubmit="event.preventDefault();" style="display:flex; gap:8px;">
+        <input class="form-control" name="q" placeholder="ค้นหาชื่อ / วิชา / เบอร์" style="max-width:260px;">
+        <button class="btn btn-primary btn-sm" type="submit"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-search"></use></svg> ค้นหา</button>
+      </form>
     </div>
 
     <div class="panel-card">
@@ -98,46 +103,68 @@
         <table>
           <thead>
             <tr>
-              <th>หัวข้อ</th>
-              <th>หมวดหมู่</th>
-              <th>สถานะ</th>
-              <th style="text-align:right;">วิว</th>
-              <th>วันที่สร้าง</th>
+              <th>รหัส</th>
+              <th>ผู้ติดต่อ</th>
+              <th>วิชา / ระดับ</th>
+              <th>สถานที่ / เวลา</th>
+              <th>งบประมาณ</th>
+              <th>ติดต่อ</th>
+              <th>วันที่ส่ง</th>
+              <th>งาน</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><a href="../webboard-detail.html" target="_blank" style="font-weight:600;">เทคนิคเตรียมตัวสอบ A-Level คณิต 1 ให้ได้ 70+ ภายใน 3 เดือน</a></td>
-              <td>แนะแนวการศึกษา</td>
-              <td><span class="badge badge-success">เผยแพร่</span></td>
-              <td style="text-align:right;">1,420</td>
-              <td style="font-size:13px;">10/03/2026 10:15</td>
+              <td style="font-weight:700;">REQ-0042</td>
+              <td>น้องกานต์ วงศ์สว่าง<br><small style="color:var(--secondary);">ผู้ปกครอง</small></td>
+              <td>คณิตศาสตร์<br><small style="color:var(--secondary);">ม.3 (สอบเข้า ม.4)</small></td>
+              <td style="font-size:13px;">สยามสแควร์ / Online<br>เสาร์ 10:00 - 12:00</td>
+              <td style="font-size:13px; font-weight:600; color:#D97706;">400 บ./ชม.</td>
+              <td style="font-size:13px;">
+                <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-phone"></use></svg> 089-123-4567<br>
+                <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> @kan_parent
+              </td>
+              <td style="font-size:13px;">12/03/2026 14:20</td>
+              <td><span style="color:var(--secondary);">—</span></td>
               <td class="row-actions" style="white-space:nowrap;">
-                <button type="button" onclick="alert('เปิดหน้าต่างแก้ไขกระทู้');" class="btn btn-outline btn-sm">แก้ไข</button>
-                <button type="button" onclick="if(confirm('ลบกระทู้นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                <a href="job-form.html" class="btn btn-primary btn-sm">สร้างงาน</a>
+                <button type="button" onclick="alert('✅ นำคำขอนี้ไปลงเป็นประกาศงานสอนเรียบร้อย')" class="btn btn-outline btn-sm" title="ลงประกาศงานสอน">ลงประกาศ</button>
+                <button type="button" onclick="if(confirm('ยืนยันการลบคำขอนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
               </td>
             </tr>
             <tr>
-              <td><a href="../webboard-detail.html" target="_blank" style="font-weight:600;">รวม 100 คำศัพท์ภาษาอังกฤษเจอบ่อยที่สุดในข้อสอบ TGAT</a></td>
-              <td>ภาษาต่างประเทศ</td>
-              <td><span class="badge badge-success">เผยแพร่</span></td>
-              <td style="text-align:right;">2,890</td>
-              <td style="font-size:13px;">05/03/2026 14:30</td>
+              <td style="font-weight:700;">REQ-0041</td>
+              <td>นางสาวธิดารัตน์ แซ่ลี้<br><small style="color:var(--secondary);">ผู้เรียนเอง</small></td>
+              <td>ภาษาจีน (HSK 4)<br><small style="color:var(--secondary);">บุคคลทั่วไป</small><br>
+                <span class="badge badge-primary">JOB-0911</span>
+              </td>
+              <td style="font-size:13px;">Online (Zoom)<br>อังคาร/พฤหัส 19:00</td>
+              <td style="font-size:13px; font-weight:600; color:#D97706;">450 บ./ชม.</td>
+              <td style="font-size:13px;">
+                <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-phone"></use></svg> 086-555-4321<br>
+                <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> thida_lee
+              </td>
+              <td style="font-size:13px;">11/03/2026 10:15</td>
+              <td><a href="job-form.html" class="badge badge-success" style="text-decoration:none;">จับคู่แล้ว</a></td>
               <td class="row-actions" style="white-space:nowrap;">
-                <button type="button" onclick="alert('เปิดหน้าต่างแก้ไขกระทู้');" class="btn btn-outline btn-sm">แก้ไข</button>
-                <button type="button" onclick="if(confirm('ลบกระทู้นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                <a href="job-form.html" class="btn btn-outline btn-sm">แก้ไขงาน</a>
+                <button type="button" onclick="if(confirm('ยืนยันการลบคำขอนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
               </td>
             </tr>
             <tr>
-              <td><a href="../webboard-detail.html" target="_blank" style="font-weight:600;">สรุปสูตรฟิสิกส์ ม.ปลาย เรื่องกลศาสตร์ที่ชอบออกสอบมากที่สุด</a></td>
-              <td>วิทยาศาสตร์</td>
-              <td><span class="badge badge-success">เผยแพร่</span></td>
-              <td style="text-align:right;">945</td>
-              <td style="font-size:13px;">28/02/2026 09:20</td>
+              <td style="font-weight:700;">REQ-0040</td>
+              <td>ด.ช.ภูริภัทร ใจดี<br><small style="color:var(--secondary);">ผู้ปกครอง</small></td>
+              <td>ฟิสิกส์<br><small style="color:var(--secondary);">ม.5</small></td>
+              <td style="font-size:13px;">บ้านผู้เรียน (บางนา)<br>พุธ/ศุกร์ 17:30</td>
+              <td style="font-size:13px; font-weight:600; color:#D97706;">500 บ./ชม.</td>
+              <td style="font-size:13px;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-phone"></use></svg> 081-444-9876</td>
+              <td style="font-size:13px;">10/03/2026 16:40</td>
+              <td><span style="color:var(--secondary);">—</span></td>
               <td class="row-actions" style="white-space:nowrap;">
-                <button type="button" onclick="alert('เปิดหน้าต่างแก้ไขกระทู้');" class="btn btn-outline btn-sm">แก้ไข</button>
-                <button type="button" onclick="if(confirm('ลบกระทู้นี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
+                <a href="job-form.html" class="btn btn-primary btn-sm">สร้างงาน</a>
+                <button type="button" onclick="alert('✅ นำคำขอนี้ไปลงเป็นประกาศงานสอนเรียบร้อย')" class="btn btn-outline btn-sm" title="ลงประกาศงานสอน">ลงประกาศ</button>
+                <button type="button" onclick="if(confirm('ยืนยันการลบคำขอนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
               </td>
             </tr>
           </tbody>
@@ -147,42 +174,7 @@
   </main>
 </div>
 
-<!-- Modal Create Post -->
-<div id="createPostModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:3000; align-items:center; justify-content:center; padding:16px;">
-  <div style="background:#FFFFFF; border-radius:12px; width:100%; max-width:540px; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
-    <h3 style="margin:0 0 16px; font-size:18px;">+ สร้างกระทู้ใหม่</h3>
-    <form onsubmit="event.preventDefault(); alert('สร้างกระทู้สำเร็จ!'); document.getElementById('createPostModal').style.display='none';">
-      <div class="form-group">
-        <label class="form-label">หัวข้อกระทู้</label>
-        <input type="text" class="form-control" placeholder="ระบุหัวข้อบทความ" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">หมวดหมู่</label>
-        <select class="form-control">
-          <option>แนะแนวการศึกษา</option>
-          <option>ภาษาต่างประเทศ</option>
-          <option>วิทยาศาสตร์</option>
-          <option>คณิตศาสตร์</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">เนื้อหากระทู้</label>
-        <textarea class="form-control" rows="4" placeholder="พิมพ์เนื้อหาที่ต้องการเผยแพร่..." required></textarea>
-      </div>
-      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:18px;">
-        <button type="button" class="btn btn-outline" onclick="document.getElementById('createPostModal').style.display='none';">ยกเลิก</button>
-        <button type="submit" class="btn btn-primary">สร้างกระทู้</button>
-      </div>
-    </form>
-  </div>
-</div>
-
 <script src="../js/main.js"></script>
 <script src="../js/i18n.js"></script>
-<script>
-function openCreateModal() {
-  document.getElementById('createPostModal').style.display = 'flex';
-}
-</script>
 </body>
 </html>

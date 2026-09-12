@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>จัดการผู้ใช้งาน | มุ่งเรียน Admin Console</title>
+<title>ข้อความสอบถาม | มุ่งเรียน Admin Console</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -65,8 +65,8 @@
       <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
 
       <li class="menu-sec">การสื่อสารและสมาชิก</li>
-      <li><a href="manage-users.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
-      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
       <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
 
       <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
@@ -82,19 +82,13 @@
 
   <main class="admin-content">
     <div class="admin-header">
-      <div><h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> จัดการผู้ใช้งานระบบ</h2></div>
-    </div>
-
-    <div class="toolbar">
-      <form class="toolbar-search" onsubmit="event.preventDefault();">
-        <select id="userRoleFilter" class="form-control" style="max-width:240px;" onchange="filterUsers(this.value)">
-          <option value="">— ทั้งหมดทุกประเภท —</option>
-          <option value="superadmin">Superadmin</option>
-          <option value="admin">Admin Staff</option>
-          <option value="tutor">ติวเตอร์ (Tutor)</option>
-          <option value="student">นักเรียน / ผู้ปกครอง</option>
-        </select>
-      </form>
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถามจากหน้าเว็บ</h2>
+        <p style="color:var(--secondary); font-size:14px;">ข้อความจากปุ่ม "สอบถามแอดมิน" หรือฟอร์มติดต่อ — ยังไม่อ่าน 2 ข้อความ</p>
+      </div>
+      <a href="javascript:void(0)" onclick="alert('📥 ส่งออกตารางข้อความสอบถาม inquiries_export.xlsx เรียบร้อย');" class="btn btn-success btn-sm">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> Export Excel
+      </a>
     </div>
 
     <div class="panel-card">
@@ -102,56 +96,46 @@
         <table>
           <thead>
             <tr>
-              <th>Username</th>
-              <th>ชื่อ</th>
-              <th>อีเมล</th>
-              <th>ประเภท</th>
               <th>สถานะ</th>
-              <th>เข้าร่วมเมื่อ</th>
+              <th>ชื่อผู้ติดต่อ</th>
+              <th>ช่องทางติดต่อกลับ</th>
+              <th>ข้อความ</th>
+              <th>ส่งเมื่อ</th>
               <th></th>
             </tr>
           </thead>
-          <tbody id="userTableBody">
-            <tr data-role="superadmin">
-              <td style="font-weight:600;">admin</td>
-              <td>Administrator System</td>
-              <td>admin@mung-rien.com</td>
-              <td><span class="badge badge-danger">Superadmin</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">01/01/2026</td>
-              <td><span style="color:var(--secondary); font-size:12px;">บัญชีหลัก</span></td>
-            </tr>
-            <tr data-role="admin">
-              <td style="font-weight:600;">admin_nut</td>
-              <td>ณัฐพงษ์ ผู้ดูแลระบบ</td>
-              <td>nut@mung-rien.com</td>
-              <td><span class="badge badge-primary">Admin</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">15/01/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
+          <tbody>
+            <tr style="background:#EFF6FF;">
+              <td><span class="badge badge-danger">ใหม่</span></td>
+              <td style="font-weight:600;">คุณวารุณี รัตนโชติ<br><small style="color:var(--secondary); font-weight:normal;">ผู้ปกครอง ม.2</small></td>
+              <td>089-991-8822 (LINE: warunee_r)</td>
+              <td style="font-size:13.5px; white-space:pre-wrap; max-width:420px;">ต้องการติวเตอร์สอนภาษาอังกฤษเน้นสนทนาให้น้อง ม.2 โซนแจ้งวัฒนะ สามารถจัดติวเตอร์ต่างชาติหรือคนไทยที่พูดคล่องให้ได้ไหมคะ</td>
+              <td style="font-size:13px; white-space:nowrap;">12/03/2026 13:45</td>
+              <td class="row-actions" style="white-space:nowrap;">
+                <button type="button" onclick="this.closest('tr').style.background=''; this.closest('tr').querySelector('.badge').className='badge'; this.closest('tr').querySelector('.badge').textContent='อ่านแล้ว'; this.textContent='ทำเป็นยังไม่อ่าน';" class="btn btn-primary btn-sm">✓ อ่านแล้ว</button>
+                <button type="button" onclick="if(confirm('ลบข้อความนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
               </td>
             </tr>
-            <tr data-role="tutor">
-              <td style="font-weight:600;">tutor_kittipong</td>
-              <td>ดร.กิตติพงษ์ วัฒนเวคิน</td>
-              <td>kittipong.w@gmail.com</td>
-              <td><span class="badge badge-primary">ติวเตอร์</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">10/01/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
+            <tr style="background:#EFF6FF;">
+              <td><span class="badge badge-danger">ใหม่</span></td>
+              <td style="font-weight:600;">นายปิยะพงษ์ สินทรัพย์<br><small style="color:var(--secondary); font-weight:normal;">ติวเตอร์สมัครใหม่</small></td>
+              <td>081-445-1234 (piyapong_tutor)</td>
+              <td style="font-size:13.5px; white-space:pre-wrap; max-width:420px;">ผมอัปโหลดเอกสารวุฒิการศึกษาและบัตรประชาชนไปแล้ว รบกวนช่วยตรวจสอบเพื่ออนุมัติบัญชีให้ด้วยครับ ขอบคุณครับ</td>
+              <td style="font-size:13px; white-space:nowrap;">12/03/2026 11:20</td>
+              <td class="row-actions" style="white-space:nowrap;">
+                <button type="button" onclick="this.closest('tr').style.background=''; this.closest('tr').querySelector('.badge').className='badge'; this.closest('tr').querySelector('.badge').textContent='อ่านแล้ว'; this.textContent='ทำเป็นยังไม่อ่าน';" class="btn btn-primary btn-sm">✓ อ่านแล้ว</button>
+                <button type="button" onclick="if(confirm('ลบข้อความนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
               </td>
             </tr>
-            <tr data-role="student">
-              <td style="font-weight:600;">student_kan</td>
-              <td>น้องกานต์ วงศ์สว่าง</td>
-              <td>kan.w@gmail.com</td>
-              <td><span class="badge badge-primary">นักเรียน</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">12/03/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
+            <tr>
+              <td><span class="badge">อ่านแล้ว</span></td>
+              <td style="font-weight:600;">คุณแม่น้องพลอย<br><small style="color:var(--secondary); font-weight:normal;">ผู้ปกครอง ป.6</small></td>
+              <td>086-123-9999</td>
+              <td style="font-size:13.5px; white-space:pre-wrap; max-width:420px;">สอบถามเรื่องการเปลี่ยนวันเรียนกับครูผู้สอนค่ะ ตอนนี้ประสานงานเรียบร้อยแล้ว ขอบคุณทีมงานมากค่ะ</td>
+              <td style="font-size:13px; white-space:nowrap;">11/03/2026 16:10</td>
+              <td class="row-actions" style="white-space:nowrap;">
+                <button type="button" onclick="this.closest('tr').style.background='#EFF6FF'; this.closest('tr').querySelector('.badge').className='badge badge-danger'; this.closest('tr').querySelector('.badge').textContent='ใหม่'; this.textContent='✓ อ่านแล้ว';" class="btn btn-outline btn-sm">ทำเป็นยังไม่อ่าน</button>
+                <button type="button" onclick="if(confirm('ลบข้อความนี้?')) this.closest('tr').remove();" class="btn btn-danger btn-sm">ลบ</button>
               </td>
             </tr>
           </tbody>
@@ -163,17 +147,5 @@
 
 <script src="../js/main.js"></script>
 <script src="../js/i18n.js"></script>
-<script>
-function filterUsers(role) {
-  const rows = document.querySelectorAll('#userTableBody tr');
-  rows.forEach(r => {
-    if (!role || r.getAttribute('data-role') === role) {
-      r.style.display = '';
-    } else {
-      r.style.display = 'none';
-    }
-  });
-}
-</script>
 </body>
 </html>

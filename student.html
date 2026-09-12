@@ -3,25 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>สำหรับนักเรียน - ขั้นตอนหาติวเตอร์ | มุ่งเรียน</title>
+  <title>แจ้งความประสงค์ขอรับการจัดสรรติวเตอร์ | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/translator.css">
+  <style>
+    :root {
+      --font-family: 'Prompt', 'Plus Jakarta Sans', 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: var(--font-family) !important;
+      background: #F8FAFC;
+    }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; font-size: 12px; font-weight: 600; border-radius: 9999px; }
+    .badge-primary { background: #EFF6FF; color: #1E3A8A; border: 1px solid #BFDBFE; }
+
+    /* Form Design System */
+    .form-section-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      margin-bottom: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-section-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    }
+    .form-section-legend {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 22px;
+    }
+    .form-section-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .form-group label {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #1E293B;
+    }
+    .form-group label.req::after {
+      content: ' *';
+      color: #DC2626;
+      font-weight: 700;
+    }
+    .form-control {
+      width: 100%;
+      height: 50px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #0F172A;
+      background-color: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    .form-control:focus {
+      background-color: #FFFFFF;
+      border-color: #2563EB;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+      outline: none;
+    }
+    textarea.form-control {
+      height: auto;
+      min-height: 110px;
+      resize: vertical;
+    }
+    select.form-control {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 14px center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      padding-right: 44px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="login.html" data-i18n="topbar_login">✆ ลงชื่อเข้าใช้</a>
-      <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
-        <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
-        <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>บัญชี ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> เข้าสู่ระบบ</a>
+            <a href="register.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> สมัครเป็นติวเตอร์</a>
+          </div>
+        </details>
       </div>
     </div>
   </div>
 
+  <!-- Main Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">🎓</div>
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
         <div>
           <div class="logo-text">มุ่ง<span>เรียน</span></div>
           <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
@@ -30,176 +163,238 @@
       <button class="nav-toggle" aria-label="menu">☰</button>
       <ul class="nav-menu">
         <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
-        <li><a href="jobs.html" data-i18n="nav_jobs">งานสอน (สำหรับติวเตอร์)</a></li>
-        <li><a href="student.html" class="active" data-i18n="nav_student">สำหรับนักเรียน</a></li>
-        <li><a href="register.html" data-i18n="nav_register">สมัครติวเตอร์</a></li>
-        <li><a href="webboard.html" data-i18n="nav_webboard">Webboard</a></li>
-        <li><a href="admin/dashboard.html" data-i18n="nav_admin">ADMIN</a></li>
+        <li><a href="jobs.html" data-i18n="nav_jobs">ประกาศงานสอน</a></li>
+        <li><a href="student.html" class="active" data-i18n="nav_student">สำหรับนักเรียน (หาติวเตอร์)</a></li>
+        <li><a href="register.html" data-i18n="nav_register">ลงทะเบียนติวเตอร์</a></li>
+        <li><a href="webboard.html" data-i18n="nav_webboard">พื้นที่วิชาการ (Webboard)</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
       </ul>
     </div>
   </nav>
 
-  <section class="section section-gray" style="padding-top:40px;">
-    <div class="container">
-      <h2 class="section-title"><span data-i18n="std_title_part1">ขั้นตอน</span><span data-i18n="std_title_span">การหาติวเตอร์</span></h2>
-      <p class="section-sub" data-i18n="std_sub">ทำตามขั้นตอนง่ายๆ ด้านล่าง เพื่อขอหาติวเตอร์สอนพิเศษที่ตรงกับความต้องการของคุณ</p>
+  <section class="section" style="padding-top: 40px; padding-bottom: 80px;">
+    <div class="container" style="max-width: 860px;">
+      
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 36px;">
+        <span class="badge badge-primary" style="margin-bottom: 10px;">บริการจัดสรรติวเตอร์</span>
+        <h1 style="font-size: clamp(1.6rem, 3.2vw, 2.2rem); color: #0F172A; margin: 8px 0 12px; font-weight: 700;">
+          แจ้งความประสงค์ขอรับการจัดสรรติวเตอร์
+        </h1>
+        <p style="color: #475569; font-size: 15px; margin: 0 auto; max-width: 640px; line-height: 1.6;">
+          กรุณาระบุข้อมูลการเรียนการสอน เพื่อให้ฝ่ายวิชาการคัดกรองติวเตอร์ที่มีคุณสมบัติตรงตามความต้องการของท่านมากที่สุด โดยไม่มีค่าธรรมเนียมการประสานงานเบื้องต้น
+        </p>
+      </div>
 
-      <!-- Step 1: Contact Methods -->
-      <div style="max-width: 800px; margin: 0 auto 40px; background: var(--light); padding: 30px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--gray-border); display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 30px;">
-        <div style="text-align: left; max-width: 450px;">
-          <h3 style="color: var(--dark); font-size: 20px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-            <span style="background: var(--accent); color: var(--light); width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px;">1</span>
-            <span data-i18n="std_step1">ติดต่อทีมงาน มุ่งเรียน โดยตรง</span>
-          </h3>
-          <p style="color: var(--secondary); margin-bottom: 15px; font-size: 14.5px; line-height: 1.6;" data-i18n="std_step1_desc">คุณสามารถติดต่อทีมงานเพื่อปรึกษาหรือขอติวเตอร์ผ่านทาง Line ID หรือ Facebook ได้ทันทีเพื่อความรวดเร็วสูงสุด</p>
-          <div style="display: flex; flex-direction: column; gap: 8px; font-weight: 600; font-size: 14.5px;">
-            <div style="display: flex; align-items: center; gap: 8px; color: var(--text);">
-              <span>💬 Line ID:</span> <a href="#" style="color: var(--accent); text-decoration: underline;">@มุ่งเรียน</a>
+      <!-- Quick Contact Card -->
+      <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 16px; padding: 20px 24px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="font-size: 28px;">💬</div>
+          <div>
+            <div style="font-weight: 700; color: #1E3A8A; font-size: 15px;">ต้องการคำปรึกษาด่วนกับเจ้าหน้าที่วิชาการ?</div>
+            <div style="font-size: 13px; color: #475569;">ติดต่อผ่าน LINE ID: <strong>@mungrien</strong> หรือโทร <strong>02-123-4567</strong> ได้ทันที</div>
+          </div>
+        </div>
+        <a href="https://line.me" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="padding: 10px 18px; font-weight: 600;">
+          แอดไลน์ปรึกษาฟรี →
+        </a>
+      </div>
+
+      <!-- Form Submission -->
+      <form onsubmit="handleStudentForm(event)">
+        
+        <!-- Section 1: Contact Information -->
+        <div class="form-section-card">
+          <div class="form-section-legend">
+            <span class="form-section-badge" style="background: #2563EB;">1</span>
+            <span>ข้อมูลผู้เรียนและช่องทางติดต่อ</span>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="req">ชื่อ-นามสกุล ผู้เรียนหรือผู้ปกครอง</label>
+              <input type="text" required class="form-control" placeholder="เช่น นายสมคิด ใฝ่เรียน">
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; color: var(--text);">
-              <span>👥 Facebook:</span> <a href="#" style="color: var(--accent); text-decoration: underline;">facebook.com/มุ่งเรียน</a>
+
+            <div class="form-group">
+              <label class="req">สถานะผู้ติดต่อ</label>
+              <select required class="form-control">
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="student">ผู้เรียนติดต่อเอง</option>
+                <option value="parent">ผู้ปกครองติดต่อแทน</option>
+                <option value="other">ญาติ / อื่นๆ</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="req">เบอร์โทรศัพท์สำหรับประสานงาน</label>
+              <input type="tel" required class="form-control" placeholder="08XXXXXXXX">
+            </div>
+
+            <div class="form-group">
+              <label>LINE ID (สำหรับการส่งประวัติติวเตอร์)</label>
+              <input type="text" class="form-control" placeholder="เช่น @line_id หรือเบอร์โทร">
             </div>
           </div>
         </div>
-        <div style="text-align: center;">
-          <div class="qr-box" style="margin: 0 auto 10px;" aria-label="QR Code Line"></div>
-          <p style="color: var(--secondary); font-size: 12.5px; font-weight: 500;" data-i18n="std_scan_qr">สแกน Line QR Code เพื่อเพิ่มเพื่อน</p>
+
+        <!-- Section 2: Subject & Academic Level -->
+        <div class="form-section-card">
+          <div class="form-section-legend">
+            <span class="form-section-badge" style="background: #059669;">2</span>
+            <span>รายละเอียดวิชาและเป้าหมายการเรียน</span>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="req">ระดับชั้นการศึกษา</label>
+              <select required class="form-control">
+                <option value="">-- เลือกระดับชั้น --</option>
+                <option>ประถมศึกษา (ป.1 - ป.6)</option>
+                <option>มัธยมศึกษาตอนต้น (ม.1 - ม.3)</option>
+                <option>มัธยมศึกษาตอนปลาย (ม.4 - ม.6)</option>
+                <option>ระดับอุดมศึกษา (มหาวิทยาลัย)</option>
+                <option>บุคคลทั่วไป / วัยทำงาน</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="req">กลุ่มสาระการเรียนรู้ / วิชา</label>
+              <select required class="form-control">
+                <option value="">-- เลือกวิชา --</option>
+                <option>คณิตศาสตร์</option>
+                <option>วิทยาศาสตร์</option>
+                <option>ฟิสิกส์</option>
+                <option>เคมี</option>
+                <option>ชีววิทยา</option>
+                <option>ภาษาอังกฤษ</option>
+                <option>ภาษาจีน</option>
+                <option>ภาษาญี่ปุ่น</option>
+                <option>ภาษาเกาหลี</option>
+                <option>ภาษาไทย / สังคมศึกษา</option>
+                <option>เปียโน / ดนตรี</option>
+                <option>อื่นๆ</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>เป้าหมายการเรียนหรือจุดเน้นพิเศษ</label>
+            <input type="text" class="form-control" placeholder="เช่น ปูพื้นฐานเพิ่มเกรด, ติวสอบเข้า ม.4 รร.เตรียมอุดมฯ, สอบ IELTS, สอบ สอวน.">
+          </div>
         </div>
-      </div>
 
-      <!-- Step 2: Form Container -->
-      <div style="max-width: 800px; margin: 0 auto;">
-        <form class="form-container">
-          <div class="form-section-title" style="margin-top: 0;" data-i18n="std_step2">2. กรอกแบบฟอร์มขอติวเตอร์ (สถาบันจะติดต่อกลับภายใน 12 ชั่วโมง)</div>
+        <!-- Section 3: Format, Location & Time -->
+        <div class="form-section-card">
+          <div class="form-section-legend">
+            <span class="form-section-badge" style="background: #D97706;">3</span>
+            <span>รูปแบบ สถานที่ และวัน-เวลาที่สะดวก</span>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="req">รูปแบบการจัดการเรียนการสอน</label>
+              <select required class="form-control">
+                <option value="">-- เลือกรูปแบบ --</option>
+                <option>เรียนตัวต่อตัว On-site (นอกสถานที่ / บ้านผู้เรียน)</option>
+                <option>เรียนผ่านระบบออนไลน์ (Zoom / Google Meet)</option>
+                <option>ได้ทั้งสองรูปแบบ (พิจารณาตามความเหมาะสม)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>สถานที่เรียนที่ประสงค์ (กรณีเรียน On-site)</label>
+              <input type="text" class="form-control" placeholder="เช่น บ้านย่านบางนา, เซ็นทรัลลาดพร้าว, สยามสแควร์">
+            </div>
+          </div>
 
           <div class="form-group">
-            <label class="req" data-i18n="label_fullname">ชื่อ-นามสกุล</label>
-            <input type="text" class="form-control" placeholder="เช่น นางสาวสมศรี สวยดี" data-i18n="ph_fullname">
+            <label class="req">วันและช่วงเวลาที่สะดวกเรียน</label>
+            <input type="text" required class="form-control" placeholder="เช่น เสาร์ หรือ อาทิตย์ ช่วงบ่าย (สัปดาห์ละ 1-2 ครั้ง ละ 2 ชม.)">
           </div>
+        </div>
+
+        <!-- Section 4: Budget & Notes -->
+        <div class="form-section-card">
+          <div class="form-section-legend">
+            <span class="form-section-badge" style="background: #64748B;">4</span>
+            <span>งบประมาณและข้อมูลเพิ่มเติม</span>
+          </div>
+
           <div class="form-group">
-            <label class="req" data-i18n="label_status">สถานะผู้ติดต่อ</label>
-            <select class="form-control">
-              <option value="">-- เลือก --</option>
-              <option>ผู้ปกครอง</option>
-              <option>นักเรียน</option>
-              <option>อื่นๆ</option>
-            </select>
+            <label>อัตรางบประมาณที่กำหนด (บาท / ชั่วโมง)</label>
+            <input type="text" class="form-control" placeholder="เช่น 350 - 450 บาท/ชม. (หรือ ระบุตามเกณฑ์สถาบัน)">
           </div>
+
           <div class="form-group">
-            <label class="req" data-i18n="label_phone">โทรศัพท์</label>
-            <input type="tel" class="form-control" placeholder="08XXXXXXXX">
+            <label>รายละเอียดเพิ่มเติม หรือคุณสมบัติติวเตอร์ที่ต้องการเป็นพิเศษ</label>
+            <textarea class="form-control" placeholder="เช่น ต้องการติวเตอร์ใจเย็น มีเอกสารสรุปให้ล่วงหน้า ติวเตอร์เพศหญิง ฯลฯ"></textarea>
           </div>
-          <div class="form-group">
-            <label class="req" data-i18n="label_subject_req">วิชาที่ต้องการหาติวเตอร์</label>
-            <select class="form-control">
-              <option value="">-- เลือกวิชา --</option>
-              <option>คณิตศาสตร์</option>
-              <option>วิทยาศาสตร์</option>
-              <option>ฟิสิกส์</option>
-              <option>เคมี</option>
-              <option>ชีววิทยา</option>
-              <option>ภาษาอังกฤษ</option>
-              <option>ภาษาไทย</option>
-              <option>สังคมศึกษา</option>
-              <option>ภาษาจีน</option>
-              <option>วิชาอื่นๆ</option>
-            </select>
+        </div>
+
+        <!-- Action Button -->
+        <div style="text-align: center; margin-top: 36px;">
+          <button type="submit" class="btn btn-primary" style="padding: 16px 48px; font-size: 16px; font-weight: 700; border-radius: 12px; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);">
+            ยืนยันการส่งคำขอจัดสรรติวเตอร์ →
+          </button>
+          <div style="font-size: 13px; color: #64748B; margin-top: 12px;">
+            เมื่อกดยืนยัน ระบบจำลองจะบันทึกข้อมูลและนำทางไปยังหน้ายืนยันคำขอสำเร็จ
           </div>
-          <div class="form-group">
-            <label class="req" data-i18n="label_tutor_gender">เพศติวเตอร์</label>
-            <select class="form-control">
-              <option value="">-- ไม่ระบุเพศ --</option>
-              <option>ติวเตอร์ชาย</option>
-              <option>ติวเตอร์หญิง</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label data-i18n="label_std_level">ระดับชั้นของนักเรียน</label>
-            <select class="form-control">
-              <option value="">-- เลือกระดับชั้น --</option>
-              <option>อนุบาล</option>
-              <option>ประถมศึกษา (ป.1-ป.6)</option>
-              <option>มัธยมศึกษาตอนต้น (ม.1-ม.3)</option>
-              <option>มัธยมศึกษาตอนปลาย (ม.4-ม.6)</option>
-              <option>มหาวิทยาลัย</option>
-              <option>ผู้ใหญ่</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="req" data-i18n="label_location_req">สถานที่สอน</label>
-            <input type="text" class="form-control" placeholder="เช่น บ้าน, คาเฟ่, สาธารณะ, Online" data-i18n="ph_location">
-          </div>
-          <div class="form-group">
-            <label data-i18n="label_loc_detail">ตำแหน่งสถานที่สอน (ใกล้ BTS/MRT/ถนน)</label>
-            <input type="text" class="form-control" placeholder="เช่น ใกล้ BTS อารีย์, ถนนสุขุมวิท" data-i18n="ph_loc_detail">
-          </div>
-          <div class="form-group">
-            <label class="req" data-i18n="label_time_req">วัน-เวลา ที่สะดวกเรียน</label>
-            <input type="text" class="form-control" placeholder="เช่น เสาร์ 13.00-15.00 น., จันทร์-พุธ 17.00-19.00 น." data-i18n="ph_time_req">
-          </div>
-          <div class="form-group">
-            <label data-i18n="label_budget">งบประมาณค่าสอน/ชั่วโมง</label>
-            <input type="text" class="form-control" placeholder="เช่น 200-300 บาท/ชั่วโมง" data-i18n="ph_budget">
-          </div>
-          <div class="form-group" style="align-items:flex-start;">
-            <label data-i18n="label_more_detail">รายละเอียดเพิ่มเติม</label>
-            <textarea class="form-control" placeholder="เช่น ติวสอบเข้า, ติวเนื้อหาโรงเรียน, สนใจผลงานติวเตอร์เป็นต้น" data-i18n="ph_more_detail"></textarea>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary" data-i18n="btn_submit_find">ส่งข้อมูลหาติวเตอร์</button>
-          </div>
-        </form>
-      </div>
+        </div>
+
+      </form>
+
     </div>
   </section>
 
-  <div class="float-chat">
-    <button class="chat-btn" title="แชทกับทีมงาน">💬</button>
-    <div class="chat-label">สอบถามโปรโมชั่น คลิก</div>
-  </div>
-
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
       <div>
-        <h4 data-i18n="footer_col1_title">มุ่งเรียน</h4>
+        <h4>มุ่งเรียน (Mung-Rien)</h4>
         <ul>
-          <li data-i18n="footer_col1_li1">🎓 ศูนย์รวมงานสอนพิเศษอันดับ 1</li>
-          <li><span data-i18n="footer_col1_li2">📍 ทำเลศักยภาพ: </span><a href="#" style="color:var(--primary);">www.มุ่งเรียน.com</a></li>
-          <li>📧 info@มุ่งเรียน.com</li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-cap"></use></svg> ระบบนายหน้าและศูนย์ประสานงานเพื่อการศึกษา</li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-mail"></use></svg> contact@mungrien.com</li>
         </ul>
       </div>
       <div>
-        <h4 data-i18n="footer_col2_title">สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <h4>สำหรับนักเรียน/ผู้ปกครอง</h4>
         <ul>
-          <li><a href="student.html" data-i18n="footer_col2_li1">ขอหาติวเตอร์สอนพิเศษ</a></li>
-          <li><a href="#" data-i18n="footer_col2_li2">คอร์สสอนยอดนิยม</a></li>
-          <li><a href="webboard.html" data-i18n="footer_col2_li3">Webboard / ความรู้</a></li>
+          <li><a href="student.html">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="jobs.html">ดูประกาศงานสอน</a></li>
+          <li><a href="webboard.html">Webboard / บทความ</a></li>
         </ul>
       </div>
       <div>
-        <h4 data-i18n="footer_col3_title">สำหรับติวเตอร์</h4>
+        <h4>สำหรับติวเตอร์</h4>
         <ul>
-          <li><a href="register.html" data-i18n="footer_col3_li1">สมัครเป็นติวเตอร์</a></li>
-          <li><a href="jobs.html" data-i18n="footer_col3_li2">ดูรายการงานสอน</a></li>
-          <li><a href="#" data-i18n="footer_col3_li3">สิ่งที่ติวเตอร์ควรรู้</a></li>
+          <li><a href="register.html">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html">ดูรายการงานสอน</a></li>
+          <li><a href="login.html">เข้าสู่ระบบติวเตอร์</a></li>
         </ul>
       </div>
       <div>
-        <h4 data-i18n="footer_col4_title">ติดต่อเรา</h4>
+        <h4>ติดต่อศูนย์ประสานงาน</h4>
         <ul>
-          <li>Facebook: facebook.com/มุ่งเรียน</li>
-          <li>Line ID: @มุ่งเรียน</li>
-          <li>📞 02-XXX-XXXX</li>
+          <li>Facebook: <a href="https://facebook.com" target="_blank" rel="noopener">มุ่งเรียน ติวเตอร์</a></li>
+          <li>Line ID: <a href="https://line.me" target="_blank" rel="noopener">@mungrien</a></li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-phone"></use></svg> 02-123-4567</li>
         </ul>
       </div>
     </div>
-    <div class="copyright" data-i18n="footer_copy">© 2026 มุ่งเรียน. All rights reserved.</div>
+    <div class="copyright">© 2026 มุ่งเรียน (TutorBroker). All rights reserved.</div>
   </footer>
 
-  <script src="js/lang.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    function handleStudentForm(e) {
+      e.preventDefault();
+      sessionStorage.setItem('last_request_time', new Date().toLocaleTimeString('th-TH'));
+      window.location.href = 'student-done.html';
+    }
+  </script>
 </body>
 </html>
-
-
-

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>วิธีเลือกติวเตอร์ให้เหมาะกับลูก | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/translator.css">
+  <style>
+    :root {
+      --font-family: 'Prompt', 'Plus Jakarta Sans', 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: var(--font-family) !important;
+      background: #F8FAFC;
+    }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; font-size: 12px; font-weight: 600; border-radius: 9999px; }
+    .badge-primary { background: #EFF6FF; color: #1E3A8A; border: 1px solid #BFDBFE; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>บัญชี ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> เข้าสู่ระบบ</a>
+            <a href="register.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> สมัครเป็นติวเตอร์</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="jobs.html">ประกาศงานสอน</a></li>
+        <li><a href="student.html">สำหรับนักเรียน (หาติวเตอร์)</a></li>
+        <li><a href="register.html">ลงทะเบียนติวเตอร์</a></li>
+        <li><a href="webboard.html" class="active">พื้นที่วิชาการ (Webboard)</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top: 40px; padding-bottom: 80px;">
+    <div class="container" style="max-width: 860px;">
+      
+      <div style="margin-bottom: 16px; font-size: 14px;">
+        <a href="webboard.html" style="color: #2563EB; text-decoration: none; font-weight: 600;">← กลับไป Webboard ทั้งหมด</a>
+      </div>
+
+      <article style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px; padding: 36px 32px; box-shadow: var(--shadow-sm);">
+        <span class="badge badge-primary" style="margin-bottom: 12px;">บทความวิชาการ</span>
+        <h1 style="font-size: 24px; font-weight: 700; color: #0F172A; margin: 0 0 10px; line-height: 1.4;">
+          วิธีเลือกติวเตอร์ให้เหมาะกับลูก และเป้าหมายการสอบเข้า ม.1 / ม.4
+        </h1>
+        <div style="color: #64748B; font-size: 13.5px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #F1F5F9;">
+          👤 เขียนโดย ศูนย์วิชาการมุ่งเรียน · 📅 12 กันยายน 2569 · 👁️ 450 ครั้ง
+        </div>
+
+        <div style="font-size: 15.5px; line-height: 1.85; color: #334155;">
+          <p>
+            การมองหาติวเตอร์ส่วนตัวสำหรับบุตรหลาน สิ่งสำคัญที่สุดไม่ได้อยู่ที่สถาบันที่มีชื่อเสียงเพียงอย่างเดียว แต่คือ <strong>"ความเข้ากันได้ระหว่างสไตล์การสอนของผู้สอนและพฤติกรรมการเรียนรู้ของผู้เรียน"</strong>
+          </p>
+          <h3 style="font-size: 18px; color: #0F172A; margin: 24px 0 10px;">1. ประเมินจุดอ่อนและเป้าหมายที่แท้จริง</h3>
+          <p>
+            นักเรียนแต่ละคนมีความต้องการที่แตกต่างกัน เช่น บางคนต้องการปูพื้นฐานเพราะตามที่โรงเรียนไม่ทัน ในขณะที่บางคนพื้นฐานแน่นแล้วและต้องการติวเตอร์เพื่อตะลุยโจทย์ระดับแข่งขัน การระบุเป้าหมายอย่างชัดเจนจะช่วยให้เจ้าหน้าที่จัดสรรติวเตอร์ที่มีประสบการณ์ตรงสายได้แม่นยำ
+          </p>
+          <h3 style="font-size: 18px; color: #0F172A; margin: 24px 0 10px;">2. ความต่อเนื่องและการวัดผล</h3>
+          <p>
+            การเรียนตัวต่อตัวควรมีการสรุปความก้าวหน้ารายสัปดาห์ เช่น การทำ Quiz สั้นๆ ก่อนและหลังเรียน และการสื่อสารระหว่างติวเตอร์กับผู้ปกครองอย่างสม่ำเสมอ
+          </p>
+        </div>
+
+        <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 14px; padding: 20px; margin-top: 36px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <div style="font-weight: 700; color: #1E3A8A; font-size: 15px;">ต้องการหาติวเตอร์ส่วนตัวที่ผ่านการคัดสรร?</div>
+            <div style="font-size: 13px; color: #475569;">แจ้งเป้าหมายการเรียนกับทีมวิชาการมุ่งเรียนได้ทันที</div>
+          </div>
+          <a href="student.html" class="btn btn-primary btn-sm" style="padding: 10px 18px;">ยื่นคำขอจัดสรรติวเตอร์ →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>มุ่งเรียน (Mung-Rien)</h4>
+        <ul>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-cap"></use></svg> ระบบนายหน้าและศูนย์ประสานงานเพื่อการศึกษา</li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-mail"></use></svg> contact@mungrien.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4>สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="jobs.html">ดูประกาศงานสอน</a></li>
+          <li><a href="webboard.html">Webboard / บทความ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html">ดูรายการงานสอน</a></li>
+          <li><a href="login.html">เข้าสู่ระบบติวเตอร์</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อศูนย์ประสานงาน</h4>
+        <ul>
+          <li>Facebook: <a href="https://facebook.com" target="_blank" rel="noopener">มุ่งเรียน ติวเตอร์</a></li>
+          <li>Line ID: <a href="https://line.me" target="_blank" rel="noopener">@mungrien</a></li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-phone"></use></svg> 02-123-4567</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 มุ่งเรียน (TutorBroker). All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

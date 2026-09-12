@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>จัดการผู้ใช้งาน | มุ่งเรียน Admin Console</title>
+<title>ตรวจสลิปโอนเงิน | มุ่งเรียน Admin Console</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -58,14 +58,14 @@
       <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
       <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
       <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
-      <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+      <li><a href="manage-slips.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
 
       <li class="menu-sec">บุคลากรทางการศึกษา</li>
       <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
       <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
 
       <li class="menu-sec">การสื่อสารและสมาชิก</li>
-      <li><a href="manage-users.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
       <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
       <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
 
@@ -82,17 +82,31 @@
 
   <main class="admin-content">
     <div class="admin-header">
-      <div><h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> จัดการผู้ใช้งานระบบ</h2></div>
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสลิปโอนเงิน</h2>
+        <p style="color:var(--secondary); font-size:14px;">ลูกค้าส่งรูปสลิปเข้า LINE OA → ระบบอ่าน QR/OCR ให้อัตโนมัติ → กดบันทึกเป็นธุรกรรมของงานได้ทันที (รอตรวจ 1 จากทั้งหมด 3 ใบ)</p>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <a href="javascript:void(0)" onclick="alert('📥 ส่งออกตารางสลิป slips_export.xlsx เรียบร้อย');" class="btn btn-success btn-sm">
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> Export Excel
+        </a>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <input type="file" id="slipFileInput" accept="image/*" class="form-control" style="max-width:230px; padding:6px;">
+          <button class="btn btn-primary btn-sm" onclick="if(document.getElementById('slipFileInput').files.length) { alert('🔍 OCR อ่านข้อมูลสลิปสำเร็จ! คะแนนความน่าเชื่อถือ: 98/100'); location.href='slip-detail.html'; } else { alert('โปรดเลือกไฟล์รูปสลิปก่อน'); }">
+            <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-search"></use></svg> ทดสอบตรวจสลิป
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="toolbar">
       <form class="toolbar-search" onsubmit="event.preventDefault();">
-        <select id="userRoleFilter" class="form-control" style="max-width:240px;" onchange="filterUsers(this.value)">
-          <option value="">— ทั้งหมดทุกประเภท —</option>
-          <option value="superadmin">Superadmin</option>
-          <option value="admin">Admin Staff</option>
-          <option value="tutor">ติวเตอร์ (Tutor)</option>
-          <option value="student">นักเรียน / ผู้ปกครอง</option>
+        <select id="slipStatusFilter" class="form-control" style="max-width:220px;" onchange="filterSlips(this.value)">
+          <option value="">— ทุกสถานะ —</option>
+          <option value="AUTO_ACCEPTED">อนุมัติอัตโนมัติ (Auto Accepted)</option>
+          <option value="MATCHED">เชื่อมงานแล้ว (Matched)</option>
+          <option value="REVIEW_REQUIRED">รอเจ้าหน้าที่ตรวจ (Review Required)</option>
+          <option value="REJECTED">ปฏิเสธ / สลิปปลอม (Rejected)</option>
         </select>
       </form>
     </div>
@@ -102,56 +116,55 @@
         <table>
           <thead>
             <tr>
-              <th>Username</th>
-              <th>ชื่อ</th>
-              <th>อีเมล</th>
-              <th>ประเภท</th>
+              <th>รหัส</th>
               <th>สถานะ</th>
-              <th>เข้าร่วมเมื่อ</th>
+              <th>ที่มา</th>
+              <th style="text-align:right;">ยอดเงิน</th>
+              <th>ธนาคาร</th>
+              <th>เลขอ้างอิง</th>
+              <th style="text-align:right;">คะแนน</th>
+              <th>รับเมื่อ</th>
               <th></th>
             </tr>
           </thead>
-          <tbody id="userTableBody">
-            <tr data-role="superadmin">
-              <td style="font-weight:600;">admin</td>
-              <td>Administrator System</td>
-              <td>admin@mung-rien.com</td>
-              <td><span class="badge badge-danger">Superadmin</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">01/01/2026</td>
-              <td><span style="color:var(--secondary); font-size:12px;">บัญชีหลัก</span></td>
-            </tr>
-            <tr data-role="admin">
-              <td style="font-weight:600;">admin_nut</td>
-              <td>ณัฐพงษ์ ผู้ดูแลระบบ</td>
-              <td>nut@mung-rien.com</td>
-              <td><span class="badge badge-primary">Admin</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">15/01/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
+          <tbody id="slipTableBody">
+            <tr data-status="REVIEW_REQUIRED" style="background:#FFFBEB;">
+              <td style="font-weight:600;">SLIP-2603-03</td>
+              <td><span class="badge badge-pending">รอเจ้าหน้าที่ตรวจ</span></td>
+              <td style="font-size:13px;">LINE OA<br><small style="color:var(--secondary);">Somchai K.</small></td>
+              <td style="text-align:right; font-weight:600;">5,400.00</td>
+              <td style="font-size:13px;">กสิกรไทย (KBANK)</td>
+              <td style="font-size:12.5px;">014072142512391...</td>
+              <td style="text-align:right; font-weight:700; color:#D97706;">85</td>
+              <td style="font-size:13px; white-space:nowrap;">12/03/2026 14:15</td>
+              <td class="row-actions" style="white-space:nowrap;">
+                <a href="slip-detail.html" class="btn btn-primary btn-sm">ตรวจ</a>
               </td>
             </tr>
-            <tr data-role="tutor">
-              <td style="font-weight:600;">tutor_kittipong</td>
-              <td>ดร.กิตติพงษ์ วัฒนเวคิน</td>
-              <td>kittipong.w@gmail.com</td>
-              <td><span class="badge badge-primary">ติวเตอร์</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">10/01/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
+            <tr data-status="MATCHED">
+              <td style="font-weight:600;">SLIP-2603-02</td>
+              <td><span class="badge badge-primary">เชื่อมงานแล้ว</span></td>
+              <td style="font-size:13px;">LINE OA<br><small style="color:var(--secondary);">Thidarat L.</small></td>
+              <td style="text-align:right; font-weight:600;">5,000.00</td>
+              <td style="font-size:13px;">ไทยพาณิชย์ (SCB)</td>
+              <td style="font-size:12.5px;">202603110948123...</td>
+              <td style="text-align:right; font-weight:700; color:#059669;">98</td>
+              <td style="font-size:13px; white-space:nowrap;">11/03/2026 10:20</td>
+              <td class="row-actions" style="white-space:nowrap;">
+                <a href="slip-detail.html" class="btn btn-outline btn-sm">ดูรายละเอียด</a>
               </td>
             </tr>
-            <tr data-role="student">
-              <td style="font-weight:600;">student_kan</td>
-              <td>น้องกานต์ วงศ์สว่าง</td>
-              <td>kan.w@gmail.com</td>
-              <td><span class="badge badge-primary">นักเรียน</span></td>
-              <td><span class="badge badge-success">ใช้งานได้</span></td>
-              <td style="font-size:13px;">12/03/2026</td>
-              <td>
-                <button class="btn btn-danger btn-sm" onclick="this.textContent = this.textContent === 'ระงับ' ? 'เปิดใช้' : 'ระงับ'; alert('เปลี่ยนสถานะผู้ใช้เรียบร้อย');">ระงับ</button>
+            <tr data-status="AUTO_ACCEPTED">
+              <td style="font-weight:600;">SLIP-2603-01</td>
+              <td><span class="badge badge-success">อนุมัติอัตโนมัติ</span></td>
+              <td style="font-size:13px;">เว็บพอร์ทัล</td>
+              <td style="text-align:right; font-weight:600;">4,000.00</td>
+              <td style="font-size:13px;">กรุงเทพ (BBL)</td>
+              <td style="font-size:12.5px;">BBL-99482103941...</td>
+              <td style="text-align:right; font-weight:700; color:#059669;">100</td>
+              <td style="font-size:13px; white-space:nowrap;">10/03/2026 09:30</td>
+              <td class="row-actions" style="white-space:nowrap;">
+                <a href="slip-detail.html" class="btn btn-outline btn-sm">ดูรายละเอียด</a>
               </td>
             </tr>
           </tbody>
@@ -164,10 +177,10 @@
 <script src="../js/main.js"></script>
 <script src="../js/i18n.js"></script>
 <script>
-function filterUsers(role) {
-  const rows = document.querySelectorAll('#userTableBody tr');
+function filterSlips(status) {
+  const rows = document.querySelectorAll('#slipTableBody tr');
   rows.forEach(r => {
-    if (!role || r.getAttribute('data-role') === role) {
+    if (!status || r.getAttribute('data-status') === status) {
       r.style.display = '';
     } else {
       r.style.display = 'none';

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แจ้งความประสงค์สำเร็จ | มุ่งเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/translator.css">
+  <style>
+    :root {
+      --font-family: 'Prompt', 'Plus Jakarta Sans', 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      font-family: var(--font-family) !important;
+      background: #F8FAFC;
+    }
+    .req-done-wrapper {
+      min-height: calc(100vh - 240px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      background: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.06) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.05) 0%, transparent 45%),
+                  linear-gradient(180deg, #F8FAFC 0%, #EEF2F6 100%);
+    }
+    .req-done-card {
+      width: 100%;
+      max-width: 820px;
+      background: #FFFFFF;
+      border-radius: 24px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08), 0 6px 14px -4px rgba(15, 23, 42, 0.03);
+      overflow: hidden;
+    }
+    .req-done-header {
+      background: linear-gradient(145deg, #064E3B 0%, #059669 55%, #10B981 100%);
+      padding: 36px 32px 30px;
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .req-done-badge-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 32px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    .contact-method-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-method-card:hover {
+      border-color: #10B981;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; display: flex; align-items: center; gap: 6px;">
+        <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-chat"></use></svg>
+        <span>LINE: @mungrien</span>
+      </span>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div class="lang-switch-wrap" title="เลือกภาษา / Select Language">
+          <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+              <span>🇹🇭</span> TH
+            </button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+              <span>🇬🇧</span> EN
+            </button>
+          </div>
+        </div>
+
+        <details class="acc-menu">
+          <summary>
+            <svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-user"></use></svg>
+            <span>บัญชี ▾</span>
+          </summary>
+          <div class="acc-dropdown">
+            <a href="login.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-key"></use></svg> เข้าสู่ระบบ</a>
+            <a href="register.html"><svg class="ic" aria-hidden="true" style="width:16px;height:16px;"><use href="icons.svg#ic-teacher"></use></svg> สมัครเป็นติวเตอร์</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><svg class="ic" aria-hidden="true" style="width:22px;height:22px;"><use href="icons.svg#ic-cap"></use></svg></div>
+        <div>
+          <div class="logo-text">มุ่ง<span>เรียน</span></div>
+          <div class="logo-tag" data-i18n="logo_tag">เรียนรู้ เข้าใจ พัฒนาไปด้วยกัน</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="menu">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="jobs.html">ประกาศงานสอน</a></li>
+        <li><a href="student.html" class="active">สำหรับนักเรียน (หาติวเตอร์)</a></li>
+        <li><a href="register.html">ลงทะเบียนติวเตอร์</a></li>
+        <li><a href="webboard.html">พื้นที่วิชาการ (Webboard)</a></li>
+        <li><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="req-done-wrapper">
+    <div class="req-done-card">
+      
+      <!-- Success Header Banner -->
+      <div class="req-done-header">
+        <div class="req-done-badge-icon">✓</div>
+        <h1 style="font-size: 26px; font-weight: 700; margin: 0 0 8px;">สถาบันได้รับข้อมูลคำขอของท่านเรียบร้อยแล้ว</h1>
+        <p style="font-size: 15px; opacity: 0.9; margin: 0 auto; max-width: 580px; line-height: 1.6;">
+          ฝ่ายวิชาการศูนย์ประสานงานมุ่งเรียนกำลังตรวจสอบรายละเอียดวิชา และคัดกรองติวเตอร์ผู้ทรงคุณวุฒิที่ตรงตามเป้าหมายของท่าน
+        </p>
+      </div>
+
+      <!-- Body Content -->
+      <div style="padding: 36px 32px 40px;">
+        
+        <!-- Summary Pill -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 28px;">
+          <div style="font-size: 14px; color: #475569;">
+            รหัสอ้างอิงคำขอ: <strong style="color: #1E3A8A; font-family: monospace; font-size: 15px;">REQ-202609-0881</strong>
+          </div>
+          <div style="font-size: 14px; color: #475569;">
+            สถานะ: <span style="background: #ECFDF5; color: #059669; font-weight: 700; padding: 4px 12px; border-radius: 99px; border: 1px solid #A7F3D0;">● รับเรื่องแล้ว กำลังจัดสรร</span>
+          </div>
+        </div>
+
+        <!-- 3-Step Next Flow -->
+        <h3 style="font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 16px;">ขั้นตอนการดำเนินงานถัดไป</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px;">
+          
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: #EFF6FF; color: #2563EB; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">1</div>
+            <div style="font-weight: 600; font-size: 14px; color: #1E293B; margin-bottom: 4px;">ตรวจสอบรายละเอียด</div>
+            <div style="font-size: 13px; color: #64748B; line-height: 1.5;">ทีมงานตรวจสอบเป้าหมายการเรียน วันเวลา และสถานที่</div>
+          </div>
+
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: #FFFBEB; color: #D97706; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">2</div>
+            <div style="font-weight: 600; font-size: 14px; color: #1E293B; margin-bottom: 4px;">คัดสรรติวเตอร์ตรงสาย</div>
+            <div style="font-size: 13px; color: #64748B; line-height: 1.5;">ติดต่อประสานงานติวเตอร์ผู้เชี่ยวชาญภายใน 12 ชั่วโมง</div>
+          </div>
+
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: #ECFDF5; color: #059669; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">3</div>
+            <div style="font-weight: 600; font-size: 14px; color: #1E293B; margin-bottom: 4px;">ส่งโปรไฟล์ให้พิจารณา</div>
+            <div style="font-size: 13px; color: #64748B; line-height: 1.5;">ส่งมอบประวัติติวเตอร์ผ่าน LINE หรือโทรเพื่อคอนเฟิร์มเริ่มเรียน</div>
+          </div>
+
+        </div>
+
+        <!-- Contact Methods -->
+        <h3 style="font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 16px;">ช่องทางติดต่อเจ้าหน้าที่โดยตรง</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 36px;">
+          
+          <a href="https://line.me" target="_blank" rel="noopener" class="contact-method-card">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: #06C755; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+              💬
+            </div>
+            <div>
+              <div style="font-size: 13px; color: #64748B;">LINE Official Account</div>
+              <div style="font-size: 15px; font-weight: 700; color: #06C755;">@mungrien</div>
+            </div>
+          </a>
+
+          <div class="contact-method-card">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: #EFF6FF; color: #2563EB; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+              📞
+            </div>
+            <div>
+              <div style="font-size: 13px; color: #64748B;">สายด่วนประสานงาน</div>
+              <div style="font-size: 15px; font-weight: 700; color: #1E293B;">02-123-4567</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="index.html" class="btn btn-primary" style="padding: 12px 28px; font-size: 14.5px;">
+            ← กลับสู่หน้าแรก
+          </a>
+          <a href="jobs.html" class="btn btn-outline" style="padding: 12px 24px; font-size: 14.5px;">
+            ดูรายการประกาศงานสอนทั้งหมด
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>มุ่งเรียน (Mung-Rien)</h4>
+        <ul>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-cap"></use></svg> ระบบนายหน้าและศูนย์ประสานงานเพื่อการศึกษา</li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-mail"></use></svg> contact@mungrien.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4>สำหรับนักเรียน/ผู้ปกครอง</h4>
+        <ul>
+          <li><a href="student.html">ขอหาติวเตอร์สอนพิเศษ</a></li>
+          <li><a href="jobs.html">ดูประกาศงานสอน</a></li>
+          <li><a href="webboard.html">Webboard / บทความ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>สำหรับติวเตอร์</h4>
+        <ul>
+          <li><a href="register.html">สมัครเป็นติวเตอร์</a></li>
+          <li><a href="jobs.html">ดูรายการงานสอน</a></li>
+          <li><a href="login.html">เข้าสู่ระบบติวเตอร์</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อศูนย์ประสานงาน</h4>
+        <ul>
+          <li>Facebook: <a href="https://facebook.com" target="_blank" rel="noopener">มุ่งเรียน ติวเตอร์</a></li>
+          <li>Line ID: <a href="https://line.me" target="_blank" rel="noopener">@mungrien</a></li>
+          <li><svg class="ic" aria-hidden="true" style="width:14px;height:14px;"><use href="icons.svg#ic-phone"></use></svg> 02-123-4567</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 มุ่งเรียน (TutorBroker). All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

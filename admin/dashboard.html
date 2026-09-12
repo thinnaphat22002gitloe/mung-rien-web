@@ -1,311 +1,323 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Admin | มุ่งเรียน</title>
-  <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | มุ่งเรียน Admin Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/translator.css">
+<link rel="stylesheet" href="../css/panel.css">
+<style>
+.dash-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.dash-two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .dash-charts-grid, .dash-two-col {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
 </head>
-<body>
+<body class="admin-body">
 
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="../index.html" class="logo">
-        <div class="logo-icon">🎓</div>
-        <div>
-          <div class="logo-text">มุ่ง<span>เรียน</span></div>
-          <div class="logo-tag">Admin Panel</div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-cap"></use></svg></div>
+      <div>
+        <div class="logo-text">มุ่ง<span>เรียน</span></div>
+        <div class="logo-tag">ศูนย์บริหารจัดการสารสนเทศ (Admin Console)</div>
+      </div>
+    </a>
+    <div class="panel-user-nav">
+      <!-- Language Switcher TH | EN -->
+      <div class="lang-switch-wrap panel-lang-switch" title="เลือกภาษา / Change Language">
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+            <span>🇹🇭</span> TH
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+            <span>🇬🇧</span> EN
+          </button>
         </div>
+      </div>
+
+      <span style="font-size:13px; color:#64748B;">ผู้ดูแล: <strong>Administrator</strong></span>
+      <a href="manage-notifications.html" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px;" title="ระบบแจ้งเตือน">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน <span style="color:#EF4444; font-weight:700;">(5)</span>
       </a>
-      <div style="display:flex; align-items:center; gap:15px;">
-        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
-          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
-          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
-        </div>
-        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
-        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      <a href="../index.html" class="btn btn-outline btn-sm" target="_blank">🌐 ดูหน้าเว็บไซต์</a>
+      <a href="../login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <h3><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ระบบสารสนเทศ</h3>
+    <ul class="admin-menu">
+      <li class="menu-sec">ภาพรวมและรายงาน</li>
+      <li><a href="dashboard.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> แดชบอร์ดสรุปผล</a></li>
+      <li><a href="revenue.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
+
+      <li class="menu-sec">การจัดสรรและธุรกรรม</li>
+      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
+      <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+
+      <li class="menu-sec">บุคลากรทางการศึกษา</li>
+      <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
+      <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
+
+      <li class="menu-sec">การสื่อสารและสมาชิก</li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-notifications.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
+
+      <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
+      <li><a href="home-content.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-categories.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
+
+      <li class="menu-sec">การจัดการระบบ</li>
+      <li><a href="settings.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ตั้งค่าระบบสารสนเทศ</a></li>
+      <li><a href="javascript:void(0)" onclick="alert('📥 ส่งออกข้อมูล Excel ทั้งหมดเรียบร้อย')" style="color:#059669; font-weight:600;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> 📥 ส่งออก Excel ทั้งหมด</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> Dashboard ภาพรวมระบบ</h2>
+        <p style="color:var(--secondary); font-size:14px;">ข้อมูลล่าสุด ณ วันนี้</p>
+      </div>
+      <div class="admin-header-actions">
+        <a href="javascript:void(0)" onclick="alert('📥 ทำการส่งออกข้อมูลสถิติทั้งระบบเป็นไฟล์ Excel เรียบร้อย')" class="btn btn-primary btn-sm">
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> Export Excel ทั้งหมด
+        </a>
       </div>
     </div>
-  </nav>
 
-  <div class="admin-layout">
-    <aside class="admin-sidebar">
-      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
-      <ul class="admin-menu">
-        <li><a href="dashboard.html" class="active" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
-        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
-        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
-        <li><a href="manage-users.html" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
-        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
-        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
-        <li><a href="manage-notifications.html" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
-        <li><a href="settings.html" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
-      </ul>
-    </aside>
+    <div class="stats-grid-3">
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg></div>
+        <div class="stat-label">ผู้ใช้งานทั้งหมด</div>
+        <div class="stat-value">1,893</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg></div>
+        <div class="stat-label">ติวเตอร์ที่สมัคร</div>
+        <div class="stat-value">512</div>
+        <div class="stat-sub" style="color:var(--warning);">รอตรวจสอบ 6 คน</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-eye"></use></svg></div>
+        <div class="stat-label">ผู้เข้าชมวันนี้ (Visitor)</div>
+        <div class="stat-value">482</div>
+        <div class="stat-sub" style="color:var(--secondary);">สะสม 12,480 คน / 42,910 วิว</div>
+      </div>
+    </div>
 
-    <main class="admin-content">
-      <div class="admin-header">
-        <div>
-          <h2>📊 Dashboard ภาพรวมระบบ</h2>
-          <p style="color:var(--secondary); font-size:14px;">สถานการณ์ล่าสุด ณ วันที่ 18 สิงหาคม 2569 เวลา 15:30 น.</p>
+    <div class="stats-grid-4">
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg></div>
+        <div class="stat-label">ยอดรับวันนี้ (Gross)</div>
+        <div class="stat-value">฿14,200.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg></div>
+        <div class="stat-label">ยอดรับเดือนนี้ (Gross)</div>
+        <div class="stat-value">฿284,500.00</div>
+        <div class="stat-sub" style="color:var(--danger);">คืนเงิน ฿3,200.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-bank"></use></svg></div>
+        <div class="stat-label">รายได้แพลตฟอร์ม (Net)</div>
+        <div class="stat-value">฿42,675.00</div>
+        <div class="stat-sub"><a href="revenue.html">ดูวิเคราะห์ →</a></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg></div>
+        <div class="stat-label">ประกาศงานสอนเปิดอยู่</div>
+        <div class="stat-value">64</div>
+      </div>
+    </div>
+
+    <div class="dash-charts-grid">
+      <div class="panel-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
+          <h3 style="font-size:14.5px; font-weight:700; margin:0;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> สถิติเข้าถึงระบบ (30 วัน)</h3>
+          <div style="font-size:11.5px; color:var(--secondary);">
+            <span style="margin-right:10px;"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#2a78d6;"></span> คน</span>
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#eb6834;"></span> วิว</span>
+          </div>
         </div>
-        <div style="display:flex; gap:8px;">
-          <select class="form-control" style="width:auto;">
-            <option>ทุกช่วงเวลา</option>
-            <option>วันนี้</option>
-            <option>สัปดาห์นี้</option>
-            <option>เดือนนี้</option>
-          </select>
-          <button class="btn btn-primary btn-sm">📥 Export Report</button>
+        <div style="position:relative; height:170px; width:100%; min-width:0;">
+          <canvas id="visitChart"></canvas>
         </div>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">👩‍🏫</div>
-          <div class="stat-label">ติวเตอร์ทั้งหมด</div>
-          <div class="stat-value">512</div>
-          <div style="color:var(--success); font-size:13px; margin-top:5px;">↑ เพิ่ม 12 คน (สัปดาห์นี้)</div>
+      <div class="panel-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
+          <h3 style="font-size:14.5px; font-weight:700; margin:0;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> ยอดรับสุทธิรายวัน (30 วัน, บาท)</h3>
         </div>
-        <div class="stat-card">
-          <div class="stat-icon">📚</div>
-          <div class="stat-label">งานสอนทั้งหมด</div>
-          <div class="stat-value">3,248</div>
-          <div style="color:var(--success); font-size:13px; margin-top:5px;">↑ เพิ่ม 48 งาน (สัปดาห์นี้)</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">👤</div>
-          <div class="stat-label">ผู้ใช้งาน/นักเรียน</div>
-          <div class="stat-value">1,893</div>
-          <div style="color:var(--success); font-size:13px; margin-top:5px;">↑ เพิ่ม 37 คน (สัปดาห์นี้)</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">💰</div>
-          <div class="stat-label">รายได้เดือนนี้</div>
-          <div class="stat-value">฿ 284,500</div>
-          <div style="color:var(--success); font-size:13px; margin-top:5px;">↑ เพิ่ม 18% (จากเดือนที่แล้ว)</div>
+        <div style="position:relative; height:170px; width:100%; min-width:0;">
+          <canvas id="revChart"></canvas>
         </div>
       </div>
+    </div>
 
-      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:20px; margin-bottom:30px;">
-        <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-          <h3 style="margin-bottom:15px; color:var(--dark); font-size:18px;">📈 แนวโน้มสมัครงานสอน (7 วันล่าสุด)</h3>
-          <div style="display:flex; align-items:flex-end; gap:10px; height:180px; padding:10px 0;">
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:55%; background:var(--primary); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">12 ส.ค.</span>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:70%; background:var(--primary); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">13 ส.ค.</span>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:45%; background:var(--primary); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">14 ส.ค.</span>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:85%; background:var(--primary); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">15 ส.ค.</span>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:65%; background:var(--primary); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">16 ส.ค.</span>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:90%; background:var(--accent); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">17 ส.ค.</span>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
-              <div style="width:100%; height:78%; background:var(--primary); border-radius:6px 6px 0 0;"></div>
-              <span style="font-size:12px; color:var(--secondary);">18 ส.ค.</span>
-            </div>
-          </div>
-          <div style="border-top:1px solid var(--gray-border); padding-top:12px; margin-top:10px; font-size:13px; color:var(--secondary); display:flex; justify-content:space-between;">
-            <span>ค่าเฉลี่ย/วัน: <strong style="color:var(--dark);">42 คน</strong></span>
-            <span>สูงสุด: <strong style="color:var(--accent);">58 คน (17 ส.ค.)</strong></span>
-          </div>
+    <div class="dash-two-col">
+      <div class="panel-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <h3 style="font-size:14.5px; font-weight:700; margin:0;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> สถานะงาน (3,248 งาน)</h3>
+          <a href="manage-jobs.html" style="font-size:12.5px;">จัดการงาน →</a>
         </div>
-
-        <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-          <h3 style="margin-bottom:15px; color:var(--dark); font-size:18px;">🏷️ สัดส่วนหมวดงานสอน</h3>
-          <div style="display:grid; gap:12px;">
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;">
-                <span>วิทย์-คณิต</span><span style="font-weight:600;">42%</span>
-              </div>
-              <div style="background:var(--gray-bg); border-radius:8px; height:10px; overflow:hidden;">
-                <div style="width:42%; height:100%; background:var(--primary);"></div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;">
-                <span>ภาษา-สังคม</span><span style="font-weight:600;">28%</span>
-              </div>
-              <div style="background:var(--gray-bg); border-radius:8px; height:10px; overflow:hidden;">
-                <div style="width:28%; height:100%; background:#60A5FA;"></div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;">
-                <span>ดนตรี-ศิลปะ</span><span style="font-weight:600;">16%</span>
-              </div>
-              <div style="background:var(--gray-bg); border-radius:8px; height:10px; overflow:hidden;">
-                <div style="width:16%; height:100%; background:#34D399;"></div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;">
-                <span>กีฬา</span><span style="font-weight:600;">8%</span>
-              </div>
-              <div style="background:var(--gray-bg); border-radius:8px; height:10px; overflow:hidden;">
-                <div style="width:8%; height:100%; background:#F87171;"></div>
-              </div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;">
-                <span>อื่นๆ</span><span style="font-weight:600;">6%</span>
-              </div>
-              <div style="background:var(--gray-bg); border-radius:8px; height:10px; overflow:hidden;">
-                <div style="width:6%; height:100%; background:#A78BFA;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05); margin-bottom:30px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-          <h3 style="color:var(--dark); font-size:18px;">🆕 ติวเตอร์ที่สมัครใหม่ (ล่าสุด)</h3>
-          <a href="manage-tutors.html" class="btn btn-outline btn-sm">ดูทั้งหมด →</a>
-        </div>
-        <div class="table-wrap">
+        <div class="table-wrap" style="margin-bottom:0;">
           <table>
-            <thead>
-              <tr>
-                <th>ชื่อ-นามสกุล</th>
-                <th>อีเมล</th>
-                <th>วิชาที่สอน</th>
-                <th>วันสมัคร</th>
-                <th>สถานะ</th>
-                <th></th>
-              </tr>
-            </thead>
+            <thead><tr><th>สถานะ</th><th style="text-align:right;">จำนวนงาน</th></tr></thead>
             <tbody>
               <tr>
-                <td>นางสาว ศิริพร สุขสวัสดิ์</td>
-                <td>siri.p@example.com</td>
-                <td>คณิต, ฟิสิกส์</td>
-                <td>18 ส.ค. 2569</td>
-                <td><span class="badge badge-pending">⏳ รออนุมัติ</span></td>
-                <td><a href="#" class="btn btn-light btn-sm">ดูรายละเอียด</a></td>
+                <td style="padding:6px 10px; font-size:13px;"><a href="manage-jobs.html?status=open">เปิดรับติวเตอร์ (Open)</a></td>
+                <td style="text-align:right; font-weight:600; padding:6px 10px; font-size:13px;">64</td>
               </tr>
               <tr>
-                <td>นาย ธนา วงศ์น้อย</td>
-                <td>thana.w@example.com</td>
-                <td>อังกฤษ</td>
-                <td>18 ส.ค. 2569</td>
-                <td><span class="badge badge-pending">⏳ รออนุมัติ</span></td>
-                <td><a href="#" class="btn btn-light btn-sm">ดูรายละเอียด</a></td>
+                <td style="padding:6px 10px; font-size:13px;"><a href="manage-jobs.html?status=matched">จับคู่แล้ว (Matched)</a></td>
+                <td style="text-align:right; font-weight:600; padding:6px 10px; font-size:13px;">128</td>
               </tr>
               <tr>
-                <td>นางสาว มยุรี พิพัฒน์</td>
-                <td>mayuree.p@example.com</td>
-                <td>ภาษาไทย, สังคม</td>
-                <td>17 ส.ค. 2569</td>
-                <td><span class="badge badge-success">✅ อนุมัติ</span></td>
-                <td><a href="#" class="btn btn-light btn-sm">ดูรายละเอียด</a></td>
+                <td style="padding:6px 10px; font-size:13px;"><a href="manage-jobs.html?status=teaching">กำลังเรียน (Teaching)</a></td>
+                <td style="text-align:right; font-weight:600; padding:6px 10px; font-size:13px;">412</td>
               </tr>
               <tr>
-                <td>นาย วิศรุต เจริญกิจ</td>
-                <td>wisrut.c@example.com</td>
-                <td>โปรแกรมมิ่ง</td>
-                <td>17 ส.ค. 2569</td>
-                <td><span class="badge badge-danger">❌ ไม่ผ่าน</span></td>
-                <td><a href="#" class="btn btn-light btn-sm">ดูรายละเอียด</a></td>
+                <td style="padding:6px 10px; font-size:13px;"><a href="manage-jobs.html?status=completed">จบการสอน (Completed)</a></td>
+                <td style="text-align:right; font-weight:600; padding:6px 10px; font-size:13px;">2,580</td>
               </tr>
               <tr>
-                <td>นางสาว อาภาพร รักษ์ชล</td>
-                <td>apphaphon.r@example.com</td>
-                <td>เปียโน</td>
-                <td>16 ส.ค. 2569</td>
-                <td><span class="badge badge-success">✅ อนุมัติ</span></td>
-                <td><a href="#" class="btn btn-light btn-sm">ดูรายละเอียด</a></td>
+                <td style="padding:6px 10px; font-size:13px;"><a href="manage-jobs.html?status=cancelled">ยกเลิก/คืนเงิน (Cancelled)</a></td>
+                <td style="text-align:right; font-weight:600; padding:6px 10px; font-size:13px;">64</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-        <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-          <h3 style="margin-bottom:15px; color:var(--dark); font-size:18px;">📢 การแจ้งเตือนล่าสุด</h3>
-          <div style="display:grid; gap:12px;">
-            <div class="alert alert-info">
-              <strong>งานสอนใหม่:</strong> มีงานสอนคณิต ม.4 เข้ามา - SC 69081813
-              <div style="color:var(--secondary); font-size:12px; margin-top:3px;">18 ส.ค. 2569, 14:30 น.</div>
-            </div>
-            <div class="alert alert-info" style="background:#DBEAFE; border-color:#3B82F6;">
-              <strong>สมัครติวเตอร์ใหม่:</strong> ศิริพร สุขสวัสดิ์ (วิทย์-คณิต)
-              <div style="color:var(--secondary); font-size:12px; margin-top:3px;">18 ส.ค. 2569, 13:15 น.</div>
-            </div>
-            <div class="alert alert-success">
-              <strong>จ่ายเงินสำเร็จ:</strong> ออเดอร์ #OR-2026-0818-0042 (฿ 2,400)
-              <div style="color:var(--secondary); font-size:12px; margin-top:3px;">18 ส.ค. 2569, 11:02 น.</div>
-            </div>
-            <div class="alert alert-danger">
-              <strong>รายงานปัญหา:</strong> ติวเตอร์ล่าช้าสอน - Job ID SC 69081800
-              <div style="color:var(--secondary); font-size:12px; margin-top:3px;">17 ส.ค. 2569, 19:45 น.</div>
-            </div>
-          </div>
+      <div class="panel-card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <h3 style="font-size:14.5px; font-weight:700; margin:0;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน LINE ล่าสุด</h3>
+          <a href="manage-notifications.html" style="font-size:12.5px;">ดูทั้งหมด →</a>
         </div>
-
-        <div style="background:var(--light); padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-          <h3 style="margin-bottom:15px; color:var(--dark); font-size:18px;">🔥 งานสอนยอดนิยม</h3>
-          <div style="display:grid; gap:14px;">
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <div style="width:38px; height:38px; background:var(--primary); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">#1</div>
-              <div style="flex:1;">
-                <div style="font-weight:600; color:var(--dark); font-size:15px;">คณิตศาสตร์ ม.4 - เตรียมเข้าวิศวะ</div>
-                <div style="color:var(--secondary); font-size:13px;">สมัครแล้ว <strong style="color:var(--accent);">24</strong> คน | งานใหม่: 3</div>
-              </div>
-            </div>
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <div style="width:38px; height:38px; background:#60A5FA; color:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">#2</div>
-              <div style="flex:1;">
-                <div style="font-weight:600; color:var(--dark); font-size:15px;">ภาษาอังกฤษ IELTS 6.5+</div>
-                <div style="color:var(--secondary); font-size:13px;">สมัครแล้ว <strong style="color:var(--accent);">18</strong> คน | งานใหม่: 2</div>
-              </div>
-            </div>
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <div style="width:38px; height:38px; background:#34D399; color:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">#3</div>
-              <div style="flex:1;">
-                <div style="font-weight:600; color:var(--dark); font-size:15px;">ฟิสิกส์ ม.5-ม.6 (กสพท.)</div>
-                <div style="color:var(--secondary); font-size:13px;">สมัครแล้ว <strong style="color:var(--accent);">15</strong> คน | งานใหม่: 1</div>
-              </div>
-            </div>
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <div style="width:38px; height:38px; background:#F87171; color:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">#4</div>
-              <div style="flex:1;">
-                <div style="font-weight:600; color:var(--dark); font-size:15px;">คณิต ป.6 ติวสอบเข้า ม.1</div>
-                <div style="color:var(--secondary); font-size:13px;">สมัครแล้ว <strong style="color:var(--accent);">12</strong> คน | งานใหม่: 5</div>
-              </div>
-            </div>
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <div style="width:38px; height:38px; background:#A78BFA; color:var(--light); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">#5</div>
-              <div style="flex:1;">
-                <div style="font-weight:600; color:var(--dark); font-size:15px;">ว่ายน้ำเด็ก 4-8 ขวบ</div>
-                <div style="color:var(--secondary); font-size:13px;">สมัครแล้ว <strong style="color:var(--accent);">10</strong> คน | งานใหม่: 2</div>
-              </div>
-            </div>
-          </div>
+        <div style="border-bottom:1px solid var(--gray-border); padding:6px 0; font-size:12.5px;">
+          <span class="badge badge-success" style="font-size:10.5px; padding:2px 8px;">ส่งแล้ว</span>
+          ชำระเงินงาน #JOB-0912 · วันนี้ 14:20
+        </div>
+        <div style="border-bottom:1px solid var(--gray-border); padding:6px 0; font-size:12.5px;">
+          <span class="badge badge-success" style="font-size:10.5px; padding:2px 8px;">ส่งแล้ว</span>
+          มีติวเตอร์สมัครงานสอน #JOB-0911 · วันนี้ 13:05
+        </div>
+        <div style="border-bottom:1px solid var(--gray-border); padding:6px 0; font-size:12.5px;">
+          <span class="badge badge-pending" style="font-size:10.5px; padding:2px 8px;">ยังไม่ตั้งค่า</span>
+          แจ้งเตือนคำขอติวเตอร์ใหม่ · วันนี้ 11:45
+        </div>
+        <div style="padding:6px 0; font-size:12.5px;">
+          <span class="badge badge-success" style="font-size:10.5px; padding:2px 8px;">ส่งแล้ว</span>
+          อนุมัติประวัติติวเตอร์ ครูแพรวา · เมื่อวาน 18:30
         </div>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
+</div>
 
-  <script src="../js/lang.js"></script>
-  <script src="../js/main.js"></script>
+<script src="../vendor/chart.umd.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/i18n.js"></script>
+<script>
+const baseOpts = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  interaction: { mode: 'index', intersect: false },
+  scales: {
+    x: { grid: { display: false }, ticks: { color: '#898781', maxTicksLimit: 8, font: { size: 10.5 } } },
+    y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { color: '#898781', font: { size: 10.5 } } }
+  }
+};
+
+const labels = [];
+const visitors = [];
+const page_views = [];
+const revData = [];
+
+for (let i = 29; i >= 0; i--) {
+  const d = new Date();
+  d.setDate(d.getDate() - i);
+  labels.push(d.getDate() + '/' + (d.getMonth() + 1));
+  const v = Math.floor(350 + Math.sin(i) * 120 + Math.random() * 80);
+  visitors.push(v);
+  page_views.push(Math.floor(v * 2.8 + Math.random() * 100));
+  revData.push(Math.floor(4000 + Math.cos(i) * 3000 + Math.random() * 2000));
+}
+
+new Chart(document.getElementById('visitChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: 'ผู้เข้าชม (คน)',
+        data: visitors,
+        borderColor: '#2a78d6',
+        backgroundColor: 'rgba(42,120,214,.08)',
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        fill: true,
+        tension: .3
+      },
+      {
+        label: 'เปิดหน้า (ครั้ง)',
+        data: page_views,
+        borderColor: '#eb6834',
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        fill: false,
+        tension: .3
+      }
+    ]
+  },
+  options: baseOpts
+});
+
+new Chart(document.getElementById('revChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: 'ยอดรับสุทธิ (บาท)',
+        data: revData,
+        backgroundColor: '#2a78d6',
+        borderRadius: 4,
+        maxBarThickness: 16
+      }
+    ]
+  },
+  options: baseOpts
+});
+</script>
 </body>
 </html>
-
-

@@ -1,0 +1,74 @@
+/* ====================================================
+   scaling.css — ปรับสเกลหน้าเว็บตามขนาดจอผู้ใช้
+   มือถือ/จอเล็ก = ย่อลง | จอมาตรฐาน = ปกติ | จอใหญ่ = ขยายขึ้น
+   (จอเล็กกว่า 900px มี layout เฉพาะใน responsive.css อยู่แล้ว)
+   ==================================================== */
+
+/* มือถือจอแคบพิเศษ (เช่น iPhone SE) — ย่อเล็กน้อยให้พอดีจอ */
+@media (max-width: 370px) {
+  body:not(.admin-body) { zoom: 0.92; }
+}
+
+/* โน้ตบุ๊ก/จอทั่วไป (ถึง 1599px) — ขนาดมาตรฐานตามดีไซน์เดิม */
+
+/* จอใหญ่ 1600px ขึ้นไป — ขยายทั้งหน้าให้เต็มตา (ยกเว้นหน้า admin เพื่อไม่ให้บวมล้น) */
+@media (min-width: 1600px) {
+  body:not(.admin-body) { zoom: 1.12; }
+}
+
+/* จอ Full HD กว้าง / 2K */
+@media (min-width: 1900px) {
+  body:not(.admin-body) { zoom: 1.28; }
+}
+
+/* จอ Ultrawide / 2.5K */
+@media (min-width: 2400px) {
+  body:not(.admin-body) { zoom: 1.55; }
+}
+
+/* จอ 4K */
+@media (min-width: 3000px) {
+  body:not(.admin-body) { zoom: 1.9; }
+}
+
+/* ====================================================
+   ตัวหนังสือในแบบฟอร์ม — ปรับขนาดลื่นไหลตามความกว้างจอ
+   (clamp: จอเล็ก = เล็กสุด, จอกว้าง = โตขึ้นตามสัดส่วน)
+   ==================================================== */
+.form-group label { font-size: clamp(13px, 0.55vw + 7.5px, 15.5px); }
+.form-control { font-size: clamp(13.5px, 0.55vw + 7.5px, 15.5px); }
+.form-hint,
+.form-error { font-size: clamp(11.5px, 0.45vw + 7px, 13.5px); }
+.form-section-title { font-size: clamp(15.5px, 0.7vw + 9px, 19px); }
+.form-group label small { font-size: clamp(10.5px, 0.4vw + 6px, 12px); }
+
+/* แก้ help text ทับขอบช่องกรอก:
+   ของเดิม .form-hint ใช้ margin ติดลบสำหรับโครง HTML แบบ mockup
+   แต่โครงจริงห่อ hint ไว้ใต้ช่องกรอก จึงต้องเว้นระยะบวกแทน */
+.form-group .form-hint {
+  grid-column: auto;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.form-group .form-error { margin-top: 5px; }
+/* ลิสต์คำแนะนำรหัสผ่านของ Django (ul ใน help text) */
+.form-hint ul { margin: 4px 0 0 18px; padding: 0; }
+
+/* ====================================================
+   ไอคอน SVG วาดเองของมุ่งเรียน (แทน emoji)
+   ขนาดอิงตาม font-size ของจุดที่วาง จึงสเกลตามจอไปด้วย
+   ==================================================== */
+.ic {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.16em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.logo-icon .ic { width: 1em; height: 1em; vertical-align: -0.12em; }
+.stat-icon .ic { width: 1em; height: 1em; }
+.chat-btn .ic { width: 1.2em; height: 1.2em; }

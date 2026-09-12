@@ -1,349 +1,175 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>แจ้งเตือน LINE - Admin | มุ่งเรียน</title>
-  <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แจ้งเตือน LINE | มุ่งเรียน Admin Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/translator.css">
+<link rel="stylesheet" href="../css/panel.css">
 </head>
-<body>
+<body class="admin-body">
 
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="../index.html" class="logo">
-        <div class="logo-icon">🎓</div>
-        <div>
-          <div class="logo-text">มุ่ง<span>เรียน</span></div>
-          <div class="logo-tag">Admin Panel</div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-cap"></use></svg></div>
+      <div>
+        <div class="logo-text">มุ่ง<span>เรียน</span></div>
+        <div class="logo-tag">ศูนย์บริหารจัดการสารสนเทศ (Admin Console)</div>
+      </div>
+    </a>
+    <div class="panel-user-nav">
+      <!-- Language Switcher TH | EN -->
+      <div class="lang-switch-wrap panel-lang-switch" title="เลือกภาษา / Change Language">
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="th" onclick="switchLanguage('th')" title="ภาษาไทย">
+            <span>🇹🇭</span> TH
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" onclick="switchLanguage('en')" title="English">
+            <span>🇬🇧</span> EN
+          </button>
         </div>
+      </div>
+
+      <span style="font-size:13px; color:#64748B;">ผู้ดูแล: <strong>Administrator</strong></span>
+      <a href="manage-notifications.html" class="btn btn-outline btn-sm" style="display:inline-flex; align-items:center; gap:6px;" title="ระบบแจ้งเตือน">
+        <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> แจ้งเตือน <span style="color:#EF4444; font-weight:700;">(5)</span>
       </a>
-      <div style="display:flex; align-items:center; gap:15px;">
-        <div class="lang-switcher" style="font-size: 14px; font-weight: 500;">
-          <a href="#" id="lang-th" style="color: var(--primary); font-weight: bold; text-decoration: none;">TH</a> | 
-          <a href="#" id="lang-en" style="color: var(--text); text-decoration: none;">EN</a>
-        </div>
-        <span style="font-size:14px; color:var(--secondary);" data-i18n="admin_greet">👋 Admin</span>
-        <a href="../login.html" class="btn btn-danger btn-sm" data-i18n="admin_logout">ออกจากระบบ</a>
+      <a href="../index.html" class="btn btn-outline btn-sm" target="_blank">🌐 ดูหน้าเว็บไซต์</a>
+      <a href="../login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <h3><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ระบบสารสนเทศ</h3>
+    <ul class="admin-menu">
+      <li class="menu-sec">ภาพรวมและรายงาน</li>
+      <li><a href="dashboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chart"></use></svg> แดชบอร์ดสรุปผล</a></li>
+      <li><a href="revenue.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-baht"></use></svg> รายงานวิเคราะห์รายได้</a></li>
+
+      <li class="menu-sec">การจัดสรรและธุรกรรม</li>
+      <li><a href="manage-requests.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-form"></use></svg> คำขอจัดสรรติวเตอร์ <span style="color:#F87171; font-weight:700; margin-left:4px;">(3)</span></a></li>
+      <li><a href="manage-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-clipboard"></use></svg> ทะเบียนงานและสถานะ</a></li>
+      <li><a href="manage-transactions.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> บันทึกธุรกรรม</a></li>
+      <li><a href="manage-slips.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-card"></use></svg> ตรวจสอบสลิปชำระเงิน <span style="color:#FBBF24; font-weight:700; margin-left:4px;">(1)</span></a></li>
+
+      <li class="menu-sec">บุคลากรทางการศึกษา</li>
+      <li><a href="manage-tutors.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-teacher"></use></svg> ทะเบียนประวัติติวเตอร์</a></li>
+      <li><a href="manage-teaching-jobs.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-book"></use></svg> ประกาศงานสอนที่เปิดรับ</a></li>
+
+      <li class="menu-sec">การสื่อสารและสมาชิก</li>
+      <li><a href="manage-users.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-user"></use></svg> ทะเบียนบัญชีผู้ใช้</a></li>
+      <li><a href="manage-inquiries.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-mail"></use></svg> ข้อความสอบถาม <span style="color:#F87171; font-weight:700; margin-left:4px;">(2)</span></a></li>
+      <li><a href="manage-notifications.html" class="active"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ระบบแจ้งเตือน LINE <span style="color:#60A5FA; font-weight:700; margin-left:4px;">(4)</span></a></li>
+
+      <li class="menu-sec">เนื้อหาและข้อมูลระบบ</li>
+      <li><a href="home-content.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-pencil"></use></svg> ข้อความหน้าแรก & ข่าวสาร</a></li>
+      <li><a href="manage-webboard.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> จัดการข่าวสาร/บทความทั้งหมด</a></li>
+      <li><a href="manage-categories.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-tag"></use></svg> จัดการหมวดหมู่วิชา</a></li>
+
+      <li class="menu-sec">การจัดการระบบ</li>
+      <li><a href="settings.html"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-gear"></use></svg> ตั้งค่าระบบสารสนเทศ</a></li>
+      <li><a href="javascript:void(0)" onclick="alert('📥 ส่งออกข้อมูล Excel ทั้งหมดเรียบร้อย')" style="color:#059669; font-weight:600;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-download"></use></svg> 📥 ส่งออก Excel ทั้งหมด</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <div>
+        <h2><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> การแจ้งเตือนผ่าน LINE</h2>
+        <p style="color:var(--secondary); font-size:14px;">ระบบแจ้งเตือนอัตโนมัติเมื่อ (1) ติวเตอร์สมัครใหม่ (2) นักเรียนส่งคำขอเรียน (3) มีสลิปโอนเงิน</p>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary btn-sm" onclick="alert('📲 ส่งข้อความแจ้งเตือนทดสอบเข้า LINE Admin สำเร็จ!');">
+          <svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-horn"></use></svg> ส่งข้อความทดสอบ
+        </button>
       </div>
     </div>
-  </nav>
 
-  <div class="admin-layout">
-    <aside class="admin-sidebar">
-      <h3 data-i18n="admin_menu_title">⚙️ ระบบจัดการ</h3>
-      <ul class="admin-menu">
-        <li><a href="dashboard.html" data-i18n="admin_menu_dashboard">📊 Dashboard</a></li>
-        <li><a href="manage-tutors.html" data-i18n="admin_menu_tutors">👩‍🏫 จัดการติวเตอร์</a></li>
-        <li><a href="manage-jobs.html" data-i18n="admin_menu_jobs">📚 จัดการงานสอน</a></li>
-        <li><a href="manage-users.html" data-i18n="admin_menu_users">👤 จัดการผู้ใช้งาน/นักเรียน</a></li>
-        <li><a href="manage-categories.html" data-i18n="admin_menu_categories">🏷️ จัดการหมวดหมู่</a></li>
-        <li><a href="manage-webboard.html" data-i18n="admin_menu_webboard">💬 จัดการ Webboard</a></li>
-        <li><a href="manage-notifications.html" class="active" data-i18n="admin_menu_notif">📢 แจ้งเตือน LINE</a></li>
-        <li><a href="settings.html" data-i18n="admin_menu_settings">🔧 ตั้งค่าระบบ</a></li>
-      </ul>
-    </aside>
+    <div class="panel-card">
+      <h3 style="font-size:16px; margin-bottom:6px;"><svg class="ic" aria-hidden="true"><use href="../icons.svg#ic-chat"></use></svg> กล่องทดสอบคำสั่ง LINE</h3>
+      <p style="color:var(--secondary); font-size:13.5px; margin-bottom:10px;">
+        จำลองการพิมพ์คำสั่งในแชท LINE (ใช้ตัวแยกคำสั่งเดียวกับ Webhook จริงทุกประการ) — 
+        ลองพิมพ์ <code>help</code>, <code>list</code>, <code>pay JOB-0912 5000</code>, <code>done JOB-0912</code>, <code>board หัวข้อ | เนื้อหา</code>
+      </p>
+      <form onsubmit="event.preventDefault(); simulateLine(document.getElementById('lineCmd').value);" style="display:flex; gap:8px;">
+        <input id="lineCmd" class="form-control" placeholder="พิมพ์คำสั่ง เช่น list" style="max-width:420px;">
+        <button type="submit" class="btn btn-primary btn-sm">ส่งคำสั่ง</button>
+      </form>
+      <div id="cmdOutput" style="display:none; margin-top:12px; background:#0F172A; color:#38BDF8; font-family:monospace; padding:12px; border-radius:8px; font-size:13px; white-space:pre-wrap;"></div>
+    </div>
 
-    <main class="admin-content">
-      <div class="admin-header">
-        <div>
-          <h2>📢 แจ้งเตือน LINE</h2>
-          <p style="color:var(--secondary); font-size:14px;">จัดการ LINE Notify / LINE Messaging API และส่งข้อความไปยังผู้ใช้งาน</p>
-        </div>
+    <div class="alert alert-success" style="background:#ECFDF5; border:1px solid #A7F3D0; color:#065F46; padding:12px 16px; border-radius:8px; margin-bottom:14px; font-size:13.5px;">
+      ✓ ตั้งค่า LINE Messaging API แล้ว — ระบบจะส่งแจ้งเตือนอัตโนมัติ
+    </div>
+
+    <div class="panel-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>เวลา</th>
+              <th>เหตุการณ์</th>
+              <th>สถานะ</th>
+              <th>ข้อความ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-size:13px; white-space:nowrap;">12/03/2026 14:15</td>
+              <td>สลิปโอนเงินใหม่</td>
+              <td><span class="badge badge-success">ส่งแล้ว</span></td>
+              <td style="font-size:13px; white-space:pre-wrap;">🔔 มีลูกค้าส่งสลิปโอนเงิน SLIP-2603-03 ยอด 5,400 บาท กรุณาตรวจสอบในระบบแอดมิน</td>
+            </tr>
+            <tr>
+              <td style="font-size:13px; white-space:nowrap;">12/03/2026 11:20</td>
+              <td>ติวเตอร์สมัครใหม่</td>
+              <td><span class="badge badge-success">ส่งแล้ว</span></td>
+              <td style="font-size:13px; white-space:pre-wrap;">👩‍🏫 ติวเตอร์ใหม่ลงทะเบียน: นางสาวแพรวา สอนศิลป์ (TUT-0513) รอการอนุมัติเอกสาร</td>
+            </tr>
+            <tr>
+              <td style="font-size:13px; white-space:nowrap;">12/03/2026 09:40</td>
+              <td>นักเรียนส่งคำขอเรียน</td>
+              <td><span class="badge badge-success">ส่งแล้ว</span></td>
+              <td style="font-size:13px; white-space:pre-wrap;">📚 มีคำขอเรียนใหม่ REQ-0042: วิชาคณิตศาสตร์ ม.3 โซนสยามสแควร์ งบ 400 บ./ชม.</td>
+            </tr>
+            <tr>
+              <td style="font-size:13px; white-space:nowrap;">11/03/2026 17:00</td>
+              <td>งานจับคู่สำเร็จ</td>
+              <td><span class="badge badge-success">ส่งแล้ว</span></td>
+              <td style="font-size:13px; white-space:pre-wrap;">🎉 งาน JOB-0912 เริ่มการสอนแล้ว ติวเตอร์ ดร.กิตติพงษ์ ได้รับการยืนยันตารางเรียน</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+  </main>
+</div>
 
-      <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom:25px;">
-        <div class="stat-card">
-          <div class="stat-icon">💚</div>
-          <div class="stat-label">LINE Messaging API</div>
-          <div class="stat-value" style="font-size:22px; color:var(--success);">✅ เชื่อมต่อแล้ว</div>
-          <div style="color:var(--secondary); font-size:13px; margin-top:8px;">
-            Channel ID: <strong style="color:var(--dark);">1658234721</strong><br>
-            หมวดข้อความ: <strong style="color:var(--dark);">Push, Reply, Multicast</strong>
-          </div>
-        </div>
-        <div class="stat-card" style="border-left-color: var(--success);">
-          <div class="stat-icon">🔔</div>
-          <div class="stat-label">LINE Notify</div>
-          <div class="stat-value" style="font-size:22px; color:var(--success);">✅ เชื่อมต่อแล้ว</div>
-          <div style="color:var(--secondary); font-size:13px; margin-top:8px;">
-            Token: <strong style="color:var(--dark);">••••••••••• 8xLp</strong><br>
-            สถานะ: <strong style="color:var(--success);">พร้อมใช้งาน</strong>
-          </div>
-        </div>
-        <div class="stat-card" style="border-left-color: var(--accent);">
-          <div class="stat-icon">👥</div>
-          <div class="stat-label">ผู้ติดตามทั้งหมด</div>
-          <div class="stat-value">1,248</div>
-          <div style="color:var(--secondary); font-size:13px; margin-top:8px;">
-            ติวเตอร์: <strong style="color:var(--dark);">412 คน</strong><br>
-            นักเรียน: <strong style="color:var(--dark);">836 คน</strong>
-          </div>
-        </div>
-        <div class="stat-card" style="border-left-color: #60A5FA;">
-          <div class="stat-icon">📨</div>
-          <div class="stat-label">ข้อความส่งสำเร็จ (เดือนนี้)</div>
-          <div class="stat-value">8,462</div>
-          <div style="color:var(--success); font-size:13px; margin-top:8px;">
-            อัตราสำเร็จ: <strong>98.7%</strong><br>
-            ล้มเหลว: <strong style="color:var(--danger);">112 ครั้ง</strong>
-          </div>
-        </div>
-      </div>
+<script src="../js/main.js"></script>
+<script src="../js/i18n.js"></script>
+<script>
+function simulateLine(cmd) {
+  const out = document.getElementById('cmdOutput');
+  out.style.display = 'block';
+  cmd = cmd.trim();
+  if (!cmd) return;
 
-      <div style="background:var(--light); padding:25px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05); margin-bottom:25px;">
-        <h3 style="color:var(--dark); font-size:20px; margin-bottom:5px;">✉️ ส่งแจ้งเตือนแบบกำหนดเอง</h3>
-        <p style="color:var(--secondary); font-size:14px; margin-bottom:20px;">สร้างและส่งข้อความไปยังกลุ่มผู้ใช้งานเป้าหมายได้ทันที หรือตั้งเวลาส่งล่วงหน้า</p>
-
-        <form>
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
-            <div>
-              <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px; color:var(--dark);">หัวข้อข้อความ</label>
-              <input type="text" class="form-control" placeholder="เช่น ประกาศปิดรับสมัครติวเตอร์เดือนสิงหาคม">
-            </div>
-            <div>
-              <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px; color:var(--dark);">กลุ่มเป้าหมาย</label>
-              <select class="form-control">
-                <option>👥 ทุกคนในระบบ (1,248 คน)</option>
-                <option>👩‍🏫 แค่ติวเตอร์ (412 คน)</option>
-                <option>👤 แค่นักเรียน (836 คน)</option>
-                <option>📋 กลุ่มเฉพาะ: ติวเตอร์วิชาคณิต (87 คน)</option>
-                <option>📋 กลุ่มเฉพาะ: นักเรียนมัธยมต้น (342 คน)</option>
-                <option>📋 กลุ่มเฉพาะ: ลูกค้า VIP (56 คน)</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-top:18px;">
-            <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px; color:var(--dark);">เนื้อหาข้อความ</label>
-            <textarea class="form-control" rows="6" placeholder="เขียนเนื้อหาข้อความที่ต้องการส่ง...
-
-💡 รองรับ Emoji, แบ่งบรรทัด และลิงก์
-📌 ตัวอย่าง:
-สวัสดีค่ะ ติวเตอร์ทุกท่าน 👋
-
-ทาง มุ่งเรียน มีงานสอนใหม่เข้ามา ดังนี้ครับ
-📚 คณิตศาสตร์ ม.4 | 💵 ค่าติว 250 บ./ชั่วโมง
-📍 ย่านบางนา | ⏰ เสาร์ 10.00-12.00
-
-สนใจตอบกลับ "สนใจ" ครับ 🙏"></textarea>
-            <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:12px; color:var(--secondary);">
-              <span>จำนวนตัวอักษร: <strong id="charCount" style="color:var(--dark);">0</strong> / 5,000</span>
-              <span>💡 ทิป: ใช้ข้อความสั้นกระชับ อ่านง่ายที่สุด</span>
-            </div>
-          </div>
-
-          <div style="margin-top:20px; padding:15px; background:var(--gray-bg); border-radius:8px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; margin-bottom:12px;">
-              <label style="display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; color:var(--dark); cursor:pointer;">
-                <input type="radio" name="sendType" value="now" checked style="width:18px; height:18px;">
-                <span>📤 ส่งตอนนี้ทันที</span>
-              </label>
-              <label style="display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; color:var(--dark); cursor:pointer;">
-                <input type="radio" name="sendType" value="schedule" style="width:18px; height:18px;">
-                <span>⏰ ตั้งเวลาส่งล่วงหน้า</span>
-              </label>
-            </div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; opacity:0.5; pointer-events:none;">
-              <div>
-                <label style="display:block; font-size:13px; margin-bottom:4px; color:var(--secondary);">วันที่ส่ง</label>
-                <input type="date" class="form-control" value="2026-08-20">
-              </div>
-              <div>
-                <label style="display:block; font-size:13px; margin-bottom:4px; color:var(--secondary);">เวลาส่ง</label>
-                <input type="time" class="form-control" value="09:00">
-              </div>
-            </div>
-          </div>
-
-          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:22px; flex-wrap:wrap;">
-            <button type="button" class="btn btn-outline btn-sm">👁 ตัวอย่างก่อนส่ง</button>
-            <button type="button" class="btn btn-outline btn-sm">💾 บันทึกเป็นแบบร่าง</button>
-            <button type="submit" class="btn btn-yellow btn-sm">📤 ส่งแจ้งเตือน</button>
-          </div>
-        </form>
-      </div>
-
-      <div style="background:var(--light); padding:25px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:10px;">
-          <div>
-            <h3 style="color:var(--dark); font-size:20px; margin-bottom:4px;">📋 ประวัติการส่งล่าสุด</h3>
-            <p style="color:var(--secondary); font-size:13px;">แสดงรายการส่งข้อความ 50 รายการล่าสุด</p>
-          </div>
-          <div style="display:flex; gap:8px;">
-            <select class="form-control" style="width:auto;">
-              <option>ทุกสถานะ</option>
-              <option>ส่งสำเร็จทั้งหมด</option>
-              <option>ส่งผิดพลาดบางส่วน</option>
-              <option>ล้มเหลวทั้งหมด</option>
-            </select>
-            <button class="btn btn-outline btn-sm">📥 Export Excel</button>
-          </div>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>วันที่ส่ง</th>
-                <th>หัวข้อ</th>
-                <th>กลุ่มเป้าหมาย</th>
-                <th style="text-align:center;">ผู้รับ</th>
-                <th>สถานะ</th>
-                <th style="text-align:center;">จัดการ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>18 ส.ค. 2569 14:30</td>
-                <td><strong>📢 งานสอนใหม่: คณิต ม.4 ย่านบางนา งาน SC-69081842</strong></td>
-                <td>ติวเตอร์วิชาคณิต</td>
-                <td style="text-align:center;">87</td>
-                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ ส่งสำเร็จ</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-outline">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>18 ส.ค. 2569 10:00</td>
-                <td><strong>🎉 โปรโมชันเดือนสิงหาคม สมัครแพ็กเกจฟรีค่าธรรมเนียม 1 เดือน</strong></td>
-                <td>ทุกคนในระบบ</td>
-                <td style="text-align:center;">1,248</td>
-                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ ส่งสำเร็จ</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-outline">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>17 ส.ค. 2569 19:45</td>
-                <td><strong>🔔 แจ้งเตือน: ติวเตอร์ล่าช้าสอน - Job SC-69081800</strong></td>
-                <td>นักเรียน + ผู้ดูแลระบบ</td>
-                <td style="text-align:center;">6</td>
-                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">⚠️ ผิดพลาดบางส่วน (1/6)</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-yellow">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>17 ส.ค. 2569 08:00</td>
-                <td><strong>📘 รายสัปดาห์: ภาพรวมงานสอน 12-17 สิงหาคม 2569</strong></td>
-                <td>แค่ติวเตอร์</td>
-                <td style="text-align:center;">412</td>
-                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ ส่งสำเร็จ</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-outline">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>16 ส.ค. 2569 15:20</td>
-                <td><strong>💳 แจ้งเตือนชำระเงิน - ออเดอร์ #OR-2026-0816-0018 (฿ 3,600)</strong></td>
-                <td>กลุ่มเฉพาะ: ผู้ซื้อ</td>
-                <td style="text-align:center;">1</td>
-                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ ส่งสำเร็จ</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-outline">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>15 ส.ค. 2569 12:00</td>
-                <td><strong>🎓 การฝึกอบรมออนไลน์วันที่ 22 สิงหาคม "เทคนิคการสอนออนไลน์ที่มีประสิทธิภาพ"</strong></td>
-                <td>แค่ติวเตอร์</td>
-                <td style="text-align:center;">412</td>
-                <td><span style="background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:12px; font-size:12px;">⚠️ ผิดพลาดบางส่วน (23/412)</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-yellow">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>14 ส.ค. 2569 09:30</td>
-                <td><strong>👋 สวัสดีเดือนสิงหาคม! ตรวจสอบโปรไฟล์ติวเตอร์ของคุณ</strong></td>
-                <td>แค่ติวเตอร์</td>
-                <td style="text-align:center;">412</td>
-                <td><span style="background:#D1FAE5; color:#065F46; padding:3px 10px; border-radius:12px; font-size:12px;">✅ ส่งสำเร็จ</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-outline">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>13 ส.ค. 2569 17:00</td>
-                <td><strong>⚠️ ข้อความเตือน: การยืนยันงานสอนภายใน 24 ชั่วโมง</strong></td>
-                <td>ติวเตอร์ที่ยังไม่ยืนยัน</td>
-                <td style="text-align:center;">38</td>
-                <td><span style="background:#FEE2E2; color:#991B1B; padding:3px 10px; border-radius:12px; font-size:12px;">❌ ล้มเหลว (38/38)</span></td>
-                <td style="text-align:center;">
-                  <div class="row-actions" style="justify-content:center;">
-                    <button class="btn btn-sm btn-outline">ดู</button>
-                    <button class="btn btn-sm btn-danger" data-confirm="ต้องการส่งซ้ำอีกครั้งหรือไม่?">ส่งซ้ำ</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:10px;">
-          <div style="font-size:13px; color:var(--secondary);">แสดง 1-8 จากทั้งหมด 247 รายการ</div>
-          <div style="display:flex; gap:5px;">
-            <button class="btn btn-sm btn-outline">⏮ ก่อนหน้า</button>
-            <button class="btn btn-sm btn-yellow">1</button>
-            <button class="btn btn-sm btn-outline">2</button>
-            <button class="btn btn-sm btn-outline">3</button>
-            <button class="btn btn-sm btn-outline">...</button>
-            <button class="btn btn-sm btn-outline">31</button>
-            <button class="btn btn-sm btn-outline">ถัดไป ⏭</button>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <script src="../js/lang.js"></script>
-  <script src="../js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var textarea = document.querySelector('textarea.form-control');
-      var charCount = document.getElementById('charCount');
-      if (textarea && charCount) {
-        textarea.addEventListener('input', function() {
-          charCount.textContent = this.value.length;
-        });
-      }
-      var radios = document.querySelectorAll('input[name="sendType"]');
-      var scheduleBox = document.querySelector('div[style*="opacity:0.5"]');
-      radios.forEach(function(r) {
-        r.addEventListener('change', function() {
-          if (this.value === 'schedule') {
-            scheduleBox.style.opacity = '1';
-            scheduleBox.style.pointerEvents = 'auto';
-          } else {
-            scheduleBox.style.opacity = '0.5';
-            scheduleBox.style.pointerEvents = 'none';
-          }
-        });
-      });
-    });
-  </script>
+  if (cmd.toLowerCase() === 'help') {
+    out.textContent = `🤖 LINE Bot Command Help:\n- list : แสดงรายการงานที่เปิดอยู่\n- pay <JOB_ID> <AMOUNT> : แจ้งชำระเงินงาน\n- done <JOB_ID> : ยืนยันจบการสอน\n- board <TITLE> | <CONTENT> : โพสต์บทความด่วน`;
+  } else if (cmd.toLowerCase() === 'list') {
+    out.textContent = `📋 รายการงานเปิดรับ:\n1. [JOB-0911] ภาษาจีนเพื่อธุรกิจ (450 บ./ชม.)\n2. [JOB-0910] คณิต ม.3 สยาม (400 บ./ชม.)`;
+  } else {
+    out.textContent = `✓ รับคำสั่ง: "${cmd}" สำเร็จ\n[Response]: ระบบประมวลผลคำสั่งเรียบร้อยแล้ว`;
+  }
+}
+</script>
 </body>
 </html>
-
-

@@ -1,0 +1,89 @@
+/* ===== ระบบสลับภาษา TH | EN (Custom Native Language Switcher) ===== */
+
+.lang-switch-wrap {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9999px;
+  padding: 2px 4px;
+  gap: 2px;
+  transition: all 0.2s ease;
+}
+
+.lang-switch:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+}
+
+.lang-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lang-btn.active {
+  background: #FFFFFF !important;
+  color: #1E3A8A !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.lang-divider {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  line-height: 1;
+  padding: 0 1px;
+}
+
+/* ปุ่มสลับภาษาสำหรับแผงแอดมินหรือพื้นหลังสีขาว (Light Background) */
+.panel-lang-switch .lang-switch {
+  background: #F1F5F9;
+  border: 1.5px solid #CBD5E1;
+}
+
+.panel-lang-switch .lang-switch:hover {
+  background: #E2E8F0;
+  border-color: #94A3B8;
+}
+
+.panel-lang-switch .lang-btn {
+  color: #475569;
+}
+
+.panel-lang-switch .lang-btn:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.panel-lang-switch .lang-btn.active {
+  background: #1E3A8A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.25);
+}
+
+.panel-lang-switch .lang-divider {
+  color: #CBD5E1;
+}
